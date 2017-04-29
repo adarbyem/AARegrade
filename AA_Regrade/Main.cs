@@ -114,7 +114,7 @@ namespace AA_Regrade
         }
 
         //Peform the Enchantments
-        public void doEnchant(double scroll, double rScroll, double charm, double enchant, int iterations, int currentGrade, int charmedGrade, int targetGrade, bool isRegradeEvent)
+        public void doEnchant(double scroll, double rScroll, double charm, double enchant, int iterations, int currentGrade, int charmedGrade, int targetGrade, bool isRegradeEvent, bool isShip)
         {
             /* Grade Values
              * 0 = Basic
@@ -168,7 +168,7 @@ namespace AA_Regrade
                     else if (currentGrade == 7 && checkBoxIsAnchorDivine.Checked) getCharmed = true;
                     else if (checkBoxCharms.Checked) getCharmed = true;
                     else getCharmed = false;
-                    odds = getOdds(currentGrade, checkBoxResplend.Checked, getCharmed, charmedGrade);
+                    odds = getOdds(currentGrade, checkBoxResplend.Checked, getCharmed, charmedGrade, isShip);
                     attempts[currentGrade]++;
 
                     //Step 2: Apply Statistics
@@ -226,16 +226,25 @@ namespace AA_Regrade
                     {
                         //Failure
                         sessionCost = 0;
-                        
-                        //
-                        if (currentGrade == 6 && majorFail(checkBoxCharms.Checked, checkBoxIsAnchorCelest.Checked, isRegradeEvent, roll))
+
+                        //All ship parts break on fail
+                        if (isShip)
                         {
                             majorFails[currentGrade]++;
                             currentGrade = initialGrade;
                             enchantCost = enchant;
                             trino = 1;
                         }
-                        else if(currentGrade == 6)
+
+                        //
+                        if (!isShip && currentGrade == 6 && majorFail(checkBoxCharms.Checked, checkBoxIsAnchorCelest.Checked, isRegradeEvent, roll))
+                        {
+                            majorFails[currentGrade]++;
+                            currentGrade = initialGrade;
+                            enchantCost = enchant;
+                            trino = 1;
+                        }
+                        else if(!isShip && currentGrade == 6)
                         {
                             //Check for Mistsong Option
                             //Counts it as a "blown up" item on degrade for those who would rather just loot another unique T1
@@ -266,7 +275,7 @@ namespace AA_Regrade
                         }
 
                         //Break Divine if Not Anchored
-                        if(currentGrade == 7 && !checkBoxIsAnchorDivine.Checked)
+                        if(currentGrade == 7 && !checkBoxIsAnchorDivine.Checked && !isShip)
                         {
                             majorFails[currentGrade]++;
                             currentGrade = initialGrade;
@@ -274,7 +283,7 @@ namespace AA_Regrade
                             trino = 1;
                         }
                         //Break Epic and Above
-                        else if (currentGrade > 7)
+                        else if (currentGrade > 7 && !isShip)
                         {
                             majorFails[currentGrade]++;
                             currentGrade = initialGrade;
@@ -407,38 +416,48 @@ namespace AA_Regrade
         }
 
         //Function to get the odds of a specific regrade given the options checked
-        public double getOdds(int grade, bool isResplend, bool isCharmed, int charmedGrade)
+        public double getOdds(int grade, bool isResplend, bool isCharmed, int charmedGrade, bool isShip)
         {
             switch (grade)
             {
                 case 0://Basic -> Grand
-                    if (isCharmed && charmedGrade >= grade) return 10000;
+                    if (isShip) return 5000;
+                    else if (isCharmed && charmedGrade >= grade) return 10000;
                     else return 6000;
                 case 1://Grand -> Rare
-                    if (isCharmed && charmedGrade >= grade) return 8000;
+                    if (isShip) return 5000;
+                    else if (isCharmed && charmedGrade >= grade) return 8000;
                     else return 4000;
                 case 2://Rare -> Arcane
-                    if (isCharmed && charmedGrade >= grade) return 6000;
+                    if (isShip) return 5000;
+                    else if (isCharmed && charmedGrade >= grade) return 6000;
                     else return 3000;
                 case 3://Arcane -> Heroic
-                    if (isCharmed && charmedGrade >= grade) return 6000;
+                    if (isShip) return 5000;
+                    else if (isCharmed && charmedGrade >= grade) return 6000;
                     else return 3000;
                 case 4://Heroic -> Unique
+                    if (isShip) return 5000;
                     if (isCharmed && charmedGrade >= grade) return 5000;
                     else return 2500;
                 case 5://Unique -> Celestial
+                    if (isShip) return 5000;
                     if (isCharmed && charmedGrade >= grade) return 4000;
                     else return 2000;
                 case 6://Celestial -> Divine
+                    if (isShip) return 4000;
                     if (isCharmed && charmedGrade >= grade) return 2000;
                     else return 1000;
                 case 7://Divine -> Epic
+                    if (isShip) return 3000;
                     if (isCharmed && charmedGrade >= grade) return 1500;
                     else return 750;
                 case 8://Epic -> Legendary
+                    if (isShip) return 3000;
                     if (isCharmed && charmedGrade >= grade) return 1000;
                     else return 500;
                 case 9://Legendary -> Mythic
+                    if (isShip) return 2000;
                     if (isCharmed && charmedGrade >= grade) return 500;
                     else return 250;
                 case 10://Mythic -> Primordial
@@ -453,6 +472,40 @@ namespace AA_Regrade
         {
             refreshPage();
         }
+
+        private void checkBoxShip_CheckedChanged(object sender, EventArgs e)
+        {
+            //Disables all irrelevent options with ship component regrading
+            if (checkBoxShip.Checked)
+            {
+                checkBoxCharms.Enabled = false;
+                checkBoxEvent.Enabled = false;
+                checkBoxIsAnchorCelest.Enabled = false;
+                checkBoxIsAnchorDivine.Enabled = false;
+                checkBoxMist.Enabled = false;
+                checkBoxResplend.Enabled = false;
+                comboBoxCharmGrade.Enabled = false;
+                label1.Enabled = false;
+                checkBoxCharms.Checked = false;
+                checkBoxEvent.Checked = false;
+                checkBoxIsAnchorCelest.Checked = false;
+                checkBoxIsAnchorDivine.Checked = false;
+                checkBoxMist.Checked = false;
+                checkBoxResplend.Checked = false;
+                
+            }
+            else
+            {
+                checkBoxCharms.Enabled = true;
+                checkBoxEvent.Enabled = true;
+                checkBoxIsAnchorCelest.Enabled = true;
+                checkBoxIsAnchorDivine.Enabled = true;
+                checkBoxMist.Enabled = true;
+                checkBoxResplend.Enabled = true;
+            }
+
+        }
+
         //Updates the progress bar when progress has been reported by the thread
         private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
@@ -470,6 +523,7 @@ namespace AA_Regrade
             //local variables
             double scroll, rScroll, charm, enchant;
             int iterations;
+            bool isShip = checkBoxShip.Checked;
             //Initialize global variables from UI elements
             scroll = double.Parse(textBoxStandardScroll.Text);
             rScroll = double.Parse(textBoxResplenScroll.Text);
@@ -477,7 +531,7 @@ namespace AA_Regrade
             enchant = double.Parse(textBoxEnchant.Text);
             iterations = int.Parse(textBoxIterations.Text);
             //Start the enchanting function
-            doEnchant(scroll, rScroll, charm, enchant, iterations, currentGrade, charmedGrade, targetGrade, isRegradeEvent);
+            doEnchant(scroll, rScroll, charm, enchant, iterations, currentGrade, charmedGrade, targetGrade, isRegradeEvent, isShip);
         }
     }
 }

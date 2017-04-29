@@ -160,6 +160,7 @@
             this.labelResults = new System.Windows.Forms.Label();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.checkBoxShip = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -169,7 +170,7 @@
             // 
             this.labelCurrent.AutoSize = true;
             this.labelCurrent.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.labelCurrent.Location = new System.Drawing.Point(0, 572);
+            this.labelCurrent.Location = new System.Drawing.Point(0, 602);
             this.labelCurrent.Name = "labelCurrent";
             this.labelCurrent.Size = new System.Drawing.Size(93, 13);
             this.labelCurrent.TabIndex = 0;
@@ -188,6 +189,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.checkBoxShip);
             this.panel1.Controls.Add(this.checkBoxEvent);
             this.panel1.Controls.Add(this.checkBoxIsOly);
             this.panel1.Controls.Add(this.checkBoxMist);
@@ -220,13 +222,13 @@
             this.panel1.Controls.Add(this.labelStepOne);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(265, 553);
+            this.panel1.Size = new System.Drawing.Size(265, 587);
             this.panel1.TabIndex = 2;
             // 
             // checkBoxEvent
             // 
             this.checkBoxEvent.AutoSize = true;
-            this.checkBoxEvent.Location = new System.Drawing.Point(16, 446);
+            this.checkBoxEvent.Location = new System.Drawing.Point(16, 471);
             this.checkBoxEvent.Name = "checkBoxEvent";
             this.checkBoxEvent.Size = new System.Drawing.Size(98, 17);
             this.checkBoxEvent.TabIndex = 16;
@@ -236,7 +238,7 @@
             // checkBoxIsOly
             // 
             this.checkBoxIsOly.AutoSize = true;
-            this.checkBoxIsOly.Location = new System.Drawing.Point(16, 473);
+            this.checkBoxIsOly.Location = new System.Drawing.Point(16, 498);
             this.checkBoxIsOly.Name = "checkBoxIsOly";
             this.checkBoxIsOly.Size = new System.Drawing.Size(164, 17);
             this.checkBoxIsOly.TabIndex = 17;
@@ -247,7 +249,7 @@
             // checkBoxMist
             // 
             this.checkBoxMist.AutoSize = true;
-            this.checkBoxMist.Location = new System.Drawing.Point(16, 399);
+            this.checkBoxMist.Location = new System.Drawing.Point(16, 424);
             this.checkBoxMist.Name = "checkBoxMist";
             this.checkBoxMist.Size = new System.Drawing.Size(246, 17);
             this.checkBoxMist.TabIndex = 14;
@@ -269,7 +271,7 @@
             "Epic",
             "Legendary",
             "Mythic"});
-            this.comboBoxCharmGrade.Location = new System.Drawing.Point(150, 287);
+            this.comboBoxCharmGrade.Location = new System.Drawing.Point(150, 314);
             this.comboBoxCharmGrade.Name = "comboBoxCharmGrade";
             this.comboBoxCharmGrade.Size = new System.Drawing.Size(84, 21);
             this.comboBoxCharmGrade.TabIndex = 10;
@@ -277,7 +279,7 @@
             // checkBoxIsAnchorDivine
             // 
             this.checkBoxIsAnchorDivine.AutoSize = true;
-            this.checkBoxIsAnchorDivine.Location = new System.Drawing.Point(16, 353);
+            this.checkBoxIsAnchorDivine.Location = new System.Drawing.Point(16, 378);
             this.checkBoxIsAnchorDivine.Name = "checkBoxIsAnchorDivine";
             this.checkBoxIsAnchorDivine.Size = new System.Drawing.Size(140, 17);
             this.checkBoxIsAnchorDivine.TabIndex = 12;
@@ -287,7 +289,7 @@
             // checkBoxTrino
             // 
             this.checkBoxTrino.AutoSize = true;
-            this.checkBoxTrino.Location = new System.Drawing.Point(16, 423);
+            this.checkBoxTrino.Location = new System.Drawing.Point(16, 448);
             this.checkBoxTrino.Name = "checkBoxTrino";
             this.checkBoxTrino.Size = new System.Drawing.Size(113, 17);
             this.checkBoxTrino.TabIndex = 15;
@@ -308,7 +310,7 @@
             // checkBoxResplend
             // 
             this.checkBoxResplend.AutoSize = true;
-            this.checkBoxResplend.Location = new System.Drawing.Point(16, 376);
+            this.checkBoxResplend.Location = new System.Drawing.Point(16, 401);
             this.checkBoxResplend.Name = "checkBoxResplend";
             this.checkBoxResplend.Size = new System.Drawing.Size(166, 17);
             this.checkBoxResplend.TabIndex = 13;
@@ -325,7 +327,7 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(38, 309);
+            this.label1.Location = new System.Drawing.Point(38, 336);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(192, 13);
             this.label1.TabIndex = 7;
@@ -389,7 +391,7 @@
             // checkBoxCharms
             // 
             this.checkBoxCharms.AutoSize = true;
-            this.checkBoxCharms.Location = new System.Drawing.Point(16, 289);
+            this.checkBoxCharms.Location = new System.Drawing.Point(16, 316);
             this.checkBoxCharms.Name = "checkBoxCharms";
             this.checkBoxCharms.Size = new System.Drawing.Size(133, 17);
             this.checkBoxCharms.TabIndex = 9;
@@ -398,7 +400,7 @@
             // 
             // textBoxIterations
             // 
-            this.textBoxIterations.Location = new System.Drawing.Point(146, 525);
+            this.textBoxIterations.Location = new System.Drawing.Point(146, 550);
             this.textBoxIterations.Name = "textBoxIterations";
             this.textBoxIterations.Size = new System.Drawing.Size(72, 20);
             this.textBoxIterations.TabIndex = 18;
@@ -407,7 +409,7 @@
             // labelIterations
             // 
             this.labelIterations.AutoSize = true;
-            this.labelIterations.Location = new System.Drawing.Point(38, 528);
+            this.labelIterations.Location = new System.Drawing.Point(38, 553);
             this.labelIterations.Name = "labelIterations";
             this.labelIterations.Size = new System.Drawing.Size(53, 13);
             this.labelIterations.TabIndex = 15;
@@ -417,7 +419,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 500);
+            this.label2.Location = new System.Drawing.Point(13, 525);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(223, 13);
             this.label2.TabIndex = 14;
@@ -467,7 +469,7 @@
             // checkBoxIsAnchorCelest
             // 
             this.checkBoxIsAnchorCelest.AutoSize = true;
-            this.checkBoxIsAnchorCelest.Location = new System.Drawing.Point(16, 328);
+            this.checkBoxIsAnchorCelest.Location = new System.Drawing.Point(16, 353);
             this.checkBoxIsAnchorCelest.Name = "checkBoxIsAnchorCelest";
             this.checkBoxIsAnchorCelest.Size = new System.Drawing.Size(149, 17);
             this.checkBoxIsAnchorCelest.TabIndex = 11;
@@ -524,7 +526,7 @@
             // 
             // buttonEnchant
             // 
-            this.buttonEnchant.Location = new System.Drawing.Point(426, 513);
+            this.buttonEnchant.Location = new System.Drawing.Point(442, 547);
             this.buttonEnchant.Name = "buttonEnchant";
             this.buttonEnchant.Size = new System.Drawing.Size(124, 23);
             this.buttonEnchant.TabIndex = 19;
@@ -612,7 +614,7 @@
             this.panel2.Controls.Add(this.labelResults);
             this.panel2.Location = new System.Drawing.Point(299, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(405, 491);
+            this.panel2.Size = new System.Drawing.Size(405, 514);
             this.panel2.TabIndex = 3;
             // 
             // panel3
@@ -1128,7 +1130,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(93, 465);
+            this.label17.Location = new System.Drawing.Point(97, 488);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(196, 13);
             this.label17.TabIndex = 49;
@@ -1573,17 +1575,28 @@
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(299, 542);
+            this.progressBar.Location = new System.Drawing.Point(294, 576);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(376, 23);
+            this.progressBar.Size = new System.Drawing.Size(410, 23);
             this.progressBar.TabIndex = 20;
+            // 
+            // checkBoxShip
+            // 
+            this.checkBoxShip.AutoSize = true;
+            this.checkBoxShip.Location = new System.Drawing.Point(16, 289);
+            this.checkBoxShip.Name = "checkBoxShip";
+            this.checkBoxShip.Size = new System.Drawing.Size(104, 17);
+            this.checkBoxShip.TabIndex = 28;
+            this.checkBoxShip.Text = "Ship Component";
+            this.checkBoxShip.UseVisualStyleBackColor = true;
+            this.checkBoxShip.CheckedChanged += new System.EventHandler(this.checkBoxShip_CheckedChanged);
             // 
             // Main
             // 
             this.AcceptButton = this.buttonEnchant;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 585);
+            this.ClientSize = new System.Drawing.Size(716, 615);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -1592,7 +1605,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
-            this.Text = "Archeage Regrade Simulator v1.2.1";
+            this.Text = "Archeage Regrade Simulator v1.3.0";
             this.Load += new System.EventHandler(this.Main_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1738,6 +1751,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.CheckBox checkBoxEvent;
+        private System.Windows.Forms.CheckBox checkBoxShip;
     }
 }
 
