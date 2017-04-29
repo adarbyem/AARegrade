@@ -70,6 +70,17 @@ namespace AA_Regrade
                 targetGrade = comboBoxTarget.SelectedIndex;
                 buttonEnchant.Enabled = false;
                 buttonEnchant.Text = "Enchanting...";
+
+                //Initialize Global Variables
+                //Initialize global variables
+                attempts = new double[11];
+                cumulativeCost = new double[11];
+                majorFails = new double[11];
+                successes = new double[11];
+
+                //Reset the displayed values
+                refreshPage();
+
                 //Begin Threaded Work
                 backgroundWorker.RunWorkerAsync();
             }
@@ -134,16 +145,12 @@ namespace AA_Regrade
             double enchantCost = 0;
             int initialGrade = currentGrade;
 
-            //Initialize global variables
-            attempts = new double[11];
-            cumulativeCost = new double[11];
-            majorFails = new double[11];
-            successes = new double[11];
+            //Initialize Global Variables
             GSUD = 0;
             GSCE = 0;
             GSDL = 0;
             GSEM = 0;
-
+            
             //Begin Loop
             if (checkBoxIsOly.Checked) miscModifier += 0.1; //Poor Olympias
 
@@ -340,40 +347,50 @@ namespace AA_Regrade
         //Refreshes the GUI Panel to display the results of the simulation
         public void refreshPage()
         {
-            if(successes[0] > 0)labelGA.Text = attempts[0].ToString() + " (" + Math.Round(successes[0] / attempts[0], 3) * 100 + "%)";
+            if (successes[0] > 0) labelGA.Text = attempts[0].ToString() + " (" + Math.Round(successes[0] / attempts[0], 3) * 100 + "%)";
+            else labelGA.Text = "0 (0)";
             labelGC.Text = Math.Round(cumulativeCost[0]).ToString();
             labelGF.Text = majorFails[0].ToString();
             if (successes[1] > 0) labelRA.Text = attempts[1].ToString() + " (" + Math.Round(successes[1] / attempts[1], 3) * 100 + "%)";
+            else labelRA.Text = "0 (0)";
             labelRC.Text = Math.Round(cumulativeCost[1]).ToString();
             labelRF.Text = majorFails[1].ToString();
             if (successes[2] > 0) labelAA.Text = attempts[2].ToString() + " (" + Math.Round(successes[2] / attempts[2], 3) * 100 + "%)";
+            else labelAA.Text = "0 (0)";
             labelAC.Text = Math.Round(cumulativeCost[2]).ToString();
             labelAF.Text = majorFails[2].ToString();
             if (successes[3] > 0) labelHA.Text = attempts[3].ToString() + " (" + Math.Round(successes[3] / attempts[3], 3) * 100 + "%)";
+            else labelHA.Text = "0 (0)";
             labelHC.Text = Math.Round(cumulativeCost[3]).ToString();
             labelHF.Text = majorFails[3].ToString();
             if (successes[4] > 0) labelUA.Text = attempts[4].ToString() + " (" + Math.Round(successes[4] / attempts[4], 3) * 100 + "%)";
+            else labelUA.Text = "0 (0)";
             labelUC.Text = Math.Round(cumulativeCost[4]).ToString();
             labelUF.Text = majorFails[4].ToString();
             if (successes[5] > 0) labelCA.Text = attempts[5].ToString() + " (" + Math.Round(successes[5] / attempts[5], 3) * 100 + "%)";
+            else labelCA.Text = "0 (0)";
             labelCC.Text = Math.Round(cumulativeCost[5]).ToString();
             labelCF.Text = majorFails[5].ToString();
             if (successes[6] > 0) labelDA.Text = attempts[6].ToString() + " (" + Math.Round(successes[6] / attempts[6] , 3) * 100 + "%)";
+            else labelDA.Text = "0 (0)";
             labelDC.Text = Math.Round(cumulativeCost[6]).ToString();
             labelDF.Text = majorFails[6].ToString();
             if (successes[7] > 0) labelEA.Text = attempts[7].ToString() + " (" + Math.Round(successes[7] / attempts[7], 3) * 100 + "%)";
+            else labelEA.Text = "0 (0)";
             labelEC.Text = Math.Round(cumulativeCost[7]).ToString();
             labelEF.Text = majorFails[7].ToString();
             if (successes[8] > 0) labelLA.Text = attempts[8].ToString() + " (" + Math.Round(successes[8] / attempts[8], 3) * 100 + "%)";
+            else labelLA.Text = "0 (0)";
             labelLC.Text = Math.Round(cumulativeCost[8]).ToString();
             labelLF.Text = majorFails[8].ToString();
             if (successes[9] > 0) labelMA.Text = attempts[9].ToString() + " (" + Math.Round(successes[9] / attempts[9], 3) * 100 + "%)";
+            else labelMA.Text = "0 (0)";
             labelMC.Text = Math.Round(cumulativeCost[9]).ToString();
             labelMF.Text = majorFails[9].ToString();
-            labelGSUD.Text = (Math.Round((GSUD / iterations) / attempts[5], 3) * 100).ToString() + "%";
-            labelGSCE.Text = (Math.Round((GSCE / iterations) / attempts[6], 3) * 100).ToString() + "%";
-            labelGSDL.Text = (Math.Round((GSDL / iterations) / attempts[7], 3) * 100).ToString() + "%";
-            labelGSEM.Text = (Math.Round((GSEM / iterations) / attempts[8], 3) * 100).ToString() + "%";
+            if(GSUD > 0)labelGSUD.Text = (Math.Round((GSUD / iterations) / attempts[5], 3) * 100).ToString() + "%";
+            if(GSCE > 0)labelGSCE.Text = (Math.Round((GSCE / iterations) / attempts[6], 3) * 100).ToString() + "%";
+            if(GSDL > 0)labelGSDL.Text = (Math.Round((GSDL / iterations) / attempts[7], 3) * 100).ToString() + "%";
+            if(GSEM > 0)labelGSEM.Text = (Math.Round((GSEM / iterations) / attempts[8], 3) * 100).ToString() + "%";
             labelMajor.Text = totalFail.ToString();
             labelCost.Text = totalCost.ToString();
             buttonEnchant.Enabled = true;
