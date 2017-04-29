@@ -4,7 +4,7 @@
   <description asmv2:iconFile="favicon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Archeage Regrade Simulator" version="1.1.1.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Archeage Regrade Simulator" version="1.2.0.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="Archeage Regrade Simulator.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,24 +43,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Archeage Regrade Simulator.exe" size="113152">
-      <assemblyIdentity name="Archeage Regrade Simulator" version="1.1.1.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Archeage Regrade Simulator.exe" size="114176">
+      <assemblyIdentity name="Archeage Regrade Simulator" version="1.2.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>kAp06z20NOvaPpO/CODB7a8cluZcd+Pl57QOOTZsuGw=</dsig:DigestValue>
+        <dsig:DigestValue>KaCQLkgxe1MEIf2EO041gpLapWLHvTTjwOoIwqwkxn4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Archeage Regrade Simulator.exe.config" size="184">
+  <file name="Archeage Regrade Simulator.exe.config" size="189">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>jWVCngsqgsEdPtxOoE7SAK7f6h1++LmE6IqOl8/1R3A=</dsig:DigestValue>
+      <dsig:DigestValue>6N7MliNbVJSIAIPrecIshMbZ7zEoKLr5SQvud4LDUOw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="favicon.ico" size="34494">
