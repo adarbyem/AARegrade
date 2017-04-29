@@ -14,8 +14,6 @@ C:\Users\adarby\Documents\Visual Studio 2015\Projects\AA_Regrade\AA_Regrade\dev\
 C:\Users\adarby\Documents\Visual Studio 2015\Projects\AA_Regrade\AA_Regrade\dev\AA_Regrade\bin\Debug\Archeage Regrade Simulator.pdb
 C:\Users\adarby\Documents\Visual Studio 2015\Projects\AA_Regrade\AA_Regrade\dev\AA_Regrade\obj\Debug\Archeage Regrade Simulator.application
 C:\Users\Aaron\Source\Repos\AARegrade\AA_Regrade\bin\Debug\Archeage Regrade Simulator.exe.config
-C:\Users\Aaron\Source\Repos\AARegrade\AA_Regrade\obj\Debug\Archeage Regrade Simulator.exe
-C:\Users\Aaron\Source\Repos\AARegrade\AA_Regrade\obj\Debug\Archeage Regrade Simulator.pdb
 C:\Users\Aaron\Source\Repos\AARegrade\AA_Regrade\bin\Debug\Archeage Regrade Simulator.exe.manifest
 C:\Users\Aaron\Source\Repos\AARegrade\AA_Regrade\bin\Debug\Archeage Regrade Simulator.application
 C:\Users\Aaron\Source\Repos\AARegrade\AA_Regrade\bin\Debug\Archeage Regrade Simulator.exe
@@ -27,3 +25,5 @@ C:\Users\Aaron\Source\Repos\AARegrade\AA_Regrade\obj\Debug\AA_Regrade.csproj.Gen
 C:\Users\Aaron\Source\Repos\AARegrade\AA_Regrade\obj\Debug\Archeage Regrade Simulator.TrustInfo.xml
 C:\Users\Aaron\Source\Repos\AARegrade\AA_Regrade\obj\Debug\Archeage Regrade Simulator.exe.manifest
 C:\Users\Aaron\Source\Repos\AARegrade\AA_Regrade\obj\Debug\Archeage Regrade Simulator.application
+C:\Users\Aaron\Source\Repos\AARegrade\AA_Regrade\obj\Debug\Archeage Regrade Simulator.exe
+C:\Users\Aaron\Source\Repos\AARegrade\AA_Regrade\obj\Debug\Archeage Regrade Simulator.pdb
