@@ -12,18 +12,25 @@ namespace AA_Regrade
     {
 
         //Global Variables
-        int currentGrade, charmedGrade, targetGrade, iterations;
+        int currentGrade, charmedGrade, targetGrade, iterations, classification;
         double[] attempts = new double[11];
         double[] successes = new double[11];
         double[] cumulativeCost = new double[11];
         double[] majorFails = new double[11];
+        double patch = 2.9;
         double totalCost = 0;
         double totalFail = 0;
         double GSUD = 0;
         double GSCE = 0;
         double GSDL = 0;
         double GSEM = 0;
+        double GSLP = 0;
         bool isRegradeEvent = false;
+        bool isDoneEnchanting = true;
+
+        //Global Object
+        Help help = new Help();
+        Updates updates = new Updates();
 
         public Main()
         {
@@ -36,6 +43,10 @@ namespace AA_Regrade
             comboBoxGrade.SelectedIndex = 0;
             comboBoxTarget.SelectedIndex = 1;
             comboBoxCharmGrade.SelectedIndex = 0;
+            //Initialize and disable
+            label63.Enabled = false;
+            comboBoxClassification.SelectedIndex = 3;
+            comboBoxClassification.Enabled = false;
         }
 
         private void buttonEnchant_Click(object sender, EventArgs e)
@@ -65,9 +76,11 @@ namespace AA_Regrade
                 progressBar.Value = 0;
 
                 //Step 3: Call Enchanting Process
+                isDoneEnchanting = false;
                 currentGrade = comboBoxGrade.SelectedIndex;
                 charmedGrade = comboBoxCharmGrade.SelectedIndex;
                 targetGrade = comboBoxTarget.SelectedIndex;
+                classification = comboBoxClassification.SelectedIndex;
                 buttonEnchant.Enabled = false;
                 buttonEnchant.Text = "Enchanting...";
 
@@ -82,7 +95,14 @@ namespace AA_Regrade
                 refreshPage();
 
                 //Begin Threaded Work
-                backgroundWorker.RunWorkerAsync();
+                try
+                {
+                    backgroundWorker.RunWorkerAsync();
+                }
+                catch
+                {
+                    MessageBox.Show("Something went wrong, you should disregard the current results. The program should still work correctly for future tests.");
+                }
             }
         }
 
@@ -150,17 +170,16 @@ namespace AA_Regrade
             GSCE = 0;
             GSDL = 0;
             GSEM = 0;
-            
-            //Begin Loop
-            if (checkBoxIsOly.Checked) miscModifier += 0.1; //Poor Olympias
 
-             for(int count = 1; count <= iterations; count++)
+            //Begin Loop
+            for (int count = 1; count <= iterations; count++)
             {
                 currentGrade = initialGrade; //We don't want to modify the inital grade
                 enchantCost = enchant;
                 trino = 1; //Reset the Trino RNG modifyer
 
                 //Begin enchanting an item until it reaches the target grade
+                
                 while (!isDone)
                 {
                     //Step 1: Get Odds of Success and increment the attempt count
@@ -168,9 +187,8 @@ namespace AA_Regrade
                     else if (currentGrade == 7 && checkBoxIsAnchorDivine.Checked) getCharmed = true;
                     else if (checkBoxCharms.Checked) getCharmed = true;
                     else getCharmed = false;
-                    odds = getOdds(currentGrade, checkBoxResplend.Checked, getCharmed, charmedGrade, isShip);
+                    odds = getOdds(currentGrade, checkBoxResplend.Checked, getCharmed, charmedGrade, isShip, classification);
                     attempts[currentGrade]++;
-
                     //Step 2: Apply Statistics
                     //Add the cost of a resplendent scroll if applicable
                     if (currentGrade > 4 && currentGrade != 9)
@@ -200,23 +218,24 @@ namespace AA_Regrade
                     {
                         //Success
                         successes[currentGrade]++;
-                        //Console.WriteLine(attempts[currentGrade] + " : " + successes[currentGrade]);
                         trino += trinoRNG();
                         currentGrade++;
                         enchantCost += (enchantCost * .25); //This is a rough estimate to account for increasing enchanting costs
                         sessionCost = 0;
                         //Check for Great Success if using a resplendent
-                        if (currentGrade >= 6 && currentGrade != 10 && checkBoxResplend.Checked)
+                        if (currentGrade >= 6 && ((patch != 3.5 && currentGrade != 10) || (patch == 3.5 && currentGrade != 11)) && checkBoxResplend.Checked)
                         {
                             if (roll <= odds * .25)
                             {
                                 //Great Success
+                                //if (currentGrade > 9) Console.WriteLine("Great Success! " + currentGrade + " -> " + (currentGrade + 1) + " " + roll + " " + (odds*.25));
                                 trino += trinoRNG();
                                 //Increment the Great Success count for the appropriate grade
                                 if (currentGrade - 1 == 5) GSUD++;
                                 if (currentGrade - 1 == 6) GSCE++;
                                 if (currentGrade - 1 == 7) GSDL++;
                                 if (currentGrade - 1 == 8) GSEM++;
+                                if (currentGrade - 1 == 9) GSLP++;
                                 currentGrade++;
                                 enchantCost += (enchantCost * .25);
                             }
@@ -228,7 +247,7 @@ namespace AA_Regrade
                         sessionCost = 0;
 
                         //All ship parts break on fail
-                        if (isShip)
+                        if (isShip && currentGrade >= 6)
                         {
                             majorFails[currentGrade]++;
                             currentGrade = initialGrade;
@@ -356,54 +375,63 @@ namespace AA_Regrade
         //Refreshes the GUI Panel to display the results of the simulation
         public void refreshPage()
         {
-            if (successes[0] > 0) labelGA.Text = attempts[0].ToString() + " (" + Math.Round(successes[0] / attempts[0], 3) * 100 + "%)";
+            if (attempts[0] > 0) labelGA.Text = attempts[0].ToString() + " (" + Math.Round(successes[0] / attempts[0], 3) * 100 + "%)";
             else labelGA.Text = "0 (0)";
             labelGC.Text = Math.Round(cumulativeCost[0]).ToString();
             labelGF.Text = majorFails[0].ToString();
-            if (successes[1] > 0) labelRA.Text = attempts[1].ToString() + " (" + Math.Round(successes[1] / attempts[1], 3) * 100 + "%)";
+            if (attempts[1] > 0) labelRA.Text = attempts[1].ToString() + " (" + Math.Round(successes[1] / attempts[1], 3) * 100 + "%)";
             else labelRA.Text = "0 (0)";
             labelRC.Text = Math.Round(cumulativeCost[1]).ToString();
             labelRF.Text = majorFails[1].ToString();
-            if (successes[2] > 0) labelAA.Text = attempts[2].ToString() + " (" + Math.Round(successes[2] / attempts[2], 3) * 100 + "%)";
+            if (attempts[2] > 0) labelAA.Text = attempts[2].ToString() + " (" + Math.Round(successes[2] / attempts[2], 3) * 100 + "%)";
             else labelAA.Text = "0 (0)";
             labelAC.Text = Math.Round(cumulativeCost[2]).ToString();
             labelAF.Text = majorFails[2].ToString();
-            if (successes[3] > 0) labelHA.Text = attempts[3].ToString() + " (" + Math.Round(successes[3] / attempts[3], 3) * 100 + "%)";
+            if (attempts[3] > 0) labelHA.Text = attempts[3].ToString() + " (" + Math.Round(successes[3] / attempts[3], 3) * 100 + "%)";
             else labelHA.Text = "0 (0)";
             labelHC.Text = Math.Round(cumulativeCost[3]).ToString();
             labelHF.Text = majorFails[3].ToString();
-            if (successes[4] > 0) labelUA.Text = attempts[4].ToString() + " (" + Math.Round(successes[4] / attempts[4], 3) * 100 + "%)";
+            if (attempts[4] > 0) labelUA.Text = attempts[4].ToString() + " (" + Math.Round(successes[4] / attempts[4], 3) * 100 + "%)";
             else labelUA.Text = "0 (0)";
             labelUC.Text = Math.Round(cumulativeCost[4]).ToString();
             labelUF.Text = majorFails[4].ToString();
-            if (successes[5] > 0) labelCA.Text = attempts[5].ToString() + " (" + Math.Round(successes[5] / attempts[5], 3) * 100 + "%)";
+            if (attempts[5] > 0) labelCA.Text = attempts[5].ToString() + " (" + Math.Round(successes[5] / attempts[5], 3) * 100 + "%)";
             else labelCA.Text = "0 (0)";
             labelCC.Text = Math.Round(cumulativeCost[5]).ToString();
             labelCF.Text = majorFails[5].ToString();
-            if (successes[6] > 0) labelDA.Text = attempts[6].ToString() + " (" + Math.Round(successes[6] / attempts[6] , 3) * 100 + "%)";
+            if (attempts[6] > 0) labelDA.Text = attempts[6].ToString() + " (" + Math.Round(successes[6] / attempts[6] , 3) * 100 + "%)";
             else labelDA.Text = "0 (0)";
             labelDC.Text = Math.Round(cumulativeCost[6]).ToString();
             labelDF.Text = majorFails[6].ToString();
-            if (successes[7] > 0) labelEA.Text = attempts[7].ToString() + " (" + Math.Round(successes[7] / attempts[7], 3) * 100 + "%)";
+            if (attempts[7] > 0) labelEA.Text = attempts[7].ToString() + " (" + Math.Round(successes[7] / attempts[7], 3) * 100 + "%)";
             else labelEA.Text = "0 (0)";
             labelEC.Text = Math.Round(cumulativeCost[7]).ToString();
             labelEF.Text = majorFails[7].ToString();
-            if (successes[8] > 0) labelLA.Text = attempts[8].ToString() + " (" + Math.Round(successes[8] / attempts[8], 3) * 100 + "%)";
+            if (attempts[8] > 0) labelLA.Text = attempts[8].ToString() + " (" + Math.Round(successes[8] / attempts[8], 3) * 100 + "%)";
             else labelLA.Text = "0 (0)";
             labelLC.Text = Math.Round(cumulativeCost[8]).ToString();
             labelLF.Text = majorFails[8].ToString();
-            if (successes[9] > 0) labelMA.Text = attempts[9].ToString() + " (" + Math.Round(successes[9] / attempts[9], 3) * 100 + "%)";
+            if (attempts[9] > 0) labelMA.Text = attempts[9].ToString() + " (" + Math.Round(successes[9] / attempts[9], 3) * 100 + "%)";
             else labelMA.Text = "0 (0)";
             labelMC.Text = Math.Round(cumulativeCost[9]).ToString();
             labelMF.Text = majorFails[9].ToString();
-            if(GSUD > 0)labelGSUD.Text = (Math.Round((GSUD / iterations) / attempts[5], 3) * 100).ToString() + "%";
-            if(GSCE > 0)labelGSCE.Text = (Math.Round((GSCE / iterations) / attempts[6], 3) * 100).ToString() + "%";
-            if(GSDL > 0)labelGSDL.Text = (Math.Round((GSDL / iterations) / attempts[7], 3) * 100).ToString() + "%";
-            if(GSEM > 0)labelGSEM.Text = (Math.Round((GSEM / iterations) / attempts[8], 3) * 100).ToString() + "%";
+            if (attempts[10] > 0) labelPA.Text = attempts[10].ToString() + " (" + Math.Round(successes[10] / attempts[10], 3) * 100 + "%)";
+            else labelPA.Text = "0 (0)";
+            labelPC.Text = Math.Round(cumulativeCost[10]).ToString();
+            labelPF.Text = majorFails[10].ToString();
+            if (attempts[5] > 0)labelGSUD.Text = (Math.Round((GSUD / iterations) / attempts[5], 3) * 100).ToString() + "%";
+            if(attempts[6] > 0)labelGSCE.Text = (Math.Round((GSCE / iterations) / attempts[6], 3) * 100).ToString() + "%";
+            if(attempts[7] > 0)labelGSDL.Text = (Math.Round((GSDL / iterations) / attempts[7], 3) * 100).ToString() + "%";
+            if(attempts[8] > 0)labelGSEM.Text = (Math.Round((GSEM / iterations) / attempts[8], 3) * 100).ToString() + "%";
+            if (attempts[9] > 0) labelGSLP.Text = (Math.Round((GSLP / iterations) / attempts[9], 3) * 100).ToString() + "%";
             labelMajor.Text = totalFail.ToString();
             labelCost.Text = totalCost.ToString();
-            buttonEnchant.Enabled = true;
-            buttonEnchant.Text = "Perform Enchantments";
+            if (isDoneEnchanting)
+            {
+                buttonEnchant.Enabled = true;
+                buttonEnchant.Text = "Perform Enchantments";
+                isDoneEnchanting = false;
+            }
         }
         
         private void checkBoxTrino_CheckedChanged(object sender, EventArgs e)
@@ -416,55 +444,282 @@ namespace AA_Regrade
         }
 
         //Function to get the odds of a specific regrade given the options checked
-        public double getOdds(int grade, bool isResplend, bool isCharmed, int charmedGrade, bool isShip)
+        public double getOdds(int grade, bool isResplend, bool isCharmed, int charmedGrade, bool isShip, int classification)
         {
             switch (grade)
             {
                 case 0://Basic -> Grand
-                    if (isShip) return 5000;
-                    else if (isCharmed && charmedGrade >= grade) return 10000;
-                    else return 6000;
+                    if (isShip && patch == 2.9) return 5000;
+                    else if (isShip && patch == 3.5)return 10000;
+                    else{
+                        switch (classification)
+                        {
+                            case 0://Easy
+                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                else return 10000;
+                            case 1://Normal
+                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                else return 10000;
+                            case 2://Difficult
+                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                else return 10000;
+                            default://Should not happen with 3.5, these are 2.9 Values
+                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                else return 6000;
+                        }
+                    }
                 case 1://Grand -> Rare
-                    if (isShip) return 5000;
-                    else if (isCharmed && charmedGrade >= grade) return 8000;
-                    else return 4000;
+                    if (isShip && patch == 2.9) return 5000;
+                    else if (isShip && patch == 3.5) return 10000;
+                    else
+                    {
+                        switch (classification)
+                        {
+                            case 0://Easy
+                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                else return 10000;
+                            case 1://Normal
+                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                else return 10000;
+                            case 2://Difficult
+                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                else return 10000;
+                            default://Should not happen with 3.5, these are 2.9 Values
+                                if (isCharmed && charmedGrade >= grade) return 8000;
+                                else return 4000;
+                        }
+                    }
                 case 2://Rare -> Arcane
-                    if (isShip) return 5000;
-                    else if (isCharmed && charmedGrade >= grade) return 6000;
-                    else return 3000;
+                    if (isShip && patch == 2.9) return 5000;
+                    else if (isShip && patch == 3.5) return 6000;
+                    else
+                    {
+                        switch (classification)
+                        {
+                            case 0://Easy
+                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                else return 10000;
+                            case 1://Normal
+                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                else return 10000;
+                            case 2://Difficult
+                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                else return 10000;
+                            default://Should not happen with 3.5, these are 2.9 Values
+                                if (isCharmed && charmedGrade >= grade) return 6000;
+                                else return 3000;
+                        }
+                    }
                 case 3://Arcane -> Heroic
-                    if (isShip) return 5000;
-                    else if (isCharmed && charmedGrade >= grade) return 6000;
-                    else return 3000;
+                    if (isShip && patch == 2.9) return 5000;
+                    else if (isShip && patch == 3.5) return 6000;
+                    else
+                    {
+                        switch (classification)
+                        {
+                            case 0://Easy
+                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                else return 6750;
+                            case 1://Normal
+                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                else return 5000;
+                            case 2://Difficult
+                                if (isCharmed && charmedGrade >= grade) return 6500;
+                                else return 3250;
+                            default://Should not happen with 3.5, these are 2.9 Values
+                                if (isCharmed && charmedGrade >= grade) return 6000;
+                                else return 3000;
+                        }
+                    }
                 case 4://Heroic -> Unique
-                    if (isShip) return 5000;
-                    if (isCharmed && charmedGrade >= grade) return 5000;
-                    else return 2500;
+                    if (isShip && patch == 2.9) return 5000;
+                    else if (isShip && patch == 3.5) return 6000;
+                    else
+                    {
+                        switch (classification)
+                        {
+                            case 0://Easy
+                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                else return 6750;
+                            case 1://Normal
+                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                else return 5000;
+                            case 2://Difficult
+                                if (isCharmed && charmedGrade >= grade) return 6500;
+                                else return 3250;
+                            default://Should not happen with 3.5, these are 2.9 Values
+                                if (isCharmed && charmedGrade >= grade) return 5000;
+                                else return 2500;
+                        }
+                    }
                 case 5://Unique -> Celestial
-                    if (isShip) return 5000;
-                    if (isCharmed && charmedGrade >= grade) return 4000;
-                    else return 2000;
+                    if (isShip && patch == 2.9) return 5000;
+                    else if (isShip && patch == 3.5) return 5000;
+                    else
+                    {
+                        switch (classification)
+                        {
+                            case 0://Easy
+                                if (isCharmed && charmedGrade >= grade) return 9460;
+                                else return 4730;
+                            case 1://Normal
+                                if (isCharmed && charmedGrade >= grade) return 7000;
+                                else return 3500;
+                            case 2://Difficult
+                                if (isCharmed && charmedGrade >= grade) return 4560;
+                                else return 2280;
+                            default://Should not happen with 3.5, these are 2.9 Values
+                                if (isCharmed && charmedGrade >= grade) return 4000;
+                                else return 2000;
+                        }
+                    }
                 case 6://Celestial -> Divine
-                    if (isShip) return 4000;
-                    if (isCharmed && charmedGrade >= grade) return 2000;
-                    else return 1000;
+                    if (isShip && patch == 2.9) return 4000;
+                    else if (isShip && patch == 3.5) return 5000;
+                    else
+                    {
+                        switch (classification)
+                        {
+                            case 0://Easy
+                                if (isCharmed && charmedGrade >= grade) return 8100;
+                                else return 4050;
+                            case 1://Normal
+                                if (isCharmed && charmedGrade >= grade) return 7000;
+                                else return 3500;
+                            case 2://Difficult
+                                if (isCharmed && charmedGrade >= grade) return 3900;
+                                else return 1950;
+                            default://Should not happen with 3.5, these are 2.9 Values
+                                if (isCharmed && charmedGrade >= grade) return 2000;
+                                else return 1000;
+                        }
+                    }
                 case 7://Divine -> Epic
-                    if (isShip) return 3000;
-                    if (isCharmed && charmedGrade >= grade) return 1500;
-                    else return 750;
+                    if (isShip && patch == 2.9) return 3000;
+                    else if (isShip && patch == 3.5) return 4000;
+                    else
+                    {
+                        switch (classification)
+                        {
+                            case 0://Easy
+                                if (isCharmed && charmedGrade >= grade) return 2700;
+                                else return 1350;
+                            case 1://Normal
+                                if (isCharmed && charmedGrade >= grade) return 2000;
+                                else return 1000;
+                            case 2://Difficult
+                                if (isCharmed && charmedGrade >= grade) return 1300;
+                                else return 650;
+                            default://Should not happen with 3.5, these are 2.9 Values
+                                if (isCharmed && charmedGrade >= grade) return 1500;
+                                else return 750;
+                        }
+                    }
                 case 8://Epic -> Legendary
-                    if (isShip) return 3000;
-                    if (isCharmed && charmedGrade >= grade) return 1000;
-                    else return 500;
+                    if (isShip && patch == 2.9) return 3000;
+                    else if (isShip && patch == 3.5) return 3500;
+                    else
+                    {
+                        switch (classification)
+                        {
+                            case 0://Easy
+                                if (isCharmed && charmedGrade >= grade) return 2160;
+                                else return 1080;
+                            case 1://Normal
+                                if (isCharmed && charmedGrade >= grade) return 1600;
+                                else return 800;
+                            case 2://Difficult
+                                if (isCharmed && charmedGrade >= grade) return 1040;
+                                else return 520;
+                            default://Should not happen with 3.5, these are 2.9 Values
+                                if (isCharmed && charmedGrade >= grade) return 1000;
+                                else return 500;
+                        }
+                    }
                 case 9://Legendary -> Mythic
-                    if (isShip) return 2000;
-                    if (isCharmed && charmedGrade >= grade) return 500;
-                    else return 250;
+                    if (isShip && patch == 2.9) return 2000;
+                    else if (isShip && patch == 3.5) return 1750;
+                    else
+                    {
+                        switch (classification)
+                        {
+                            case 0://Easy
+                                if (isCharmed && charmedGrade >= grade) return 820;
+                                else return 410;
+                            case 1://Normal
+                                if (isCharmed && charmedGrade >= grade) return 600;
+                                else return 300;
+                            case 2://Difficult
+                                if (isCharmed && charmedGrade >= grade) return 400;
+                                else return 200;
+                            default://Should not happen with 3.5, these are 2.9 Values
+                                if (isCharmed && charmedGrade >= grade) return 500;
+                                else return 250;
+                        }
+                    }
                 case 10://Mythic -> Primordial
-                    return 0;//This shouldn't happen yet
+                    if (isShip && patch == 2.9) return 880;
+                    else if (isShip && patch == 3.5) return 880;
+                    else
+                    {
+                        switch (classification)
+                        {
+                            case 0://Easy
+                                if (isCharmed && charmedGrade >= grade) return 540;
+                                else return 270;
+                            case 1://Normal
+                                if (isCharmed && charmedGrade >= grade) return 400;
+                                else return 200;
+                            case 2://Difficult
+                                if (isCharmed && charmedGrade >= grade) return 260;
+                                else return 130;
+                            default://Should not happen
+                                if (isCharmed && charmedGrade >= grade) return 0;
+                                else return 0;
+                        }
+                    }
                 default:
-                    return 100;
+                    return 0;
             }
+        }
+
+        private void checkBoxTesting_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxTesting.Checked)
+            {
+                MessageBox.Show("This enables 3.5 values, keep in mind these values are only from the KR version and may not be the same when 3.5 hits NA or EU.");
+                comboBoxTarget.Items.Add("Primordial");
+                comboBoxClassification.SelectedIndex = 0;
+                comboBoxClassification.Items.RemoveAt(3);
+                patch = 3.5;
+                if (!checkBoxShip.Checked)
+                {
+                    comboBoxClassification.Enabled = true;
+                    label63.Enabled = true;
+                }
+            }
+            else
+            {
+                comboBoxClassification.Enabled = false;
+                comboBoxTarget.Items.Remove("Primordial");
+                comboBoxTarget.SelectedIndex = 0;
+                comboBoxClassification.Items.Add("**2.9**");
+                comboBoxClassification.SelectedIndex = 3;
+                patch = 2.9;
+                label63.Enabled = false;
+            }
+        }
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            //Opens the FAQ
+            help.getHelp();
+        }
+
+        private void labelUpdates_Click(object sender, EventArgs e)
+        {
+            //Gets Updates
+            updates.getUpdates();
         }
 
         //Runs when the thread is complete
@@ -492,7 +747,10 @@ namespace AA_Regrade
                 checkBoxIsAnchorDivine.Checked = false;
                 checkBoxMist.Checked = false;
                 checkBoxResplend.Checked = false;
-                
+                if(patch == 3.5){
+                    label63.Enabled = false;
+                    comboBoxClassification.Enabled = false;
+                }
             }
             else
             {
@@ -502,6 +760,11 @@ namespace AA_Regrade
                 checkBoxIsAnchorDivine.Enabled = true;
                 checkBoxMist.Enabled = true;
                 checkBoxResplend.Enabled = true;
+                if (patch == 3.5)
+                {
+                    label63.Enabled = true;
+                    comboBoxClassification.Enabled = true;
+                }
             }
 
         }
@@ -510,11 +773,6 @@ namespace AA_Regrade
         private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar.Value = e.ProgressPercentage;
-        }
-        //Poor Olympias, we should at least tell him...
-        private void checkBoxIsOly_CheckedChanged(object sender, EventArgs e)
-        {
-            if(checkBoxIsOly.Checked)MessageBox.Show("Sorry about your luck buddy, may RNGesus be with you. (10% Higher Chance to Fail)");
         }
 
         //Sets up the thread and starts the enchanting sequence
@@ -532,6 +790,7 @@ namespace AA_Regrade
             iterations = int.Parse(textBoxIterations.Text);
             //Start the enchanting function
             doEnchant(scroll, rScroll, charm, enchant, iterations, currentGrade, charmedGrade, targetGrade, isRegradeEvent, isShip);
+            isDoneEnchanting = true;
         }
     }
 }

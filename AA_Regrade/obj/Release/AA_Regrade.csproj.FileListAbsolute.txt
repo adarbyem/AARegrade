@@ -12,3 +12,6 @@ C:\Users\adarby\documents\visual studio 2015\Projects\AA_Regrade\AA_Regrade\obj\
 C:\Users\adarby\documents\visual studio 2015\Projects\AA_Regrade\AA_Regrade\obj\Release\Archeage Regrade Simulator.application
 C:\Users\adarby\documents\visual studio 2015\Projects\AA_Regrade\AA_Regrade\obj\Release\Archeage Regrade Simulator.exe
 C:\Users\adarby\documents\visual studio 2015\Projects\AA_Regrade\AA_Regrade\obj\Release\Archeage Regrade Simulator.pdb
+C:\Users\adarby\Documents\Visual Studio 2015\Projects\AA_Regrade\AA_Regrade\dev\AA_Regrade\bin\Release\Archeage Regrade Simulator.exe.config
+C:\Users\adarby\Documents\Visual Studio 2015\Projects\AA_Regrade\AA_Regrade\dev\AA_Regrade\obj\Release\Archeage Regrade Simulator.exe
+C:\Users\adarby\Documents\Visual Studio 2015\Projects\AA_Regrade\AA_Regrade\dev\AA_Regrade\obj\Release\Archeage Regrade Simulator.pdb
