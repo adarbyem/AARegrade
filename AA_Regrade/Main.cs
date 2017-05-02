@@ -3,8 +3,11 @@
 // April 29th, 2017
 
 using System;
+using System.Linq;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Collections.Generic;
+
 
 namespace AA_Regrade
 {
@@ -12,7 +15,7 @@ namespace AA_Regrade
     {
 
         //Global Variables
-        int currentGrade, charmedGrade, targetGrade, iterations, classification;
+        int currentGrade, charmedGrade, targetGrade, iterations, classification, totalVocation = 0, lastSelection = 0;
         double[] attempts = new double[11];
         double[] successes = new double[11];
         double[] cumulativeCost = new double[11];
@@ -25,12 +28,17 @@ namespace AA_Regrade
         double GSDL = 0;
         double GSEM = 0;
         double GSLP = 0;
+        double totalGold = 0;
         bool isRegradeEvent = false;
         bool isDoneEnchanting = true;
 
+        
+        
         //Global Object
         Help help = new Help();
         Updates updates = new Updates();
+        Yield yield = new Yield();
+        List<Yield.crop> crops;
 
         public Main()
         {
@@ -43,10 +51,14 @@ namespace AA_Regrade
             comboBoxGrade.SelectedIndex = 0;
             comboBoxTarget.SelectedIndex = 1;
             comboBoxCharmGrade.SelectedIndex = 0;
+            yield.generateCrops();
+            crops = new List<Yield.crop>();
             //Initialize and disable
             label63.Enabled = false;
             comboBoxClassification.SelectedIndex = 3;
             comboBoxClassification.Enabled = false;
+            checkBoxBundle.Enabled = false;
+            buttonAddToCrop.Enabled = false;
         }
 
         private void buttonEnchant_Click(object sender, EventArgs e)
@@ -720,6 +732,158 @@ namespace AA_Regrade
         {
             //Gets Updates
             updates.getUpdates();
+        }
+
+        private void comboBoxFamily_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //local variables
+            //Get the crops for the selected family
+            comboBoxCrop.Items.Clear();
+
+            //Get the list of structures
+            try
+            {
+                crops = yield.getCrops(comboBoxFamily.SelectedIndex);
+                for (int count = 0; count < crops.Count; count++)
+                {
+                    comboBoxCrop.Items.Add(crops.ElementAt(count).name);
+                }
+                comboBoxCrop.SelectedIndex = 0;
+                lastSelection = comboBoxFamily.SelectedIndex;
+            }
+            catch
+            {
+                comboBoxFamily.SelectedIndex = lastSelection;
+                MessageBox.Show("The crop family you have selected has not been implemented yet.");
+            }
+            
+        }
+
+        private void comboBoxCrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Determine the state of the add crop button and the bundle checkbox
+            buttonAddToCrop.Enabled = true;
+            if (crops.ElementAt(comboBoxCrop.SelectedIndex).hasBundle)
+            {
+                checkBoxBundle.Enabled = true;
+            }
+            else
+            {
+                checkBoxBundle.Enabled = false;
+                checkBoxBundle.Checked = false;
+            }
+        }
+
+        private void buttonClearCrop_Click(object sender, EventArgs e)
+        {
+            //Clear the whole table
+            dataGridViewCrops.Rows.Clear();
+            labelGoldCrop.Text = "0";
+            labelVocationCrop.Text = "0";
+            totalGold = 0;
+            totalVocation = 0;
+        }
+
+        private void buttonRemoveSelected_Click(object sender, EventArgs e)
+        {
+            //Remove selected row
+            try
+            {
+                totalGold -= double.Parse(dataGridViewCrops.SelectedRows[0].Cells[5].Value.ToString());
+                totalVocation -= int.Parse(dataGridViewCrops.SelectedRows[0].Cells[6].Value.ToString());
+                labelGoldCrop.Text = totalGold.ToString();
+                labelVocationCrop.Text = totalVocation.ToString();
+                dataGridViewCrops.Rows.RemoveAt(dataGridViewCrops.SelectedRows[0].Index);
+            }
+            catch
+            {
+                //There shouldn't be any errors here
+            }
+
+        }
+
+        private void buttonAddToCrop_Click(object sender, EventArgs e)
+        {
+            //Local variables
+            int index = comboBoxCrop.SelectedIndex;
+            int quantityPlanted = -1;
+            int minYield, maxYield, byproduct, vocationCost;
+            int seedMultiplyer = 0;
+            double goldCost;
+
+            string byProductString;
+
+            //Generate Data to Add to the List
+
+            string cropName = crops.ElementAt(index).name;
+            
+            int.TryParse(textBoxQuantity.Text, out quantityPlanted);
+            if(quantityPlanted <= 0)
+            {
+                MessageBox.Show("That was an invalid quantity. Please try again.");
+                return;
+            }
+
+            if (checkBoxBundle.Checked)
+            {
+                seedMultiplyer = 10;
+                minYield = (20 + crops.ElementAt(index).minHarv - 1) * quantityPlanted;
+                maxYield = (20 + crops.ElementAt(index).maxHarv + 1) * quantityPlanted;
+                cropName += " Bundle";
+            }
+            else
+            {
+                seedMultiplyer = 1;
+                minYield = crops.ElementAt(index).minHarv * quantityPlanted;
+                maxYield = crops.ElementAt(index).maxHarv * quantityPlanted;
+            }
+
+            byproduct = 0;
+            switch (crops.ElementAt(index).vocation)
+            {
+                case 0:
+                    byproduct = ((minYield + maxYield) / 20) * 10; //10 byproduct per 10 crop on no vocation items
+                    break;
+                case 45:
+                    byproduct = ((minYield + maxYield) / 20) * 20; //20 byproduct per 10 crop on no vocation items
+                    break;
+                case 90:
+                    byproduct = ((minYield + maxYield) / 20) * 45; //45 byproduct per 10 crop on no vocation items
+                    break;
+            }
+            
+            switch (crops.ElementAt(index).family)
+            {
+                case 1:
+                    byProductString = byproduct + " Dried Flowers";
+                    break;
+                case 2:
+                    byProductString = byproduct + " Orchard Puree";
+                    break;
+                case 3:
+                    byProductString = byproduct + " Ground Grain";
+                    break;
+                case 6:
+                    byProductString = byproduct + " Medicinal Powder";
+                    break;
+                case 7:
+                    byProductString = byproduct + " Medicinal Powder";
+                    break;
+                case 8:
+                    byProductString = byproduct + " Chopped Produce";
+                    break;
+                default:
+                    byProductString = "No byproduct";
+                    break;
+            }
+            goldCost = (crops.ElementAt(index).silver / 100) * quantityPlanted * seedMultiplyer;
+            vocationCost = (crops.ElementAt(index).vocation) * quantityPlanted * seedMultiplyer;
+            totalGold += goldCost;
+            totalVocation += vocationCost;
+            
+            dataGridViewCrops.Rows.Add(cropName, quantityPlanted, minYield, maxYield, byProductString, goldCost, vocationCost);
+            labelGoldCrop.Text = totalGold.ToString();
+            labelVocationCrop.Text = totalVocation.ToString();
         }
 
         //Runs when the thread is complete

@@ -110,6 +110,7 @@
     <Compile Include="Updates.Designer.cs">
       <DependentUpon>Updates.cs</DependentUpon>
     </Compile>
+    <Compile Include="Yield.cs" />
     <EmbeddedResource Include="Help.resx">
       <DependentUpon>Help.cs</DependentUpon>
     </EmbeddedResource>

@@ -70,6 +70,7 @@
             this.labelPC = new System.Windows.Forms.Label();
             this.labelPA = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label67 = new System.Windows.Forms.Label();
             this.labelGSLP = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
@@ -172,17 +173,46 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.buttonHelp = new System.Windows.Forms.Button();
             this.labelUpdates = new System.Windows.Forms.Label();
-            this.label67 = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label69 = new System.Windows.Forms.Label();
+            this.comboBoxCrop = new System.Windows.Forms.ComboBox();
+            this.comboBoxFamily = new System.Windows.Forms.ComboBox();
+            this.label68 = new System.Windows.Forms.Label();
+            this.label70 = new System.Windows.Forms.Label();
+            this.checkBoxBundle = new System.Windows.Forms.CheckBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.textBoxQuantity = new System.Windows.Forms.TextBox();
+            this.buttonAddToCrop = new System.Windows.Forms.Button();
+            this.label72 = new System.Windows.Forms.Label();
+            this.buttonClearCrop = new System.Windows.Forms.Button();
+            this.label73 = new System.Windows.Forms.Label();
+            this.labelGoldCrop = new System.Windows.Forms.Label();
+            this.labelVocationCrop = new System.Windows.Forms.Label();
+            this.dataGridViewCrops = new System.Windows.Forms.DataGridView();
+            this.cropName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityPlanted = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.minYield = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maxYield = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.byproduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.goldCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vocationCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonRemoveSelected = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCrops)).BeginInit();
             this.SuspendLayout();
             // 
             // labelCurrent
             // 
             this.labelCurrent.AutoSize = true;
             this.labelCurrent.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.labelCurrent.Location = new System.Drawing.Point(0, 608);
+            this.labelCurrent.Location = new System.Drawing.Point(0, 631);
             this.labelCurrent.Name = "labelCurrent";
             this.labelCurrent.Size = new System.Drawing.Size(211, 13);
             this.labelCurrent.TabIndex = 0;
@@ -234,7 +264,7 @@
             this.panel1.Controls.Add(this.labelStepTwo);
             this.panel1.Controls.Add(this.comboBoxGrade);
             this.panel1.Controls.Add(this.labelStepOne);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(265, 587);
             this.panel1.TabIndex = 2;
@@ -574,7 +604,7 @@
             // 
             // buttonEnchant
             // 
-            this.buttonEnchant.Location = new System.Drawing.Point(442, 547);
+            this.buttonEnchant.Location = new System.Drawing.Point(438, 541);
             this.buttonEnchant.Name = "buttonEnchant";
             this.buttonEnchant.Size = new System.Drawing.Size(124, 23);
             this.buttonEnchant.TabIndex = 21;
@@ -584,6 +614,7 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.labelPF);
             this.panel2.Controls.Add(this.labelPC);
@@ -662,7 +693,7 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.labelGradeHeader);
             this.panel2.Controls.Add(this.labelResults);
-            this.panel2.Location = new System.Drawing.Point(299, 12);
+            this.panel2.Location = new System.Drawing.Point(292, 6);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(405, 529);
             this.panel2.TabIndex = 3;
@@ -727,6 +758,16 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(398, 153);
             this.panel3.TabIndex = 101;
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label67.Location = new System.Drawing.Point(12, 11);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(371, 13);
+            this.label67.TabIndex = 106;
+            this.label67.Text = "Average of Great Successes to Attempts Per Resplendent Scroll";
             // 
             // labelGSLP
             // 
@@ -1700,14 +1741,15 @@
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(294, 576);
+            this.progressBar.Location = new System.Drawing.Point(290, 570);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(410, 23);
             this.progressBar.TabIndex = 20;
             // 
             // buttonHelp
             // 
-            this.buttonHelp.Location = new System.Drawing.Point(641, 547);
+            this.buttonHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonHelp.Location = new System.Drawing.Point(638, 541);
             this.buttonHelp.Name = "buttonHelp";
             this.buttonHelp.Size = new System.Drawing.Size(59, 23);
             this.buttonHelp.TabIndex = 22;
@@ -1717,44 +1759,297 @@
             // 
             // labelUpdates
             // 
+            this.labelUpdates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelUpdates.AutoSize = true;
             this.labelUpdates.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelUpdates.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUpdates.ForeColor = System.Drawing.Color.Blue;
-            this.labelUpdates.Location = new System.Drawing.Point(619, 602);
+            this.labelUpdates.Location = new System.Drawing.Point(629, 631);
             this.labelUpdates.Name = "labelUpdates";
             this.labelUpdates.Size = new System.Drawing.Size(85, 13);
             this.labelUpdates.TabIndex = 23;
             this.labelUpdates.Text = "Update Notes";
             this.labelUpdates.Click += new System.EventHandler(this.labelUpdates_Click);
             // 
-            // label67
+            // tabControl1
             // 
-            this.label67.AutoSize = true;
-            this.label67.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label67.Location = new System.Drawing.Point(12, 11);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(371, 13);
-            this.label67.TabIndex = 106;
-            this.label67.Text = "Average of Great Successes to Attempts Per Resplendent Scroll";
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(3, 2);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(711, 628);
+            this.tabControl1.TabIndex = 24;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.panel2);
+            this.tabPage1.Controls.Add(this.buttonEnchant);
+            this.tabPage1.Controls.Add(this.buttonHelp);
+            this.tabPage1.Controls.Add(this.progressBar);
+            this.tabPage1.Controls.Add(this.panel1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(703, 602);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Regrade Simulator";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.buttonRemoveSelected);
+            this.tabPage2.Controls.Add(this.dataGridViewCrops);
+            this.tabPage2.Controls.Add(this.labelVocationCrop);
+            this.tabPage2.Controls.Add(this.labelGoldCrop);
+            this.tabPage2.Controls.Add(this.label73);
+            this.tabPage2.Controls.Add(this.buttonClearCrop);
+            this.tabPage2.Controls.Add(this.label72);
+            this.tabPage2.Controls.Add(this.buttonAddToCrop);
+            this.tabPage2.Controls.Add(this.textBoxQuantity);
+            this.tabPage2.Controls.Add(this.label71);
+            this.tabPage2.Controls.Add(this.checkBoxBundle);
+            this.tabPage2.Controls.Add(this.label70);
+            this.tabPage2.Controls.Add(this.label69);
+            this.tabPage2.Controls.Add(this.comboBoxCrop);
+            this.tabPage2.Controls.Add(this.comboBoxFamily);
+            this.tabPage2.Controls.Add(this.label68);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(703, 602);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Yield Calculator";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(20, 72);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(65, 13);
+            this.label69.TabIndex = 3;
+            this.label69.Text = "Select Crop:";
+            // 
+            // comboBoxCrop
+            // 
+            this.comboBoxCrop.FormattingEnabled = true;
+            this.comboBoxCrop.Location = new System.Drawing.Point(123, 69);
+            this.comboBoxCrop.Name = "comboBoxCrop";
+            this.comboBoxCrop.Size = new System.Drawing.Size(156, 21);
+            this.comboBoxCrop.TabIndex = 2;
+            this.comboBoxCrop.SelectedIndexChanged += new System.EventHandler(this.comboBoxCrop_SelectedIndexChanged);
+            // 
+            // comboBoxFamily
+            // 
+            this.comboBoxFamily.FormattingEnabled = true;
+            this.comboBoxFamily.Items.AddRange(new object[] {
+            "Aquafarm",
+            "Flowers",
+            "Fruit Trees",
+            "Grains",
+            "Livestock",
+            "Log Trees",
+            "Medicinal Trees",
+            "Medicinal Herbs",
+            "Produce",
+            "Spices"});
+            this.comboBoxFamily.Location = new System.Drawing.Point(123, 43);
+            this.comboBoxFamily.Name = "comboBoxFamily";
+            this.comboBoxFamily.Size = new System.Drawing.Size(156, 21);
+            this.comboBoxFamily.TabIndex = 1;
+            this.comboBoxFamily.SelectedIndexChanged += new System.EventHandler(this.comboBoxFamily_SelectedIndexChanged);
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(20, 46);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(97, 13);
+            this.label68.TabIndex = 0;
+            this.label68.Text = "Select Crop Family:";
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label70.Location = new System.Drawing.Point(20, 16);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(148, 13);
+            this.label70.TabIndex = 4;
+            this.label70.Text = "Step 1: Select Your Crop";
+            // 
+            // checkBoxBundle
+            // 
+            this.checkBoxBundle.AutoSize = true;
+            this.checkBoxBundle.Location = new System.Drawing.Point(23, 105);
+            this.checkBoxBundle.Name = "checkBoxBundle";
+            this.checkBoxBundle.Size = new System.Drawing.Size(86, 17);
+            this.checkBoxBundle.TabIndex = 5;
+            this.checkBoxBundle.Text = "Plant Bundle";
+            this.checkBoxBundle.UseVisualStyleBackColor = true;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(155, 105);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(49, 13);
+            this.label71.TabIndex = 6;
+            this.label71.Text = "Quantity:";
+            // 
+            // textBoxQuantity
+            // 
+            this.textBoxQuantity.Location = new System.Drawing.Point(217, 102);
+            this.textBoxQuantity.Name = "textBoxQuantity";
+            this.textBoxQuantity.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQuantity.TabIndex = 7;
+            // 
+            // buttonAddToCrop
+            // 
+            this.buttonAddToCrop.Location = new System.Drawing.Point(23, 147);
+            this.buttonAddToCrop.Name = "buttonAddToCrop";
+            this.buttonAddToCrop.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddToCrop.TabIndex = 8;
+            this.buttonAddToCrop.Text = "Add to List";
+            this.buttonAddToCrop.UseVisualStyleBackColor = true;
+            this.buttonAddToCrop.Click += new System.EventHandler(this.buttonAddToCrop_Click);
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label72.Location = new System.Drawing.Point(377, 51);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(66, 13);
+            this.label72.TabIndex = 9;
+            this.label72.Text = "Gold Cost:";
+            // 
+            // buttonClearCrop
+            // 
+            this.buttonClearCrop.Location = new System.Drawing.Point(123, 147);
+            this.buttonClearCrop.Name = "buttonClearCrop";
+            this.buttonClearCrop.Size = new System.Drawing.Size(75, 23);
+            this.buttonClearCrop.TabIndex = 10;
+            this.buttonClearCrop.Text = "Clear List";
+            this.buttonClearCrop.UseVisualStyleBackColor = true;
+            this.buttonClearCrop.Click += new System.EventHandler(this.buttonClearCrop_Click);
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label73.Location = new System.Drawing.Point(377, 81);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(90, 13);
+            this.label73.TabIndex = 11;
+            this.label73.Text = "Vocation Cost:";
+            // 
+            // labelGoldCrop
+            // 
+            this.labelGoldCrop.AutoSize = true;
+            this.labelGoldCrop.Location = new System.Drawing.Point(494, 50);
+            this.labelGoldCrop.Name = "labelGoldCrop";
+            this.labelGoldCrop.Size = new System.Drawing.Size(13, 13);
+            this.labelGoldCrop.TabIndex = 12;
+            this.labelGoldCrop.Text = "0";
+            // 
+            // labelVocationCrop
+            // 
+            this.labelVocationCrop.AutoSize = true;
+            this.labelVocationCrop.Location = new System.Drawing.Point(494, 81);
+            this.labelVocationCrop.Name = "labelVocationCrop";
+            this.labelVocationCrop.Size = new System.Drawing.Size(13, 13);
+            this.labelVocationCrop.TabIndex = 13;
+            this.labelVocationCrop.Text = "0";
+            // 
+            // dataGridViewCrops
+            // 
+            this.dataGridViewCrops.AllowUserToAddRows = false;
+            this.dataGridViewCrops.AllowUserToDeleteRows = false;
+            this.dataGridViewCrops.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewCrops.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCrops.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cropName,
+            this.quantityPlanted,
+            this.minYield,
+            this.maxYield,
+            this.byproduct,
+            this.goldCost,
+            this.vocationCost});
+            this.dataGridViewCrops.Location = new System.Drawing.Point(23, 194);
+            this.dataGridViewCrops.MultiSelect = false;
+            this.dataGridViewCrops.Name = "dataGridViewCrops";
+            this.dataGridViewCrops.ReadOnly = true;
+            this.dataGridViewCrops.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewCrops.Size = new System.Drawing.Size(653, 354);
+            this.dataGridViewCrops.TabIndex = 14;
+            // 
+            // cropName
+            // 
+            this.cropName.HeaderText = "Crop Name";
+            this.cropName.Name = "cropName";
+            this.cropName.ReadOnly = true;
+            // 
+            // quantityPlanted
+            // 
+            this.quantityPlanted.HeaderText = "Quantity Planted";
+            this.quantityPlanted.Name = "quantityPlanted";
+            this.quantityPlanted.ReadOnly = true;
+            // 
+            // minYield
+            // 
+            this.minYield.HeaderText = "Minimum Yield";
+            this.minYield.Name = "minYield";
+            this.minYield.ReadOnly = true;
+            // 
+            // maxYield
+            // 
+            this.maxYield.HeaderText = "Maximum Yield";
+            this.maxYield.Name = "maxYield";
+            this.maxYield.ReadOnly = true;
+            // 
+            // byproduct
+            // 
+            this.byproduct.HeaderText = "Produceable Byproduct";
+            this.byproduct.Name = "byproduct";
+            this.byproduct.ReadOnly = true;
+            // 
+            // goldCost
+            // 
+            this.goldCost.HeaderText = "Gold Cost";
+            this.goldCost.Name = "goldCost";
+            this.goldCost.ReadOnly = true;
+            // 
+            // vocationCost
+            // 
+            this.vocationCost.HeaderText = "Vocation Cost";
+            this.vocationCost.Name = "vocationCost";
+            this.vocationCost.ReadOnly = true;
+            // 
+            // buttonRemoveSelected
+            // 
+            this.buttonRemoveSelected.Location = new System.Drawing.Point(210, 147);
+            this.buttonRemoveSelected.Name = "buttonRemoveSelected";
+            this.buttonRemoveSelected.Size = new System.Drawing.Size(111, 23);
+            this.buttonRemoveSelected.TabIndex = 15;
+            this.buttonRemoveSelected.Text = "Remove Selected";
+            this.buttonRemoveSelected.UseVisualStyleBackColor = true;
+            this.buttonRemoveSelected.Click += new System.EventHandler(this.buttonRemoveSelected_Click);
             // 
             // Main
             // 
             this.AcceptButton = this.buttonEnchant;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 621);
+            this.ClientSize = new System.Drawing.Size(721, 644);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.labelUpdates);
-            this.Controls.Add(this.buttonHelp);
-            this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelCurrent);
-            this.Controls.Add(this.buttonEnchant);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
-            this.Text = "Archeage Regrade Simulator v1.4.0";
+            this.Text = "Archeage Regrade Simulator v1.4.1";
             this.Load += new System.EventHandler(this.Main_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1762,6 +2057,11 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCrops)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1913,6 +2213,32 @@
         private System.Windows.Forms.Button buttonHelp;
         private System.Windows.Forms.Label labelUpdates;
         private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ComboBox comboBoxFamily;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.ComboBox comboBoxCrop;
+        private System.Windows.Forms.DataGridView dataGridViewCrops;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cropName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityPlanted;
+        private System.Windows.Forms.DataGridViewTextBoxColumn minYield;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maxYield;
+        private System.Windows.Forms.DataGridViewTextBoxColumn byproduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn goldCost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vocationCost;
+        private System.Windows.Forms.Label labelVocationCrop;
+        private System.Windows.Forms.Label labelGoldCrop;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.Button buttonClearCrop;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.Button buttonAddToCrop;
+        private System.Windows.Forms.TextBox textBoxQuantity;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.CheckBox checkBoxBundle;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.Button buttonRemoveSelected;
     }
 }
 
