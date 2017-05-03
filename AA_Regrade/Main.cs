@@ -58,6 +58,7 @@ namespace AA_Regrade
             comboBoxClassification.SelectedIndex = 3;
             comboBoxClassification.Enabled = false;
             checkBoxBundle.Enabled = false;
+            checkBoxButcher.Enabled = false;
             buttonAddToCrop.Enabled = false;
         }
 
@@ -772,6 +773,15 @@ namespace AA_Regrade
                 checkBoxBundle.Enabled = false;
                 checkBoxBundle.Checked = false;
             }
+            if (crops.ElementAt(comboBoxCrop.SelectedIndex).canButcher)
+            {
+                checkBoxButcher.Enabled = true;
+            }
+            else
+            {
+                checkBoxButcher.Enabled = false;
+                checkBoxButcher.Checked = false;
+            }
         }
 
         private void buttonClearCrop_Click(object sender, EventArgs e)
@@ -807,11 +817,11 @@ namespace AA_Regrade
             //Local variables
             int index = comboBoxCrop.SelectedIndex;
             int quantityPlanted = -1;
-            int minYield, maxYield, byproduct, vocationCost;
+            int minYield, maxYield, byproduct = 0, vocationCost, byproductMultiplyer = 0;
             int seedMultiplyer = 0;
             double goldCost;
 
-            string byProductString;
+            string byProductString = "";
 
             //Generate Data to Add to the List
 
@@ -838,7 +848,64 @@ namespace AA_Regrade
                 maxYield = crops.ElementAt(index).maxHarv * quantityPlanted;
             }
 
-            byproduct = 0;
+            if (checkBoxButcher.Checked)
+            {
+                switch (cropName)
+                {
+                    case "Chicken":
+                        minYield = 4 * quantityPlanted;
+                        maxYield = 6 * quantityPlanted;
+                        byproductMultiplyer = 30;
+                        break;
+                    case "Duck":
+                        minYield = 4 * quantityPlanted;
+                        maxYield = 6 * quantityPlanted;
+                        byproductMultiplyer = 30;
+                        break;
+                    case "Goose":
+                        minYield = 4 * quantityPlanted;
+                        maxYield = 6 * quantityPlanted;
+                        byproductMultiplyer = 30;
+                        break;
+                    case "Turkey":
+                        minYield = 4 * quantityPlanted;
+                        maxYield = 6 * quantityPlanted;
+                        byproductMultiplyer = 30;
+                        break;
+                    case "Pig":
+                        byproductMultiplyer = 30;
+                        break;
+                    case "Sheep":
+                        minYield = 16 * quantityPlanted;
+                        maxYield = 20 * quantityPlanted;
+                        byproductMultiplyer = 30;
+                        break;
+                    case "Goat":
+                        minYield = 16 * quantityPlanted;
+                        maxYield = 20 * quantityPlanted;
+                        byproductMultiplyer = 30;
+                        break;
+                    case "Cow":
+                        minYield = 16 * quantityPlanted;
+                        maxYield = 20 * quantityPlanted;
+                        byproductMultiplyer = 50;
+                        break;
+                    case "Yata":
+                        minYield = 16 * quantityPlanted;
+                        maxYield = 20 * quantityPlanted;
+                        byproductMultiplyer = 50;
+                        break;
+                    case "Water Buffalo":
+                        minYield = 16 * quantityPlanted;
+                        maxYield = 20 * quantityPlanted;
+                        byproductMultiplyer = 50;
+                        break;
+                }
+                if(cropName != "Blizzard Bear")cropName += " (Meat)";
+                byproduct = ((minYield + maxYield) / 20) * byproductMultiplyer;
+            }
+
+            if(crops.ElementAt(index).family != 4)byproduct = 0;
             switch (crops.ElementAt(index).vocation)
             {
                 case 0:
@@ -851,31 +918,39 @@ namespace AA_Regrade
                     byproduct = ((minYield + maxYield) / 20) * 45; //45 byproduct per 10 crop on no vocation items
                     break;
             }
-            
-            switch (crops.ElementAt(index).family)
+            if (!checkBoxButcher.Checked)
             {
-                case 1:
-                    byProductString = byproduct + " Dried Flowers";
-                    break;
-                case 2:
-                    byProductString = byproduct + " Orchard Puree";
-                    break;
-                case 3:
-                    byProductString = byproduct + " Ground Grain";
-                    break;
-                case 6:
-                    byProductString = byproduct + " Medicinal Powder";
-                    break;
-                case 7:
-                    byProductString = byproduct + " Medicinal Powder";
-                    break;
-                case 8:
-                    byProductString = byproduct + " Chopped Produce";
-                    break;
-                default:
-                    byProductString = "No byproduct";
-                    break;
+                switch (crops.ElementAt(index).family)
+                {
+                    case 1:
+                        byProductString = byproduct + " Dried Flowers";
+                        break;
+                    case 2:
+                        byProductString = byproduct + " Orchard Puree";
+                        break;
+                    case 3:
+                        byProductString = byproduct + " Ground Grain";
+                        break;
+                    case 6:
+                        byProductString = byproduct + " Medicinal Powder";
+                        break;
+                    case 7:
+                        byProductString = byproduct + " Medicinal Powder";
+                        break;
+                    case 8:
+                        byProductString = byproduct + " Chopped Produce";
+                        break;
+                    default:
+                        byProductString = "No byproduct";
+                        break;
+                }
             }
+            else
+            {
+                if (cropName != "Blizzard Bear") byProductString = byproduct + " Trimmed Meat";
+                else byProductString += byproduct + " Bear Fur";
+            }
+            
             goldCost = (crops.ElementAt(index).silver / 100) * quantityPlanted * seedMultiplyer;
             vocationCost = (crops.ElementAt(index).vocation) * quantityPlanted * seedMultiplyer;
             totalGold += goldCost;

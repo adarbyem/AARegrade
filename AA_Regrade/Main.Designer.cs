@@ -176,20 +176,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label69 = new System.Windows.Forms.Label();
-            this.comboBoxCrop = new System.Windows.Forms.ComboBox();
-            this.comboBoxFamily = new System.Windows.Forms.ComboBox();
-            this.label68 = new System.Windows.Forms.Label();
-            this.label70 = new System.Windows.Forms.Label();
-            this.checkBoxBundle = new System.Windows.Forms.CheckBox();
-            this.label71 = new System.Windows.Forms.Label();
-            this.textBoxQuantity = new System.Windows.Forms.TextBox();
-            this.buttonAddToCrop = new System.Windows.Forms.Button();
-            this.label72 = new System.Windows.Forms.Label();
-            this.buttonClearCrop = new System.Windows.Forms.Button();
-            this.label73 = new System.Windows.Forms.Label();
-            this.labelGoldCrop = new System.Windows.Forms.Label();
-            this.labelVocationCrop = new System.Windows.Forms.Label();
+            this.buttonRemoveSelected = new System.Windows.Forms.Button();
             this.dataGridViewCrops = new System.Windows.Forms.DataGridView();
             this.cropName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityPlanted = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -198,7 +185,21 @@
             this.byproduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.goldCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vocationCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonRemoveSelected = new System.Windows.Forms.Button();
+            this.labelVocationCrop = new System.Windows.Forms.Label();
+            this.labelGoldCrop = new System.Windows.Forms.Label();
+            this.label73 = new System.Windows.Forms.Label();
+            this.buttonClearCrop = new System.Windows.Forms.Button();
+            this.label72 = new System.Windows.Forms.Label();
+            this.buttonAddToCrop = new System.Windows.Forms.Button();
+            this.textBoxQuantity = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.checkBoxBundle = new System.Windows.Forms.CheckBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.label69 = new System.Windows.Forms.Label();
+            this.comboBoxCrop = new System.Windows.Forms.ComboBox();
+            this.comboBoxFamily = new System.Windows.Forms.ComboBox();
+            this.label68 = new System.Windows.Forms.Label();
+            this.checkBoxButcher = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -1798,6 +1799,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.checkBoxButcher);
             this.tabPage2.Controls.Add(this.buttonRemoveSelected);
             this.tabPage2.Controls.Add(this.dataGridViewCrops);
             this.tabPage2.Controls.Add(this.labelVocationCrop);
@@ -1822,146 +1824,15 @@
             this.tabPage2.Text = "Yield Calculator";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label69
+            // buttonRemoveSelected
             // 
-            this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(20, 72);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(65, 13);
-            this.label69.TabIndex = 3;
-            this.label69.Text = "Select Crop:";
-            // 
-            // comboBoxCrop
-            // 
-            this.comboBoxCrop.FormattingEnabled = true;
-            this.comboBoxCrop.Location = new System.Drawing.Point(123, 69);
-            this.comboBoxCrop.Name = "comboBoxCrop";
-            this.comboBoxCrop.Size = new System.Drawing.Size(156, 21);
-            this.comboBoxCrop.TabIndex = 2;
-            this.comboBoxCrop.SelectedIndexChanged += new System.EventHandler(this.comboBoxCrop_SelectedIndexChanged);
-            // 
-            // comboBoxFamily
-            // 
-            this.comboBoxFamily.FormattingEnabled = true;
-            this.comboBoxFamily.Items.AddRange(new object[] {
-            "Aquafarm",
-            "Flowers",
-            "Fruit Trees",
-            "Grains",
-            "Livestock",
-            "Log Trees",
-            "Medicinal Trees",
-            "Medicinal Herbs",
-            "Produce",
-            "Spices"});
-            this.comboBoxFamily.Location = new System.Drawing.Point(123, 43);
-            this.comboBoxFamily.Name = "comboBoxFamily";
-            this.comboBoxFamily.Size = new System.Drawing.Size(156, 21);
-            this.comboBoxFamily.TabIndex = 1;
-            this.comboBoxFamily.SelectedIndexChanged += new System.EventHandler(this.comboBoxFamily_SelectedIndexChanged);
-            // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(20, 46);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(97, 13);
-            this.label68.TabIndex = 0;
-            this.label68.Text = "Select Crop Family:";
-            // 
-            // label70
-            // 
-            this.label70.AutoSize = true;
-            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label70.Location = new System.Drawing.Point(20, 16);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(148, 13);
-            this.label70.TabIndex = 4;
-            this.label70.Text = "Step 1: Select Your Crop";
-            // 
-            // checkBoxBundle
-            // 
-            this.checkBoxBundle.AutoSize = true;
-            this.checkBoxBundle.Location = new System.Drawing.Point(23, 105);
-            this.checkBoxBundle.Name = "checkBoxBundle";
-            this.checkBoxBundle.Size = new System.Drawing.Size(86, 17);
-            this.checkBoxBundle.TabIndex = 5;
-            this.checkBoxBundle.Text = "Plant Bundle";
-            this.checkBoxBundle.UseVisualStyleBackColor = true;
-            // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(155, 105);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(49, 13);
-            this.label71.TabIndex = 6;
-            this.label71.Text = "Quantity:";
-            // 
-            // textBoxQuantity
-            // 
-            this.textBoxQuantity.Location = new System.Drawing.Point(217, 102);
-            this.textBoxQuantity.Name = "textBoxQuantity";
-            this.textBoxQuantity.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQuantity.TabIndex = 7;
-            // 
-            // buttonAddToCrop
-            // 
-            this.buttonAddToCrop.Location = new System.Drawing.Point(23, 147);
-            this.buttonAddToCrop.Name = "buttonAddToCrop";
-            this.buttonAddToCrop.Size = new System.Drawing.Size(75, 23);
-            this.buttonAddToCrop.TabIndex = 8;
-            this.buttonAddToCrop.Text = "Add to List";
-            this.buttonAddToCrop.UseVisualStyleBackColor = true;
-            this.buttonAddToCrop.Click += new System.EventHandler(this.buttonAddToCrop_Click);
-            // 
-            // label72
-            // 
-            this.label72.AutoSize = true;
-            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label72.Location = new System.Drawing.Point(377, 51);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(66, 13);
-            this.label72.TabIndex = 9;
-            this.label72.Text = "Gold Cost:";
-            // 
-            // buttonClearCrop
-            // 
-            this.buttonClearCrop.Location = new System.Drawing.Point(123, 147);
-            this.buttonClearCrop.Name = "buttonClearCrop";
-            this.buttonClearCrop.Size = new System.Drawing.Size(75, 23);
-            this.buttonClearCrop.TabIndex = 10;
-            this.buttonClearCrop.Text = "Clear List";
-            this.buttonClearCrop.UseVisualStyleBackColor = true;
-            this.buttonClearCrop.Click += new System.EventHandler(this.buttonClearCrop_Click);
-            // 
-            // label73
-            // 
-            this.label73.AutoSize = true;
-            this.label73.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label73.Location = new System.Drawing.Point(377, 81);
-            this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(90, 13);
-            this.label73.TabIndex = 11;
-            this.label73.Text = "Vocation Cost:";
-            // 
-            // labelGoldCrop
-            // 
-            this.labelGoldCrop.AutoSize = true;
-            this.labelGoldCrop.Location = new System.Drawing.Point(494, 50);
-            this.labelGoldCrop.Name = "labelGoldCrop";
-            this.labelGoldCrop.Size = new System.Drawing.Size(13, 13);
-            this.labelGoldCrop.TabIndex = 12;
-            this.labelGoldCrop.Text = "0";
-            // 
-            // labelVocationCrop
-            // 
-            this.labelVocationCrop.AutoSize = true;
-            this.labelVocationCrop.Location = new System.Drawing.Point(494, 81);
-            this.labelVocationCrop.Name = "labelVocationCrop";
-            this.labelVocationCrop.Size = new System.Drawing.Size(13, 13);
-            this.labelVocationCrop.TabIndex = 13;
-            this.labelVocationCrop.Text = "0";
+            this.buttonRemoveSelected.Location = new System.Drawing.Point(210, 147);
+            this.buttonRemoveSelected.Name = "buttonRemoveSelected";
+            this.buttonRemoveSelected.Size = new System.Drawing.Size(111, 23);
+            this.buttonRemoveSelected.TabIndex = 15;
+            this.buttonRemoveSelected.Text = "Remove Selected";
+            this.buttonRemoveSelected.UseVisualStyleBackColor = true;
+            this.buttonRemoveSelected.Click += new System.EventHandler(this.buttonRemoveSelected_Click);
             // 
             // dataGridViewCrops
             // 
@@ -2027,15 +1898,156 @@
             this.vocationCost.Name = "vocationCost";
             this.vocationCost.ReadOnly = true;
             // 
-            // buttonRemoveSelected
+            // labelVocationCrop
             // 
-            this.buttonRemoveSelected.Location = new System.Drawing.Point(210, 147);
-            this.buttonRemoveSelected.Name = "buttonRemoveSelected";
-            this.buttonRemoveSelected.Size = new System.Drawing.Size(111, 23);
-            this.buttonRemoveSelected.TabIndex = 15;
-            this.buttonRemoveSelected.Text = "Remove Selected";
-            this.buttonRemoveSelected.UseVisualStyleBackColor = true;
-            this.buttonRemoveSelected.Click += new System.EventHandler(this.buttonRemoveSelected_Click);
+            this.labelVocationCrop.AutoSize = true;
+            this.labelVocationCrop.Location = new System.Drawing.Point(494, 81);
+            this.labelVocationCrop.Name = "labelVocationCrop";
+            this.labelVocationCrop.Size = new System.Drawing.Size(13, 13);
+            this.labelVocationCrop.TabIndex = 13;
+            this.labelVocationCrop.Text = "0";
+            // 
+            // labelGoldCrop
+            // 
+            this.labelGoldCrop.AutoSize = true;
+            this.labelGoldCrop.Location = new System.Drawing.Point(494, 50);
+            this.labelGoldCrop.Name = "labelGoldCrop";
+            this.labelGoldCrop.Size = new System.Drawing.Size(13, 13);
+            this.labelGoldCrop.TabIndex = 12;
+            this.labelGoldCrop.Text = "0";
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label73.Location = new System.Drawing.Point(377, 81);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(90, 13);
+            this.label73.TabIndex = 11;
+            this.label73.Text = "Vocation Cost:";
+            // 
+            // buttonClearCrop
+            // 
+            this.buttonClearCrop.Location = new System.Drawing.Point(123, 147);
+            this.buttonClearCrop.Name = "buttonClearCrop";
+            this.buttonClearCrop.Size = new System.Drawing.Size(75, 23);
+            this.buttonClearCrop.TabIndex = 10;
+            this.buttonClearCrop.Text = "Clear List";
+            this.buttonClearCrop.UseVisualStyleBackColor = true;
+            this.buttonClearCrop.Click += new System.EventHandler(this.buttonClearCrop_Click);
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label72.Location = new System.Drawing.Point(377, 51);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(66, 13);
+            this.label72.TabIndex = 9;
+            this.label72.Text = "Gold Cost:";
+            // 
+            // buttonAddToCrop
+            // 
+            this.buttonAddToCrop.Location = new System.Drawing.Point(23, 147);
+            this.buttonAddToCrop.Name = "buttonAddToCrop";
+            this.buttonAddToCrop.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddToCrop.TabIndex = 8;
+            this.buttonAddToCrop.Text = "Add to List";
+            this.buttonAddToCrop.UseVisualStyleBackColor = true;
+            this.buttonAddToCrop.Click += new System.EventHandler(this.buttonAddToCrop_Click);
+            // 
+            // textBoxQuantity
+            // 
+            this.textBoxQuantity.Location = new System.Drawing.Point(217, 102);
+            this.textBoxQuantity.Name = "textBoxQuantity";
+            this.textBoxQuantity.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQuantity.TabIndex = 7;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(155, 105);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(49, 13);
+            this.label71.TabIndex = 6;
+            this.label71.Text = "Quantity:";
+            // 
+            // checkBoxBundle
+            // 
+            this.checkBoxBundle.AutoSize = true;
+            this.checkBoxBundle.Location = new System.Drawing.Point(23, 96);
+            this.checkBoxBundle.Name = "checkBoxBundle";
+            this.checkBoxBundle.Size = new System.Drawing.Size(86, 17);
+            this.checkBoxBundle.TabIndex = 5;
+            this.checkBoxBundle.Text = "Plant Bundle";
+            this.checkBoxBundle.UseVisualStyleBackColor = true;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label70.Location = new System.Drawing.Point(20, 16);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(148, 13);
+            this.label70.TabIndex = 4;
+            this.label70.Text = "Step 1: Select Your Crop";
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(20, 72);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(65, 13);
+            this.label69.TabIndex = 3;
+            this.label69.Text = "Select Crop:";
+            // 
+            // comboBoxCrop
+            // 
+            this.comboBoxCrop.FormattingEnabled = true;
+            this.comboBoxCrop.Location = new System.Drawing.Point(123, 69);
+            this.comboBoxCrop.Name = "comboBoxCrop";
+            this.comboBoxCrop.Size = new System.Drawing.Size(156, 21);
+            this.comboBoxCrop.TabIndex = 2;
+            this.comboBoxCrop.SelectedIndexChanged += new System.EventHandler(this.comboBoxCrop_SelectedIndexChanged);
+            // 
+            // comboBoxFamily
+            // 
+            this.comboBoxFamily.FormattingEnabled = true;
+            this.comboBoxFamily.Items.AddRange(new object[] {
+            "Aquafarm",
+            "Flowers",
+            "Fruit Trees",
+            "Grains",
+            "Livestock",
+            "Log Trees",
+            "Medicinal Trees",
+            "Medicinal Herbs",
+            "Produce",
+            "Spices"});
+            this.comboBoxFamily.Location = new System.Drawing.Point(123, 43);
+            this.comboBoxFamily.Name = "comboBoxFamily";
+            this.comboBoxFamily.Size = new System.Drawing.Size(156, 21);
+            this.comboBoxFamily.TabIndex = 1;
+            this.comboBoxFamily.SelectedIndexChanged += new System.EventHandler(this.comboBoxFamily_SelectedIndexChanged);
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(20, 46);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(97, 13);
+            this.label68.TabIndex = 0;
+            this.label68.Text = "Select Crop Family:";
+            // 
+            // checkBoxButcher
+            // 
+            this.checkBoxButcher.AutoSize = true;
+            this.checkBoxButcher.Location = new System.Drawing.Point(23, 119);
+            this.checkBoxButcher.Name = "checkBoxButcher";
+            this.checkBoxButcher.Size = new System.Drawing.Size(116, 17);
+            this.checkBoxButcher.TabIndex = 16;
+            this.checkBoxButcher.Text = "Raise for Slaughter";
+            this.checkBoxButcher.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
@@ -2049,7 +2061,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
-            this.Text = "Archeage Regrade Simulator v1.4.1";
+            this.Text = "Archeage Tools v1.5.0";
             this.Load += new System.EventHandler(this.Main_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -2239,6 +2251,7 @@
         private System.Windows.Forms.CheckBox checkBoxBundle;
         private System.Windows.Forms.Label label70;
         private System.Windows.Forms.Button buttonRemoveSelected;
+        private System.Windows.Forms.CheckBox checkBoxButcher;
     }
 }
 

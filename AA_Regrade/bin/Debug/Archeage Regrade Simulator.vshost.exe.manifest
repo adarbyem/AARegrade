@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Archeage Regrade Simulator.exe" size="220160">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Archeage Regrade Simulator.exe" size="222208">
       <assemblyIdentity name="Archeage Regrade Simulator" version="1.4.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2AlokCXqgYA4GebTryeFW7PBN2Kfm3Bj290ipFUzBgc=</dsig:DigestValue>
+        <dsig:DigestValue>S5a+OgDgC01DKFBDFyi5U/0AfL0nPqIq1HZqs840jBc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
