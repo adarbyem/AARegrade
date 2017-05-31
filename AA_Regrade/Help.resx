@@ -121,25 +121,23 @@
     <value>Unlike other simulators out there, this simulator will regrade up to the target grade a number of times specified by the "Iterations" field and generate a report. This report will give average values per item successfully regraded to the target grade.</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>I searched through various internet fansites and official forums and used what numbers were generally considered "close". I could not find any official number from Trion. Patch 3.5 numbers currently come from what is published on KR, this will certainly change with the NA release.</value>
+    <value>I searched through various internet fansites and official forums and used what numbers were generally considered "close" for 3.0. I could not find any official number from Trion. Patch 3.5 numbers currently come from what is officially published by Trion on May 25th 2017.</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Absolutely not, the more iterations you enter the more average the results will be. In the end, RNG is RNG, you can see how widely individual results will vary by using only one iteration. I suggest using the average values as a basis for determining if it is worth buying an item at grade, or regrading it yourself. Good luck!</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Currently I have only coded a 2x multiplyer in the charms. I may add a feature later that will allow for the use of other charms. Asking around fellow guild members I discovered that most people only use red or superior red as the cost of other charms simply aren't worth using at the lower grades. 
-
-The same goes for the anchoring charms, the feedback I got was generally "Why spend the money making an anchoring charm if you aren't going to put a superior red charm in it?".</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>I have had some mixed feedback on this one. Some people claim it is better to loot another unique grade T1 rather than regrade back up after a failure at celestial to divine. It wasn't too difficult to add an option for that, so I did.
 </value>
   </data>
   <data name="label12.Text" xml:space="preserve">
-    <value>Some people claim that the RNG ArcheAge uses tends to result in more failures than it should. This option adds a bit higher failure rate to regrades, if you are one of those who believe this is the case, by increasing the odds of failure for every success, resetting when a failure occurs. It typically affects the results by a factor of 5-10% more failures.</value>
+    <value>Some people claim that the RNG ArcheAge uses tends to result in more failures than it should. This option adds a bit higher failure rate to regrades, if you are one of those who believe this is the case, by increasing the odds of failure for every success, resetting when a failure occurs. It typically affects the results by a factor of 5-10% more failures.
+
+I do NOT recommend using this feature when calculating for the Eternal grade. As Eternal already takes a bit of time without this feature enabled, you may be waiting a while for results.
+</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
-    <value>November 2016 there was a regrade event in which all regrades up to and including unique got a 1.5x success rate added to them. Additionally, the chance for celestial grade gear to break was removed. This option mimics this event. If there is ever another event where the details regarding regrades change, I will update this program to reflect that change.</value>
+    <value>May 2017 there was a regrade event in which all regrades up to and including unique got a 1.5x success rate added to them. Additionally, the chance for celestial grade gear to break was removed. This option mimics this event. If there is ever another event where the details regarding regrades change, I will update this program to reflect that change.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

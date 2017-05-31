@@ -15,12 +15,12 @@ namespace AA_Regrade
     {
 
         //Global Variables
-        int currentGrade, charmedGrade, targetGrade, iterations, classification, totalVocation = 0, lastSelection = 0;
+        int currentGrade, charmedGrade, targetGrade, iterations, classification, totalVocation = 0, lastSelection = 0, selectedCharm = 0;
         double[] attempts = new double[11];
         double[] successes = new double[11];
         double[] cumulativeCost = new double[11];
         double[] majorFails = new double[11];
-        double patch = 2.9;
+        double patch = 3.5;
         double totalCost = 0;
         double totalFail = 0;
         double GSUD = 0;
@@ -55,8 +55,10 @@ namespace AA_Regrade
             crops = new List<Yield.crop>();
             //Initialize and disable
             label63.Enabled = false;
-            comboBoxClassification.SelectedIndex = 3;
-            comboBoxClassification.Enabled = false;
+            comboBoxClassification.SelectedIndex = 0;
+            comboBoxCharmMulitplier.SelectedIndex = 0;
+            comboBoxClassification.Items.RemoveAt(3);
+            comboBoxClassification.Enabled = true;
             checkBoxBundle.Enabled = false;
             checkBoxButcher.Enabled = false;
             buttonAddToCrop.Enabled = false;
@@ -83,6 +85,7 @@ namespace AA_Regrade
                 enchant = double.Parse(textBoxEnchant.Text);
                 iterations = int.Parse(textBoxIterations.Text);
                 isRegradeEvent = checkBoxEvent.Checked;
+                selectedCharm = comboBoxCharmMulitplier.SelectedIndex;
 
                 //Setup the Progress Bar
                 progressBar.Maximum = iterations;
@@ -147,7 +150,7 @@ namespace AA_Regrade
         }
 
         //Peform the Enchantments
-        public void doEnchant(double scroll, double rScroll, double charm, double enchant, int iterations, int currentGrade, int charmedGrade, int targetGrade, bool isRegradeEvent, bool isShip)
+        public void doEnchant(double scroll, double rScroll, double charm, double enchant, int iterations, int currentGrade, int charmedGrade, int targetGrade, bool isRegradeEvent, bool isShip, int selectedCharm)
         {
             /* Grade Values
              * 0 = Basic
@@ -161,7 +164,7 @@ namespace AA_Regrade
              * 8 = Epic
              * 9 = Legendary
              * 10 = Mythic
-             * 11 = Primordial (Coming Soon)
+             * 11 = Eternal
              */
 
             //Local Objects
@@ -200,7 +203,8 @@ namespace AA_Regrade
                     else if (currentGrade == 7 && checkBoxIsAnchorDivine.Checked) getCharmed = true;
                     else if (checkBoxCharms.Checked) getCharmed = true;
                     else getCharmed = false;
-                    odds = getOdds(currentGrade, checkBoxResplend.Checked, getCharmed, charmedGrade, isShip, classification);
+                    odds = getOdds(currentGrade, checkBoxResplend.Checked, getCharmed, charmedGrade, isShip, classification, selectedCharm);
+                    if (odds > 10000) odds = 10000;//Can't have greater than 100% chance
                     attempts[currentGrade]++;
                     //Step 2: Apply Statistics
                     //Add the cost of a resplendent scroll if applicable
@@ -457,234 +461,294 @@ namespace AA_Regrade
         }
 
         //Function to get the odds of a specific regrade given the options checked
-        public double getOdds(int grade, bool isResplend, bool isCharmed, int charmedGrade, bool isShip, int classification)
+        public double getOdds(int grade, bool isResplend, bool isCharmed, int charmedGrade, bool isShip, int classification, int selectedCharm)
         {
+            double multiplier = 0;
+            switch (selectedCharm)
+            {
+                case 0:
+                    multiplier = 1.5;
+                    break;
+                case 1:
+                    multiplier = 1.75;
+                    break;
+                case 2:
+                    multiplier = 2.0;
+                    break;
+                case 3:
+                    multiplier = 2.5;
+                    break;
+            }
             switch (grade)
             {
                 case 0://Basic -> Grand
                     if (isShip && patch == 2.9) return 5000;
-                    else if (isShip && patch == 3.5)return 10000;
+                    else if (isShip && patch == 3.5)
+                    {
+                        if (isCharmed) return 10000 * multiplier;
+                        else return 10000;
+                    }
                     else{
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                if (isCharmed && charmedGrade >= grade) return 10000 * multiplier;
                                 else return 10000;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                if (isCharmed && charmedGrade >= grade) return 10000 * multiplier;
                                 else return 10000;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                if (isCharmed && charmedGrade >= grade) return 10000 * multiplier;
                                 else return 10000;
                             default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                if (isCharmed && charmedGrade >= grade) return 6000 * multiplier;
                                 else return 6000;
                         }
                     }
                 case 1://Grand -> Rare
                     if (isShip && patch == 2.9) return 5000;
-                    else if (isShip && patch == 3.5) return 10000;
+                    else if (isShip && patch == 3.5)
+                    {
+                        if (isCharmed) return 10000 * multiplier;
+                        else return 10000;
+                    }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                if (isCharmed && charmedGrade >= grade) return 10000 * multiplier;
                                 else return 10000;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                if (isCharmed && charmedGrade >= grade) return 10000 * multiplier;
                                 else return 10000;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                if (isCharmed && charmedGrade >= grade) return 10000 * multiplier;
                                 else return 10000;
                             default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 8000;
+                                if (isCharmed && charmedGrade >= grade) return 4000 * multiplier;
                                 else return 4000;
                         }
                     }
                 case 2://Rare -> Arcane
                     if (isShip && patch == 2.9) return 5000;
-                    else if (isShip && patch == 3.5) return 6000;
+                    else if (isShip && patch == 3.5)
+                    {
+                        if (isCharmed) return 6000 * multiplier;
+                        else return 10000;
+                    }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                if (isCharmed && charmedGrade >= grade) return 10000 * multiplier;
                                 else return 10000;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                if (isCharmed && charmedGrade >= grade) return 10000 * multiplier;
                                 else return 10000;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 10000;
-                                else return 10000;
+                                if (isCharmed && charmedGrade >= grade) return 5000 * multiplier;
+                                else return 5000;
                             default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 6000;
+                                if (isCharmed && charmedGrade >= grade) return 3000 * multiplier;
                                 else return 3000;
                         }
                     }
                 case 3://Arcane -> Heroic
                     if (isShip && patch == 2.9) return 5000;
-                    else if (isShip && patch == 3.5) return 6000;
+                    else if (isShip && patch == 3.5)
+                    {
+                        if (isCharmed) return 6000 * multiplier;
+                        else return 6000;
+                    }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                if (isCharmed && charmedGrade >= grade) return 6750 * multiplier;
                                 else return 6750;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                if (isCharmed && charmedGrade >= grade) return 5000 * multiplier;
                                 else return 5000;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 6500;
+                                if (isCharmed && charmedGrade >= grade) return 3250 * multiplier;
                                 else return 3250;
                             default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 6000;
+                                if (isCharmed && charmedGrade >= grade) return 3000 * multiplier;
                                 else return 3000;
                         }
                     }
                 case 4://Heroic -> Unique
                     if (isShip && patch == 2.9) return 5000;
-                    else if (isShip && patch == 3.5) return 6000;
+                    else if (isShip && patch == 3.5)
+                    {
+                        if (isCharmed) return 6000 * multiplier;
+                        else return 6000;
+                    }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                if (isCharmed && charmedGrade >= grade) return 6750 * multiplier;
                                 else return 6750;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 10000;
+                                if (isCharmed && charmedGrade >= grade) return 5000 * multiplier;
                                 else return 5000;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 6500;
+                                if (isCharmed && charmedGrade >= grade) return 3250 * multiplier;
                                 else return 3250;
                             default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 5000;
+                                if (isCharmed && charmedGrade >= grade) return 2500 * multiplier;
                                 else return 2500;
                         }
                     }
                 case 5://Unique -> Celestial
                     if (isShip && patch == 2.9) return 5000;
-                    else if (isShip && patch == 3.5) return 5000;
+                    else if (isShip && patch == 3.5)
+                    {
+                        if (isCharmed) return 5000 * multiplier;
+                        else return 5000;
+                    }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 9460;
+                                if (isCharmed && charmedGrade >= grade) return 4730 * multiplier;
                                 else return 4730;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 7000;
+                                if (isCharmed && charmedGrade >= grade) return 3500 * multiplier;
                                 else return 3500;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 4560;
+                                if (isCharmed && charmedGrade >= grade) return 2280 * multiplier;
                                 else return 2280;
                             default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 4000;
+                                if (isCharmed && charmedGrade >= grade) return 2000 * multiplier;
                                 else return 2000;
                         }
                     }
                 case 6://Celestial -> Divine
                     if (isShip && patch == 2.9) return 4000;
-                    else if (isShip && patch == 3.5) return 5000;
+                    else if (isShip && patch == 3.5)
+                    {
+                        if (isCharmed) return 5000 * multiplier;
+                        else return 5000;
+                    }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 8100;
+                                if (isCharmed && charmedGrade >= grade) return 4050 * multiplier;
                                 else return 4050;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 7000;
-                                else return 3500;
+                                if (isCharmed && charmedGrade >= grade) return 3000 * multiplier;
+                                else return 3000;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 3900;
+                                if (isCharmed && charmedGrade >= grade) return 1950 * multiplier;
                                 else return 1950;
                             default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 2000;
+                                if (isCharmed && charmedGrade >= grade) return 1000 * multiplier;
                                 else return 1000;
                         }
                     }
                 case 7://Divine -> Epic
                     if (isShip && patch == 2.9) return 3000;
-                    else if (isShip && patch == 3.5) return 4000;
+                    else if (isShip && patch == 3.5)
+                    {
+                        if (isCharmed) return 4000 * multiplier;
+                        else return 4000;
+                    }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 2700;
+                                if (isCharmed && charmedGrade >= grade) return 1350 * multiplier;
                                 else return 1350;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 2000;
+                                if (isCharmed && charmedGrade >= grade) return 1000 * multiplier;
                                 else return 1000;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 1300;
+                                if (isCharmed && charmedGrade >= grade) return 650 * multiplier;
                                 else return 650;
                             default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 1500;
+                                if (isCharmed && charmedGrade >= grade) return 750 * multiplier;
                                 else return 750;
                         }
                     }
                 case 8://Epic -> Legendary
                     if (isShip && patch == 2.9) return 3000;
-                    else if (isShip && patch == 3.5) return 3500;
+                    else if (isShip && patch == 3.5)
+                    {
+                        if (isCharmed) return 3500 * multiplier;
+                        else return 3500;
+                    }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 2160;
+                                if (isCharmed && charmedGrade >= grade) return 1080 * multiplier;
                                 else return 1080;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 1600;
+                                if (isCharmed && charmedGrade >= grade) return 800 * multiplier;
                                 else return 800;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 1040;
+                                if (isCharmed && charmedGrade >= grade) return 520 * multiplier;
                                 else return 520;
                             default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 1000;
+                                if (isCharmed && charmedGrade >= grade) return 500 * multiplier;
                                 else return 500;
                         }
                     }
                 case 9://Legendary -> Mythic
                     if (isShip && patch == 2.9) return 2000;
-                    else if (isShip && patch == 3.5) return 1750;
+                    else if (isShip && patch == 3.5)
+                    {
+                        if (isCharmed) return 1750 * multiplier;
+                        else return 1750;
+                    }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 820;
+                                if (isCharmed && charmedGrade >= grade) return 410 * multiplier;
                                 else return 410;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 600;
+                                if (isCharmed && charmedGrade >= grade) return 300 * multiplier;
                                 else return 300;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 400;
+                                if (isCharmed && charmedGrade >= grade) return 200 * multiplier;
                                 else return 200;
                             default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 500;
+                                if (isCharmed && charmedGrade >= grade) return 250 * multiplier;
                                 else return 250;
                         }
                     }
-                case 10://Mythic -> Primordial
+                case 10://Mythic -> Eternal
                     if (isShip && patch == 2.9) return 880;
-                    else if (isShip && patch == 3.5) return 880;
+                    else if (isShip && patch == 3.5)
+                    {
+                        if (isCharmed) return 880 * multiplier;
+                        else return 880;
+                    }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 540;
+                                if (isCharmed && charmedGrade >= grade) return 270 * multiplier;
                                 else return 270;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 400;
+                                if (isCharmed && charmedGrade >= grade) return 200 * multiplier;
                                 else return 200;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 260;
+                                if (isCharmed && charmedGrade >= grade) return 130 * multiplier;
                                 else return 130;
                             default://Should not happen
                                 if (isCharmed && charmedGrade >= grade) return 0;
@@ -698,27 +762,24 @@ namespace AA_Regrade
 
         private void checkBoxTesting_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxTesting.Checked)
+            if (!checkBoxTesting.Checked)
             {
-                MessageBox.Show("This enables 3.5 values, keep in mind these values are only from the KR version and may not be the same when 3.5 hits NA or EU.");
-                comboBoxTarget.Items.Add("Primordial");
+                label63.Enabled = true;
+                comboBoxClassification.Enabled = true;
+                comboBoxTarget.Items.Add("Eternal");
                 comboBoxClassification.SelectedIndex = 0;
                 comboBoxClassification.Items.RemoveAt(3);
                 patch = 3.5;
-                if (!checkBoxShip.Checked)
-                {
-                    comboBoxClassification.Enabled = true;
-                    label63.Enabled = true;
-                }
             }
             else
             {
+                MessageBox.Show("This feature is only enabled while ArcheAge NA is still in 3.0. After 3.5, this feature will be permanently removed.");
                 comboBoxClassification.Enabled = false;
-                comboBoxTarget.Items.Remove("Primordial");
+                comboBoxTarget.Items.Remove("Eternal");
                 comboBoxTarget.SelectedIndex = 0;
-                comboBoxClassification.Items.Add("**2.9**");
+                comboBoxClassification.Items.Add("**3.0**");
                 comboBoxClassification.SelectedIndex = 3;
-                patch = 2.9;
+                patch = 3.0;
                 label63.Enabled = false;
             }
         }
@@ -972,19 +1033,11 @@ namespace AA_Regrade
             //Disables all irrelevent options with ship component regrading
             if (checkBoxShip.Checked)
             {
-                checkBoxCharms.Enabled = false;
                 checkBoxEvent.Enabled = false;
-                checkBoxIsAnchorCelest.Enabled = false;
-                checkBoxIsAnchorDivine.Enabled = false;
                 checkBoxMist.Enabled = false;
                 checkBoxResplend.Enabled = false;
-                comboBoxCharmGrade.Enabled = false;
-                label1.Enabled = false;
-                checkBoxCharms.Checked = false;
-                checkBoxEvent.Checked = false;
                 checkBoxIsAnchorCelest.Checked = false;
                 checkBoxIsAnchorDivine.Checked = false;
-                checkBoxMist.Checked = false;
                 checkBoxResplend.Checked = false;
                 if(patch == 3.5){
                     label63.Enabled = false;
@@ -1028,7 +1081,7 @@ namespace AA_Regrade
             enchant = double.Parse(textBoxEnchant.Text);
             iterations = int.Parse(textBoxIterations.Text);
             //Start the enchanting function
-            doEnchant(scroll, rScroll, charm, enchant, iterations, currentGrade, charmedGrade, targetGrade, isRegradeEvent, isShip);
+            doEnchant(scroll, rScroll, charm, enchant, iterations, currentGrade, charmedGrade, targetGrade, isRegradeEvent, isShip, selectedCharm);
             isDoneEnchanting = true;
         }
     }

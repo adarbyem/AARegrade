@@ -36,6 +36,8 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label3
@@ -60,7 +62,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 309);
+            this.label5.Location = new System.Drawing.Point(11, 342);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 13);
             this.label5.TabIndex = 4;
@@ -68,7 +70,7 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(35, 322);
+            this.label6.Location = new System.Drawing.Point(23, 355);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(359, 55);
             this.label6.TabIndex = 5;
@@ -78,7 +80,7 @@
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(163, 389);
+            this.buttonClose.Location = new System.Drawing.Point(162, 413);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.TabIndex = 6;
@@ -105,12 +107,34 @@
             this.label2.Text = "- Added a new tab! Please test out the Yield Calculator, it\'s pretty basic right " +
     "now but should do well do caclulate costs and needs for crop yields.";
             // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(34, 277);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(359, 48);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "- Updated 3.5 values to reflect official publications.\r\n- Tweaked a few settings " +
+    "to prepare for 3.5 release.\r\n- Updated some minor values with the crops in the Y" +
+    "ield Tool.\r\n";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(12, 264);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(85, 13);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Update 1.5.1:";
+            // 
             // Updates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 436);
+            this.ClientSize = new System.Drawing.Size(406, 464);
             this.ControlBox = false;
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonClose);
@@ -135,5 +159,7 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

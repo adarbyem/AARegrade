@@ -117,15 +117,17 @@
             // 
             this.label8.Location = new System.Drawing.Point(16, 233);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(551, 84);
+            this.label8.Size = new System.Drawing.Size(551, 34);
             this.label8.TabIndex = 7;
-            this.label8.Text = resources.GetString("label8.Text");
+            this.label8.Text = "As of update 1.5.1, you can make a selection of what multiplier to use for your c" +
+    "harms. The same multiplier will be used for all grades you selected to begin usi" +
+    "ng them at.\r\n";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(3, 317);
+            this.label9.Location = new System.Drawing.Point(3, 270);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(248, 13);
             this.label9.TabIndex = 8;
@@ -133,7 +135,7 @@
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(12, 330);
+            this.label10.Location = new System.Drawing.Point(12, 283);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(551, 38);
             this.label10.TabIndex = 9;
@@ -143,7 +145,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(3, 368);
+            this.label11.Location = new System.Drawing.Point(3, 321);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(121, 13);
             this.label11.TabIndex = 10;
@@ -151,9 +153,9 @@
             // 
             // label12
             // 
-            this.label12.Location = new System.Drawing.Point(12, 381);
+            this.label12.Location = new System.Drawing.Point(12, 334);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(551, 58);
+            this.label12.Size = new System.Drawing.Size(551, 104);
             this.label12.TabIndex = 11;
             this.label12.Text = resources.GetString("label12.Text");
             // 
@@ -161,7 +163,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(3, 439);
+            this.label13.Location = new System.Drawing.Point(3, 438);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(99, 13);
             this.label13.TabIndex = 12;
@@ -169,7 +171,7 @@
             // 
             // label14
             // 
-            this.label14.Location = new System.Drawing.Point(12, 452);
+            this.label14.Location = new System.Drawing.Point(12, 451);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(551, 58);
             this.label14.TabIndex = 13;
@@ -179,7 +181,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(3, 510);
+            this.label15.Location = new System.Drawing.Point(3, 509);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(200, 13);
             this.label15.TabIndex = 14;
@@ -187,7 +189,7 @@
             // 
             // label16
             // 
-            this.label16.Location = new System.Drawing.Point(10, 523);
+            this.label16.Location = new System.Drawing.Point(10, 522);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(551, 19);
             this.label16.TabIndex = 15;

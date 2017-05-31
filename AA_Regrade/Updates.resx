@@ -126,7 +126,8 @@
 - Fixed a tab order error with the Ship Components checkbox.
 - Added testing for 3.5 values.
 - Added an FAQ window to the program, simply press the FAQ button.
-- Added this Update Notes window, now you can see what changes.</value>
+- Added this Update Notes window, now you can see current changes.
+</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

@@ -44,7 +44,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.checkBoxResplend = new System.Windows.Forms.CheckBox();
             this.textBoxDivineAnchor = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.textBoxCelestAnchor = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -176,6 +175,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.checkBoxButcher = new System.Windows.Forms.CheckBox();
             this.buttonRemoveSelected = new System.Windows.Forms.Button();
             this.dataGridViewCrops = new System.Windows.Forms.DataGridView();
             this.cropName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -199,7 +199,8 @@
             this.comboBoxCrop = new System.Windows.Forms.ComboBox();
             this.comboBoxFamily = new System.Windows.Forms.ComboBox();
             this.label68 = new System.Windows.Forms.Label();
-            this.checkBoxButcher = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxCharmMulitplier = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -215,9 +216,9 @@
             this.labelCurrent.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.labelCurrent.Location = new System.Drawing.Point(0, 631);
             this.labelCurrent.Name = "labelCurrent";
-            this.labelCurrent.Size = new System.Drawing.Size(211, 13);
+            this.labelCurrent.Size = new System.Drawing.Size(230, 13);
             this.labelCurrent.TabIndex = 0;
-            this.labelCurrent.Text = "Current Patch: 2.9 (Testing enabled for 3.5)";
+            this.labelCurrent.Text = "Current Patch: 3.5 (Old 3.0 Values Still Availale)";
             // 
             // labelStepOne
             // 
@@ -232,6 +233,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.comboBoxCharmMulitplier);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.checkBoxTesting);
             this.panel1.Controls.Add(this.comboBoxClassification);
             this.panel1.Controls.Add(this.label63);
@@ -244,7 +247,6 @@
             this.panel1.Controls.Add(this.label23);
             this.panel1.Controls.Add(this.checkBoxResplend);
             this.panel1.Controls.Add(this.textBoxDivineAnchor);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.textBoxCelestAnchor);
             this.panel1.Controls.Add(this.label22);
             this.panel1.Controls.Add(this.label21);
@@ -275,9 +277,9 @@
             this.checkBoxTesting.AutoSize = true;
             this.checkBoxTesting.Location = new System.Drawing.Point(16, 495);
             this.checkBoxTesting.Name = "checkBoxTesting";
-            this.checkBoxTesting.Size = new System.Drawing.Size(100, 17);
+            this.checkBoxTesting.Size = new System.Drawing.Size(123, 17);
             this.checkBoxTesting.TabIndex = 18;
-            this.checkBoxTesting.Text = "Test 3.5 Values";
+            this.checkBoxTesting.Text = "Revert to 3.0 Values";
             this.checkBoxTesting.UseVisualStyleBackColor = true;
             this.checkBoxTesting.CheckedChanged += new System.EventHandler(this.checkBoxTesting_CheckedChanged);
             // 
@@ -306,11 +308,11 @@
             // checkBoxShip
             // 
             this.checkBoxShip.AutoSize = true;
-            this.checkBoxShip.Location = new System.Drawing.Point(16, 289);
+            this.checkBoxShip.Location = new System.Drawing.Point(16, 273);
             this.checkBoxShip.Name = "checkBoxShip";
-            this.checkBoxShip.Size = new System.Drawing.Size(104, 17);
+            this.checkBoxShip.Size = new System.Drawing.Size(157, 17);
             this.checkBoxShip.TabIndex = 9;
-            this.checkBoxShip.Text = "Ship Component";
+            this.checkBoxShip.Text = "Ship Component / Pet Gear";
             this.checkBoxShip.UseVisualStyleBackColor = true;
             this.checkBoxShip.CheckedChanged += new System.EventHandler(this.checkBoxShip_CheckedChanged);
             // 
@@ -349,7 +351,7 @@
             "Epic",
             "Legendary",
             "Mythic"});
-            this.comboBoxCharmGrade.Location = new System.Drawing.Point(150, 314);
+            this.comboBoxCharmGrade.Location = new System.Drawing.Point(150, 294);
             this.comboBoxCharmGrade.Name = "comboBoxCharmGrade";
             this.comboBoxCharmGrade.Size = new System.Drawing.Size(84, 21);
             this.comboBoxCharmGrade.TabIndex = 11;
@@ -379,7 +381,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(13, 268);
+            this.label23.Location = new System.Drawing.Point(13, 257);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(155, 13);
             this.label23.TabIndex = 27;
@@ -402,14 +404,6 @@
             this.textBoxDivineAnchor.Size = new System.Drawing.Size(72, 20);
             this.textBoxDivineAnchor.TabIndex = 8;
             this.textBoxDivineAnchor.Text = "0";
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(38, 336);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "*Only accounts for 2x multiplier charms. ";
             // 
             // textBoxCelestAnchor
             // 
@@ -460,7 +454,8 @@
             "Divine",
             "Epic",
             "Legendary",
-            "Mythic"});
+            "Mythic",
+            "Eternal"});
             this.comboBoxTarget.Location = new System.Drawing.Point(136, 41);
             this.comboBoxTarget.Name = "comboBoxTarget";
             this.comboBoxTarget.Size = new System.Drawing.Size(104, 21);
@@ -469,7 +464,7 @@
             // checkBoxCharms
             // 
             this.checkBoxCharms.AutoSize = true;
-            this.checkBoxCharms.Location = new System.Drawing.Point(16, 316);
+            this.checkBoxCharms.Location = new System.Drawing.Point(16, 296);
             this.checkBoxCharms.Name = "checkBoxCharms";
             this.checkBoxCharms.Size = new System.Drawing.Size(133, 17);
             this.checkBoxCharms.TabIndex = 10;
@@ -786,9 +781,9 @@
             this.label66.ForeColor = System.Drawing.Color.Purple;
             this.label66.Location = new System.Drawing.Point(245, 131);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(62, 13);
+            this.label66.Size = new System.Drawing.Size(47, 13);
             this.label66.TabIndex = 104;
-            this.label66.Text = "Primordial";
+            this.label66.Text = "Eternal";
             // 
             // label65
             // 
@@ -1252,9 +1247,9 @@
             this.label24.ForeColor = System.Drawing.Color.Purple;
             this.label24.Location = new System.Drawing.Point(100, 294);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(62, 13);
+            this.label24.Size = new System.Drawing.Size(47, 13);
             this.label24.TabIndex = 57;
-            this.label24.Text = "Primordial";
+            this.label24.Text = "Eternal";
             // 
             // labelMajor
             // 
@@ -1824,6 +1819,16 @@
             this.tabPage2.Text = "Yield Calculator";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // checkBoxButcher
+            // 
+            this.checkBoxButcher.AutoSize = true;
+            this.checkBoxButcher.Location = new System.Drawing.Point(23, 119);
+            this.checkBoxButcher.Name = "checkBoxButcher";
+            this.checkBoxButcher.Size = new System.Drawing.Size(116, 17);
+            this.checkBoxButcher.TabIndex = 16;
+            this.checkBoxButcher.Text = "Raise for Slaughter";
+            this.checkBoxButcher.UseVisualStyleBackColor = true;
+            // 
             // buttonRemoveSelected
             // 
             this.buttonRemoveSelected.Location = new System.Drawing.Point(210, 147);
@@ -2039,15 +2044,27 @@
             this.label68.TabIndex = 0;
             this.label68.Text = "Select Crop Family:";
             // 
-            // checkBoxButcher
+            // label1
             // 
-            this.checkBoxButcher.AutoSize = true;
-            this.checkBoxButcher.Location = new System.Drawing.Point(23, 119);
-            this.checkBoxButcher.Name = "checkBoxButcher";
-            this.checkBoxButcher.Size = new System.Drawing.Size(116, 17);
-            this.checkBoxButcher.TabIndex = 16;
-            this.checkBoxButcher.Text = "Raise for Slaughter";
-            this.checkBoxButcher.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(48, 325);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 13);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Charm Multiplier:";
+            // 
+            // comboBoxCharmMulitplier
+            // 
+            this.comboBoxCharmMulitplier.FormattingEnabled = true;
+            this.comboBoxCharmMulitplier.Items.AddRange(new object[] {
+            "1.5x",
+            "1.75x",
+            "2.0x",
+            "2.5x"});
+            this.comboBoxCharmMulitplier.Location = new System.Drawing.Point(150, 322);
+            this.comboBoxCharmMulitplier.Name = "comboBoxCharmMulitplier";
+            this.comboBoxCharmMulitplier.Size = new System.Drawing.Size(84, 21);
+            this.comboBoxCharmMulitplier.TabIndex = 31;
             // 
             // Main
             // 
@@ -2061,7 +2078,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
-            this.Text = "Archeage Tools v1.5.0";
+            this.Text = "Archeage Tools v1.5.1";
             this.Load += new System.EventHandler(this.Main_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -2095,7 +2112,6 @@
         private System.Windows.Forms.TextBox textBoxResplenScroll;
         private System.Windows.Forms.TextBox textBoxStandardScroll;
         private System.Windows.Forms.CheckBox checkBoxIsAnchorCelest;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelScrollResplend;
         private System.Windows.Forms.Label labelScrollReg;
         private System.Windows.Forms.Label labelStepTwo;
@@ -2252,6 +2268,8 @@
         private System.Windows.Forms.Label label70;
         private System.Windows.Forms.Button buttonRemoveSelected;
         private System.Windows.Forms.CheckBox checkBoxButcher;
+        private System.Windows.Forms.ComboBox comboBoxCharmMulitplier;
+        private System.Windows.Forms.Label label1;
     }
 }
 
