@@ -7,6 +7,7 @@ using System.Linq;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Drawing;
 
 
 namespace AA_Regrade
@@ -16,6 +17,12 @@ namespace AA_Regrade
 
         //Global Variables
         int currentGrade, charmedGrade, targetGrade, iterations, classification, totalVocation = 0, lastSelection = 0, selectedCharm = 0;
+        int emulatorItemType = 0;// 1= Gear 2= Ship
+        int emulatorItemGrade = 0;// 1= Basic ... 11=Mythic
+        int emulatorScrollType = 0;// 1= Standard 2=Resplendent
+        double emulatorOdds = 0;//getOdds will fill this
+        int emulatorClass = 0;//1 = Easy, 2 = Normal, 3 = Difficult
+        double emulatorCharmType = 1; //Multiplier (1 *no charm*, 1.5, 1.75, 2, 2.5)
         double[] attempts = new double[11];
         double[] successes = new double[11];
         double[] cumulativeCost = new double[11];
@@ -31,13 +38,15 @@ namespace AA_Regrade
         double totalGold = 0;
         bool isRegradeEvent = false;
         bool isDoneEnchanting = true;
-
+        bool emulatorIsAnchored = false;
+        bool emulatorIsReady = false;
         
         
         //Global Object
         Help help = new Help();
         Updates updates = new Updates();
         Yield yield = new Yield();
+        
         List<Yield.crop> crops;
 
         public Main()
@@ -62,6 +71,10 @@ namespace AA_Regrade
             checkBoxBundle.Enabled = false;
             checkBoxButcher.Enabled = false;
             buttonAddToCrop.Enabled = false;
+            //Format image layers
+            pictureBoxCharm.BringToFront();
+            pictureBoxItem.BringToFront();
+            pictureBoxScroll.BringToFront();
         }
 
         private void buttonEnchant_Click(object sender, EventArgs e)
@@ -478,6 +491,9 @@ namespace AA_Regrade
                 case 3:
                     multiplier = 2.5;
                     break;
+                default:
+                    multiplier = 1.0;
+                    break;
             }
             switch (grade)
             {
@@ -845,6 +861,14 @@ namespace AA_Regrade
             }
         }
 
+        private void buttonShip_Click(object sender, EventArgs e)
+        {
+            resetEmulator();//Resets the emulator
+            emulatorItemType = 2;
+            setGrade(2);
+            setItem(emulatorItemType);
+        }
+
         private void buttonClearCrop_Click(object sender, EventArgs e)
         {
             //Clear the whole table
@@ -853,6 +877,23 @@ namespace AA_Regrade
             labelVocationCrop.Text = "0";
             totalGold = 0;
             totalVocation = 0;
+        }
+
+        private void buttonGear_Click(object sender, EventArgs e)
+        {
+            resetEmulator();
+            emulatorItemType = 1;
+            setGrade(1);
+            setItem(emulatorItemType);
+        }
+
+        private void buttonGrade1_Click(object sender, EventArgs e)
+        {
+            resetCharm();
+            if(emulatorItemType != 0)
+            {
+                setGrade(1);
+            }
         }
 
         private void buttonRemoveSelected_Click(object sender, EventArgs e)
@@ -871,6 +912,118 @@ namespace AA_Regrade
                 //There shouldn't be any errors here
             }
 
+        }
+
+        private void buttonGrade2_Click(object sender, EventArgs e)
+        {
+            resetCharm();
+            if (emulatorItemType != 0)
+            {
+                setGrade(2);
+            }
+        }
+
+        private void buttonGrade3_Click(object sender, EventArgs e)
+        {
+            resetCharm();
+            if (emulatorItemType != 0)
+            {
+                setGrade(3);
+            }
+        }
+
+        private void buttonGrade4_Click(object sender, EventArgs e)
+        {
+            resetCharm();
+            if (emulatorItemType != 0)
+            {
+                setGrade(4);
+            }
+        }
+
+        private void buttonGrade5_Click(object sender, EventArgs e)
+        {
+            resetCharm();
+            if (emulatorItemType != 0)
+            {
+                setGrade(5);
+            }
+        }
+
+        private void buttonGrade6_Click(object sender, EventArgs e)
+        {
+            resetCharm();
+            if (emulatorItemType != 0)
+            {
+                setGrade(6);
+            }
+        }
+
+        private void buttonGrade7_Click(object sender, EventArgs e)
+        {
+            resetCharm();
+            if (emulatorItemType != 0)
+            {
+                setGrade(7);
+            }
+        }
+
+        private void buttonGrade8_Click(object sender, EventArgs e)
+        {
+            resetCharm();
+            if (emulatorItemType != 0)
+            {
+                setGrade(8);
+            }
+        }
+
+        private void buttonGrade9_Click(object sender, EventArgs e)
+        {
+            resetCharm();
+            if (emulatorItemType != 0)
+            {
+                setGrade(9);
+            }
+        }
+
+        private void buttonGrade10_Click(object sender, EventArgs e)
+        {
+            resetCharm();
+            if (emulatorItemType != 0)
+            {
+                setGrade(10);
+            }
+        }
+
+        private void buttonGrade11_Click(object sender, EventArgs e)
+        {
+            resetCharm();
+            if (emulatorItemType != 0)
+            {
+                setGrade(11);
+            }
+        }
+
+        private void buttonStandard_Click(object sender, EventArgs e)
+        {
+            if(emulatorItemType != 0)
+            {
+                pictureBoxScroll.BackgroundImage = Properties.Resources.scroll_standard;
+                pictureBoxScroll.Image = Properties.Resources.rare;
+                emulatorScrollType = 1;
+            }
+            eval();
+        }
+
+        private void buttonResplendent_Click(object sender, EventArgs e)
+        {
+            if(emulatorItemType != 2 && emulatorItemType != 0)
+            {
+                pictureBoxScroll.BackgroundImage = Properties.Resources.scroll_resplend;
+                pictureBoxScroll.Image = Properties.Resources.heroic;
+                emulatorScrollType = 2;
+            }
+            eval();
         }
 
         private void buttonAddToCrop_Click(object sender, EventArgs e)
@@ -1022,10 +1175,166 @@ namespace AA_Regrade
             labelVocationCrop.Text = totalVocation.ToString();
         }
 
+        private void buttonBlue_Click(object sender, EventArgs e)
+        {
+            if(emulatorItemGrade == 5 && emulatorItemType != 0)
+            {
+                emulatorCharmType = 1.75;
+                pictureBoxCharm.BackgroundImage = Properties.Resources.blue;
+                pictureBoxCharm.Image = Properties.Resources.grand;
+                emulatorIsAnchored = false;
+            }
+            eval();
+        }
+
         //Runs when the thread is complete
         private void backgroundWorker_RunWorkerCompleted_1(object sender, RunWorkerCompletedEventArgs e)
         {
             refreshPage();
+        }
+
+        private void buttonGreen_Click(object sender, EventArgs e)
+        {
+            if (emulatorItemGrade == 4 && emulatorItemType != 0)
+            {
+                emulatorCharmType = 1.75;
+                pictureBoxCharm.BackgroundImage = Properties.Resources.green;
+                pictureBoxCharm.Image = Properties.Resources.basic;
+                emulatorIsAnchored = false;
+            }
+            eval();
+        }
+
+        private void buttonYellow_Click(object sender, EventArgs e)
+        {
+            if (emulatorItemGrade == 6 && emulatorItemType != 0)
+            {
+                emulatorCharmType = 1.5;
+                pictureBoxCharm.BackgroundImage = Properties.Resources.yellow;
+                pictureBoxCharm.Image = Properties.Resources.rare;
+                emulatorIsAnchored = false;
+            }
+            eval();
+        }
+
+        private void buttonRed_Click(object sender, EventArgs e)
+        {
+            if (emulatorItemGrade <= 6 && emulatorItemType != 0)
+            {
+                emulatorCharmType = 2;
+                pictureBoxCharm.BackgroundImage = Properties.Resources.red;
+                pictureBoxCharm.Image = Properties.Resources.arcane;
+                emulatorIsAnchored = false;
+            }
+            eval();
+        }
+
+        private void buttonSupYellow_Click(object sender, EventArgs e)
+        {
+            if (emulatorItemType != 0 && emulatorItemGrade != 12)
+            {
+                emulatorCharmType = 1.5;
+                pictureBoxCharm.BackgroundImage = Properties.Resources.sup_yellow;
+                pictureBoxCharm.Image = Properties.Resources.rare;
+                emulatorIsAnchored = false;
+            }
+            eval();
+        }
+
+        private void buttonSupRed_Click(object sender, EventArgs e)
+        {
+            if (emulatorItemType != 0 && emulatorItemGrade != 12)
+            {
+                emulatorCharmType = 2;
+                pictureBoxCharm.BackgroundImage = Properties.Resources.sup_red;
+                pictureBoxCharm.Image = Properties.Resources.arcane;
+                emulatorIsAnchored = false;
+            }
+            eval();
+        }
+
+        private void buttonCelestAnchor_Click(object sender, EventArgs e)
+        {
+            if (emulatorItemGrade == 7 && emulatorItemType != 0)
+            {
+                emulatorCharmType = 1;
+                pictureBoxCharm.BackgroundImage = Properties.Resources.anchor;
+                pictureBoxCharm.Image = Properties.Resources.rare;
+                emulatorIsAnchored = true;
+            }
+            eval();
+        }
+
+        private void buttonSilver_Click(object sender, EventArgs e)
+        {
+            if (emulatorItemGrade >= 7 && emulatorItemType != 0 && emulatorItemGrade != 12)
+            {
+                emulatorCharmType = 2.5;
+                pictureBoxCharm.BackgroundImage = Properties.Resources.silver;
+                pictureBoxCharm.Image = Properties.Resources.heroic;
+                emulatorIsAnchored = false;
+            }
+            eval();
+        }
+
+        private void buttonCelestAnchor15_Click(object sender, EventArgs e)
+        {
+            if (emulatorItemGrade == 7 && emulatorItemType != 0)
+            {
+                emulatorCharmType = 1.5;
+                pictureBoxCharm.BackgroundImage = Properties.Resources.anchor;
+                pictureBoxCharm.Image = Properties.Resources.rare;
+                emulatorIsAnchored = true;
+            }
+            eval();
+        }
+
+        private void buttonCelestAnchor20_Click(object sender, EventArgs e)
+        {
+            if (emulatorItemGrade == 7 && emulatorItemType != 0)
+            {
+                emulatorCharmType = 2.0;
+                pictureBoxCharm.BackgroundImage = Properties.Resources.anchor;
+                pictureBoxCharm.Image = Properties.Resources.arcane;
+                emulatorIsAnchored = true;
+            }
+            eval();
+        }
+
+        private void buttonDivineAnchor_Click(object sender, EventArgs e)
+        {
+            if (emulatorItemGrade == 8 && emulatorItemType != 0)
+            {
+                emulatorCharmType = 1;
+                pictureBoxCharm.BackgroundImage = Properties.Resources.anchor;
+                pictureBoxCharm.Image = Properties.Resources.arcane;
+                emulatorIsAnchored = true;
+            }
+            eval();
+        }
+
+        private void buttonDivineAnchor15_Click(object sender, EventArgs e)
+        {
+            if (emulatorItemGrade == 8 && emulatorItemType != 0)
+            {
+                emulatorCharmType = 1.5;
+                pictureBoxCharm.BackgroundImage = Properties.Resources.anchor;
+                pictureBoxCharm.Image = Properties.Resources.arcane;
+                emulatorIsAnchored = true;
+            }
+            eval();
+        }
+
+        private void buttonDivineAnchor20_Click(object sender, EventArgs e)
+        {
+            if (emulatorItemGrade == 8 && emulatorItemType != 0)
+            {
+                emulatorCharmType = 2.0;
+                pictureBoxCharm.BackgroundImage = Properties.Resources.anchor;
+                pictureBoxCharm.Image = Properties.Resources.arcane;
+                emulatorIsAnchored = true;
+            }
+            eval();
         }
 
         private void checkBoxShip_CheckedChanged(object sender, EventArgs e)
@@ -1061,6 +1370,122 @@ namespace AA_Regrade
 
         }
 
+        private void buttonEasy_Click(object sender, EventArgs e)
+        {
+            buttonNormal.Enabled = true;
+            buttonDifficult.Enabled = true;
+            buttonEasy.Enabled = false;
+            emulatorClass = 0;
+            if (emulatorItemType != 0) eval();
+        }
+
+        private void buttonNormal_Click(object sender, EventArgs e)
+        {
+            buttonNormal.Enabled = false;
+            buttonDifficult.Enabled = true;
+            buttonEasy.Enabled = true;
+            emulatorClass = 1;
+            if (emulatorItemType != 0) eval();
+        }
+
+        private void buttonDifficult_Click(object sender, EventArgs e)
+        {
+            buttonNormal.Enabled = true;
+            buttonDifficult.Enabled = false;
+            buttonEasy.Enabled = true;
+            emulatorClass = 2;
+            if (emulatorItemType != 0) eval();
+        }
+
+        private void pictureBoxCancel_Click(object sender, EventArgs e)
+        {
+            resetEmulator();
+        }
+
+        private void pictureBoxEnchant_Click(object sender, EventArgs e)
+        {
+            //local variables
+            bool didFail = true;
+            bool didDegrade = false;
+            bool didBlowUp = false;
+            int successType = 0;
+            int previousGrade = emulatorItemGrade;
+
+            if (emulatorIsReady)
+            {
+                Random rng = new Random();
+                int roll = rng.Next(0, 10000);
+                if(roll > emulatorOdds)
+                {
+                    Console.WriteLine("Fail" + " Roll: " + roll + " RNG: " + emulatorOdds);
+                    //Do Fail Stuff
+                    roll = rng.Next(0, 10000);
+                    successType = 5;
+                    if (emulatorItemGrade == 7 && !emulatorIsAnchored)
+                    {
+                        if(roll < 5000)
+                        {
+                            Console.WriteLine("Degrade: [Arcane] <-<- [Celestial]");
+                            didDegrade = true;
+                            if (!checkBoxKeepItems.Checked)
+                            {
+                                emulatorItemGrade = 4;
+                                setGrade(4);
+                                resetCharm();
+                                resetScroll();
+                            }
+                            successType = 3;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Major Failure: The Item Exploded in a Blinding Light");
+                            if (!checkBoxKeepItems.Checked)
+                            {
+                                resetEmulator();
+                            }
+                            successType = 4;
+                        }
+                    }
+                    else if(emulatorItemGrade > 7 && !emulatorIsAnchored)
+                    {
+                        Console.WriteLine("Major Failure: The Item Exploded in a Blinding Light");
+                        if (!checkBoxKeepItems.Checked)
+                        {
+                            resetEmulator();
+                        }
+                        successType = 4;
+                    }
+                }
+                else
+                {
+                    didFail = false;
+                    if(roll < emulatorOdds * 0.2 && emulatorItemGrade != 11 && emulatorScrollType == 2)
+                    {
+                        Console.WriteLine("Great Success!" + " Roll: " + roll + " RNG: " + emulatorOdds);
+                        emulatorItemGrade += 2;
+                        setGrade(emulatorItemGrade);
+                        successType = 2;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Succeed" + " Roll: " + roll + " RNG: " + emulatorOdds);
+                        emulatorItemGrade++;
+                        setGrade(emulatorItemGrade);
+                        successType = 1;
+                    }
+                }
+                if(!didFail)resetCharm();
+                if (emulatorItemGrade == 12 || !checkBoxKeepItems.Checked)
+                {
+                    resetScroll();
+                    resetCharm();
+                }
+                eval();
+                FormResult result = new FormResult();
+                result.displayResult(successType, previousGrade, emulatorItemGrade, emulatorIsAnchored, emulatorItemType, this.DesktopLocation.X + 100, this.DesktopLocation.Y + 100);
+            }
+        }
+
         //Updates the progress bar when progress has been reported by the thread
         private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
@@ -1083,6 +1508,163 @@ namespace AA_Regrade
             //Start the enchanting function
             doEnchant(scroll, rScroll, charm, enchant, iterations, currentGrade, charmedGrade, targetGrade, isRegradeEvent, isShip, selectedCharm);
             isDoneEnchanting = true;
+        }
+
+        //Sets the item icon in the regrade emulator
+        public void setItem(int type)
+        {
+            switch (type)
+            {
+                case 1:
+                    pictureBoxItem.BackgroundImage = Properties.Resources.gear;
+                    break;
+                case 2:
+                    pictureBoxItem.BackgroundImage = Properties.Resources.ship;
+                    break;
+            }
+            pictureBoxItem.Image = Properties.Resources.basic;
+        }
+        //Sets the item grade in the regrade emulator
+        public void setGrade(int grade)
+        {
+            switch (grade)
+            {
+                case 1:
+                    pictureBoxItem.Image = Properties.Resources.basic;
+                    break;
+                case 2:
+                    pictureBoxItem.Image = Properties.Resources.grand;
+                    break;
+                case 3:
+                    pictureBoxItem.Image = Properties.Resources.rare;
+                    break;
+                case 4:
+                    pictureBoxItem.Image = Properties.Resources.arcane;
+                    break;
+                case 5:
+                    pictureBoxItem.Image = Properties.Resources.heroic;
+                    break;
+                case 6:
+                    pictureBoxItem.Image = Properties.Resources.unique;
+                    break;
+                case 7:
+                    pictureBoxItem.Image = Properties.Resources.celestial;
+                    break;
+                case 8:
+                    pictureBoxItem.Image = Properties.Resources.divine;
+                    break;
+                case 9:
+                    pictureBoxItem.Image = Properties.Resources.epic;
+                    break;
+                case 10:
+                    pictureBoxItem.Image = Properties.Resources.legendary;
+                    break;
+                case 11:
+                    pictureBoxItem.Image = Properties.Resources.mythic;
+                    break;
+                case 12:
+                    pictureBoxItem.Image = Properties.Resources.eternal;
+                    break;
+            }
+            emulatorItemGrade = grade;
+            eval();
+        }
+        //Resets the emulator
+        public void resetEmulator()
+        {
+            emulatorItemType = 0;
+            emulatorItemGrade = 0;
+            emulatorScrollType = 0;
+            emulatorCharmType = 1;
+            pictureBoxCharm.BackgroundImage = Properties.Resources.charm_initial;
+            pictureBoxCharm.Image = null;
+            pictureBoxScroll.BackgroundImage = Properties.Resources.scroll_initial;
+            pictureBoxScroll.Image = null;
+            pictureBoxItem.BackgroundImage = Properties.Resources.item_initial;
+            pictureBoxItem.Image = null;
+            pictureBoxDegrade.Image = Properties.Resources.chance_blank;
+            pictureBoxRipChance.Image = Properties.Resources.chance_blank;
+            labelChancePercent.Text = "";
+            pictureBoxEnchant.Image = Properties.Resources.button_enchant_disable;
+            emulatorIsReady = false;
+        }
+        //resets the scroll
+        public void resetScroll()
+        {
+            pictureBoxScroll.BackgroundImage = Properties.Resources.scroll_initial;
+            pictureBoxScroll.Image = null;
+            emulatorScrollType = 0;
+        }
+        //resets the emulator charm
+        public void resetCharm()
+        {
+            emulatorCharmType = 1;
+            pictureBoxCharm.BackgroundImage = Properties.Resources.charm_initial;
+            pictureBoxCharm.Image = null;
+            emulatorIsAnchored = false;
+        }
+        //evaluates the chances
+        public void eval()
+        {
+            //Local Variables
+            bool isShip = false;
+            int selectedCharm = 0;
+
+            pictureBoxRipChance.Image = Properties.Resources.no_chance1;
+            pictureBoxDegrade.Image = Properties.Resources.no_chance1;
+            if(emulatorItemGrade == 7 && emulatorItemType != 1)
+            {
+                pictureBoxRipChance.Image = Properties.Resources.yes_chance1;
+                pictureBoxDegrade.Image = Properties.Resources.no_chance1;
+            }
+            else if(emulatorItemGrade == 7 && !emulatorIsAnchored)
+            {
+                pictureBoxRipChance.Image = Properties.Resources.yes_chance1;
+                pictureBoxDegrade.Image = Properties.Resources.yes_chance1;
+            }
+            else if(emulatorItemGrade > 7 && !emulatorIsAnchored)
+            {
+                pictureBoxRipChance.Image = Properties.Resources.yes_chance1;
+                pictureBoxDegrade.Image = Properties.Resources.no_chance1;
+            }
+
+            //Evaluate if it is a ship part
+            if (emulatorItemType == 2) isShip = true;
+
+            //Evaluate selected charm
+            switch (emulatorCharmType.ToString())
+            {
+                case "1":
+                    selectedCharm = 5;
+                    break;
+                case "1.5":
+                    selectedCharm = 0;
+                    break;
+                case "1.75":
+                    selectedCharm = 1;
+                    break;
+                case "2":
+                    selectedCharm = 2;
+                    break;
+                case "2.5":
+                    selectedCharm = 3;
+                    break;
+            }
+            emulatorOdds = getOdds((emulatorItemGrade - 1), false, true, 15, isShip, emulatorClass, selectedCharm);
+            if (emulatorOdds > 10000) emulatorOdds = 10000;
+            labelChancePercent.Text = Math.Round(emulatorOdds / 100, 2).ToString() + "%";
+
+            //Evaluate if enchantment is ready
+            if(emulatorItemType != 0 && emulatorScrollType != 0 && emulatorItemGrade != 12)
+            {
+                pictureBoxEnchant.Image = Properties.Resources.button_enchant_enable;
+                emulatorIsReady = true;
+            }
+            else
+            {
+                pictureBoxEnchant.Image = Properties.Resources.button_enchant_disable;
+                emulatorIsReady = false;
+            }
         }
     }
 }

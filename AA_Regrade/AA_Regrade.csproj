@@ -90,6 +90,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Result.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Result.Designer.cs">
+      <DependentUpon>Result.cs</DependentUpon>
+    </Compile>
     <Compile Include="Help.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Updates.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +122,9 @@
       <DependentUpon>Updates.cs</DependentUpon>
     </Compile>
     <Compile Include="Yield.cs" />
+    <EmbeddedResource Include="Result.resx">
+      <DependentUpon>Result.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Help.resx">
       <DependentUpon>Help.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,13 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Updates.resx">
       <DependentUpon>Updates.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,6 +155,44 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\result_confirm.png" />
+    <None Include="Resources\result.png" />
+    <None Include="Resources\chance_blank.png" />
+    <None Include="Resources\yes_chance1.png" />
+    <None Include="Resources\no_chance1.png" />
+    <None Include="Resources\yellow.png" />
+    <None Include="Resources\sup_yellow.png" />
+    <None Include="Resources\sup_red.png" />
+    <None Include="Resources\silver.png" />
+    <None Include="Resources\red.png" />
+    <None Include="Resources\green.png" />
+    <None Include="Resources\blue.png" />
+    <None Include="Resources\anchor.png" />
+    <None Include="Resources\scroll_standard.jpg" />
+    <None Include="Resources\scroll_resplend.jpg" />
+    <None Include="Resources\unique.png" />
+    <None Include="Resources\rare.png" />
+    <None Include="Resources\mythic.png" />
+    <None Include="Resources\legendary.png" />
+    <None Include="Resources\heroic.png" />
+    <None Include="Resources\grand.png" />
+    <None Include="Resources\eternal.PNG" />
+    <None Include="Resources\epic.png" />
+    <None Include="Resources\divine.png" />
+    <None Include="Resources\celestial.png" />
+    <None Include="Resources\basic.png" />
+    <None Include="Resources\arcane.png" />
+    <None Include="Resources\ship.jpg" />
+    <None Include="Resources\gear.jpg" />
+    <None Include="Resources\yes_chance.png" />
+    <None Include="Resources\scroll_initial.png" />
+    <None Include="Resources\no_chance.png" />
+    <None Include="Resources\item_initial.png" />
+    <None Include="Resources\charm_initial.png" />
+    <None Include="Resources\button_enchant_enable.png" />
+    <None Include="Resources\button_enchant_disable.png" />
+    <None Include="Resources\button_cancel.png" />
+    <None Include="Resources\base_ui.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
