@@ -271,9 +271,9 @@
             this.labelCurrent.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.labelCurrent.Location = new System.Drawing.Point(0, 631);
             this.labelCurrent.Name = "labelCurrent";
-            this.labelCurrent.Size = new System.Drawing.Size(230, 13);
+            this.labelCurrent.Size = new System.Drawing.Size(93, 13);
             this.labelCurrent.TabIndex = 0;
-            this.labelCurrent.Text = "Current Patch: 3.5 (Old 3.0 Values Still Availale)";
+            this.labelCurrent.Text = "Current Patch: 3.5";
             // 
             // labelStepOne
             // 
