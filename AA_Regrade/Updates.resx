@@ -118,15 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label4.Text" xml:space="preserve">
-    <value>- Fixed a bug that caused ship parts to break below celestial.
-- Fixed a bug that sometimes displayed zero values for attempts when there were no successes.
-- Fixed a bug that sometimes caused the great success percentages to display "Infinity%".
-- Fixed a bug that caused the enchanting button to not become disabled during an enchanting process, additional presses during the enchanting process would cause the program to crash.
-- Added error handling for the above event, so if the button somehow gets pressed twice, the program will not crash.
-- Fixed a tab order error with the Ship Components checkbox.
-- Added testing for 3.5 values.
-- Added an FAQ window to the program, simply press the FAQ button.
-- Added this Update Notes window, now you can see current changes.
+    <value>-Fixed a bug that allowed ship components to de-grade instead of blow up.
+-Fixed a few display errors.
+-Polished the UI a bit by adjusting font sizes and colors, and adding image icons.
+-Disabled the ability to revert to 3.0 values. This program is now fully 3.5 functional.
+
+</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>-Added a new default tab that contains a regrade emulator. This will allow you to perform regrades as if you were really doing so in game. This is the perfect addition to the simulator to test values without burning gold!
+-Made Patch 3.5 the default for the simulator, but have allowed for reverting to 3.0 until update 1.6.1
+
 </value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />

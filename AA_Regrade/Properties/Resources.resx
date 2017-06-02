@@ -232,4 +232,22 @@
   <data name="result_confirm" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\result_confirm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="rip" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rip_celestial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rip_celestial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rip_divine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rip_divine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rip_epic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rip_epic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rip_legendary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rip_legendary.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rip_mythic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rip_mythic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

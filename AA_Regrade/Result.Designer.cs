@@ -52,11 +52,11 @@
             // labelResult
             // 
             this.labelResult.BackColor = System.Drawing.Color.Transparent;
-            this.labelResult.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelResult.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelResult.ForeColor = System.Drawing.Color.LightCoral;
-            this.labelResult.Location = new System.Drawing.Point(85, 26);
+            this.labelResult.Location = new System.Drawing.Point(58, 26);
             this.labelResult.Name = "labelResult";
-            this.labelResult.Size = new System.Drawing.Size(143, 30);
+            this.labelResult.Size = new System.Drawing.Size(205, 30);
             this.labelResult.TabIndex = 1;
             this.labelResult.Text = "Failure";
             this.labelResult.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -65,7 +65,7 @@
             // 
             this.labelPreviousGrade.BackColor = System.Drawing.Color.Transparent;
             this.labelPreviousGrade.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPreviousGrade.Location = new System.Drawing.Point(55, 62);
+            this.labelPreviousGrade.Location = new System.Drawing.Point(52, 61);
             this.labelPreviousGrade.Name = "labelPreviousGrade";
             this.labelPreviousGrade.Size = new System.Drawing.Size(75, 16);
             this.labelPreviousGrade.TabIndex = 2;
@@ -76,7 +76,7 @@
             // 
             this.labelNextGrade.BackColor = System.Drawing.Color.Transparent;
             this.labelNextGrade.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNextGrade.Location = new System.Drawing.Point(177, 62);
+            this.labelNextGrade.Location = new System.Drawing.Point(185, 61);
             this.labelNextGrade.Name = "labelNextGrade";
             this.labelNextGrade.Size = new System.Drawing.Size(86, 16);
             this.labelNextGrade.TabIndex = 4;
@@ -85,12 +85,12 @@
             // labelSteps
             // 
             this.labelSteps.BackColor = System.Drawing.Color.Transparent;
-            this.labelSteps.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSteps.Location = new System.Drawing.Point(136, 62);
+            this.labelSteps.Font = new System.Drawing.Font("GothicG", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSteps.Location = new System.Drawing.Point(125, 61);
             this.labelSteps.Name = "labelSteps";
-            this.labelSteps.Size = new System.Drawing.Size(35, 16);
+            this.labelSteps.Size = new System.Drawing.Size(64, 16);
             this.labelSteps.TabIndex = 5;
-            this.labelSteps.Text = "<-<-<-";
+            this.labelSteps.Text = "←←←";
             this.labelSteps.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // labelFailNarrative
@@ -118,7 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.Bisque;
             this.BackgroundImage = global::AA_Regrade.Properties.Resources.result;
             this.ClientSize = new System.Drawing.Size(314, 245);
             this.ControlBox = false;

@@ -155,6 +155,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\rip_mythic.png" />
+    <None Include="Resources\rip_legendary.png" />
+    <None Include="Resources\rip_epic.png" />
+    <None Include="Resources\rip_divine.png" />
+    <None Include="Resources\rip_celestial.png" />
+    <None Include="Resources\rip.png" />
     <None Include="Resources\result_confirm.png" />
     <None Include="Resources\result.png" />
     <None Include="Resources\chance_blank.png" />

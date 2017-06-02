@@ -34,7 +34,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.comboBoxCharmMulitplier = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkBoxTesting = new System.Windows.Forms.CheckBox();
             this.comboBoxClassification = new System.Windows.Forms.ComboBox();
             this.label63 = new System.Windows.Forms.Label();
             this.checkBoxShip = new System.Windows.Forms.CheckBox();
@@ -175,6 +174,45 @@
             this.buttonHelp = new System.Windows.Forms.Button();
             this.labelUpdates = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.checkBoxKeepItems = new System.Windows.Forms.CheckBox();
+            this.buttonDifficult = new System.Windows.Forms.Button();
+            this.buttonNormal = new System.Windows.Forms.Button();
+            this.buttonEasy = new System.Windows.Forms.Button();
+            this.label78 = new System.Windows.Forms.Label();
+            this.labelChancePercent = new System.Windows.Forms.Label();
+            this.buttonDivineAnchor20 = new System.Windows.Forms.Button();
+            this.buttonDivineAnchor15 = new System.Windows.Forms.Button();
+            this.buttonDivineAnchor = new System.Windows.Forms.Button();
+            this.buttonCelestAnchor20 = new System.Windows.Forms.Button();
+            this.buttonSilver = new System.Windows.Forms.Button();
+            this.buttonCelestAnchor15 = new System.Windows.Forms.Button();
+            this.buttonCelestAnchor = new System.Windows.Forms.Button();
+            this.buttonSupRed = new System.Windows.Forms.Button();
+            this.buttonSupYellow = new System.Windows.Forms.Button();
+            this.buttonRed = new System.Windows.Forms.Button();
+            this.buttonYellow = new System.Windows.Forms.Button();
+            this.buttonGreen = new System.Windows.Forms.Button();
+            this.buttonBlue = new System.Windows.Forms.Button();
+            this.label77 = new System.Windows.Forms.Label();
+            this.buttonResplendent = new System.Windows.Forms.Button();
+            this.buttonStandard = new System.Windows.Forms.Button();
+            this.label76 = new System.Windows.Forms.Label();
+            this.buttonGrade11 = new System.Windows.Forms.Button();
+            this.buttonGrade10 = new System.Windows.Forms.Button();
+            this.buttonGrade9 = new System.Windows.Forms.Button();
+            this.buttonGrade8 = new System.Windows.Forms.Button();
+            this.buttonGrade7 = new System.Windows.Forms.Button();
+            this.buttonGrade6 = new System.Windows.Forms.Button();
+            this.buttonGrade5 = new System.Windows.Forms.Button();
+            this.buttonGrade4 = new System.Windows.Forms.Button();
+            this.buttonGrade3 = new System.Windows.Forms.Button();
+            this.buttonGrade2 = new System.Windows.Forms.Button();
+            this.buttonGrade1 = new System.Windows.Forms.Button();
+            this.label75 = new System.Windows.Forms.Label();
+            this.buttonGear = new System.Windows.Forms.Button();
+            this.buttonShip = new System.Windows.Forms.Button();
+            this.label74 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.checkBoxButcher = new System.Windows.Forms.CheckBox();
@@ -201,45 +239,6 @@
             this.comboBoxCrop = new System.Windows.Forms.ComboBox();
             this.comboBoxFamily = new System.Windows.Forms.ComboBox();
             this.label68 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.buttonRed = new System.Windows.Forms.Button();
-            this.buttonYellow = new System.Windows.Forms.Button();
-            this.buttonGreen = new System.Windows.Forms.Button();
-            this.buttonBlue = new System.Windows.Forms.Button();
-            this.label77 = new System.Windows.Forms.Label();
-            this.buttonResplendent = new System.Windows.Forms.Button();
-            this.buttonStandard = new System.Windows.Forms.Button();
-            this.label76 = new System.Windows.Forms.Label();
-            this.buttonGrade11 = new System.Windows.Forms.Button();
-            this.buttonGrade10 = new System.Windows.Forms.Button();
-            this.buttonGrade9 = new System.Windows.Forms.Button();
-            this.buttonGrade8 = new System.Windows.Forms.Button();
-            this.buttonGrade7 = new System.Windows.Forms.Button();
-            this.buttonGrade6 = new System.Windows.Forms.Button();
-            this.buttonGrade5 = new System.Windows.Forms.Button();
-            this.buttonGrade4 = new System.Windows.Forms.Button();
-            this.buttonGrade3 = new System.Windows.Forms.Button();
-            this.buttonGrade2 = new System.Windows.Forms.Button();
-            this.buttonGrade1 = new System.Windows.Forms.Button();
-            this.label75 = new System.Windows.Forms.Label();
-            this.buttonGear = new System.Windows.Forms.Button();
-            this.buttonShip = new System.Windows.Forms.Button();
-            this.label74 = new System.Windows.Forms.Label();
-            this.buttonSupYellow = new System.Windows.Forms.Button();
-            this.buttonSupRed = new System.Windows.Forms.Button();
-            this.buttonCelestAnchor = new System.Windows.Forms.Button();
-            this.buttonCelestAnchor15 = new System.Windows.Forms.Button();
-            this.buttonSilver = new System.Windows.Forms.Button();
-            this.buttonCelestAnchor20 = new System.Windows.Forms.Button();
-            this.buttonDivineAnchor = new System.Windows.Forms.Button();
-            this.buttonDivineAnchor15 = new System.Windows.Forms.Button();
-            this.buttonDivineAnchor20 = new System.Windows.Forms.Button();
-            this.labelChancePercent = new System.Windows.Forms.Label();
-            this.label78 = new System.Windows.Forms.Label();
-            this.buttonEasy = new System.Windows.Forms.Button();
-            this.buttonNormal = new System.Windows.Forms.Button();
-            this.buttonDifficult = new System.Windows.Forms.Button();
-            this.checkBoxKeepItems = new System.Windows.Forms.CheckBox();
             this.pictureBoxCancel = new System.Windows.Forms.PictureBox();
             this.pictureBoxEnchant = new System.Windows.Forms.PictureBox();
             this.pictureBoxDegrade = new System.Windows.Forms.PictureBox();
@@ -252,10 +251,10 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCrops)).BeginInit();
-            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEnchant)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDegrade)).BeginInit();
@@ -291,7 +290,6 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.comboBoxCharmMulitplier);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.checkBoxTesting);
             this.panel1.Controls.Add(this.comboBoxClassification);
             this.panel1.Controls.Add(this.label63);
             this.panel1.Controls.Add(this.checkBoxShip);
@@ -349,17 +347,6 @@
             this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 30;
             this.label1.Text = "Charm Multiplier:";
-            // 
-            // checkBoxTesting
-            // 
-            this.checkBoxTesting.AutoSize = true;
-            this.checkBoxTesting.Location = new System.Drawing.Point(16, 495);
-            this.checkBoxTesting.Name = "checkBoxTesting";
-            this.checkBoxTesting.Size = new System.Drawing.Size(123, 17);
-            this.checkBoxTesting.TabIndex = 18;
-            this.checkBoxTesting.Text = "Revert to 3.0 Values";
-            this.checkBoxTesting.UseVisualStyleBackColor = true;
-            this.checkBoxTesting.CheckedChanged += new System.EventHandler(this.checkBoxTesting_CheckedChanged);
             // 
             // comboBoxClassification
             // 
@@ -1856,6 +1843,446 @@
             this.tabControl1.Size = new System.Drawing.Size(711, 628);
             this.tabControl1.TabIndex = 24;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(237)))), ((int)(((byte)(223)))));
+            this.tabPage3.Controls.Add(this.checkBoxKeepItems);
+            this.tabPage3.Controls.Add(this.pictureBoxCancel);
+            this.tabPage3.Controls.Add(this.pictureBoxEnchant);
+            this.tabPage3.Controls.Add(this.buttonDifficult);
+            this.tabPage3.Controls.Add(this.buttonNormal);
+            this.tabPage3.Controls.Add(this.buttonEasy);
+            this.tabPage3.Controls.Add(this.label78);
+            this.tabPage3.Controls.Add(this.labelChancePercent);
+            this.tabPage3.Controls.Add(this.pictureBoxDegrade);
+            this.tabPage3.Controls.Add(this.pictureBoxRipChance);
+            this.tabPage3.Controls.Add(this.buttonDivineAnchor20);
+            this.tabPage3.Controls.Add(this.buttonDivineAnchor15);
+            this.tabPage3.Controls.Add(this.buttonDivineAnchor);
+            this.tabPage3.Controls.Add(this.buttonCelestAnchor20);
+            this.tabPage3.Controls.Add(this.buttonSilver);
+            this.tabPage3.Controls.Add(this.buttonCelestAnchor15);
+            this.tabPage3.Controls.Add(this.buttonCelestAnchor);
+            this.tabPage3.Controls.Add(this.buttonSupRed);
+            this.tabPage3.Controls.Add(this.buttonSupYellow);
+            this.tabPage3.Controls.Add(this.buttonRed);
+            this.tabPage3.Controls.Add(this.buttonYellow);
+            this.tabPage3.Controls.Add(this.buttonGreen);
+            this.tabPage3.Controls.Add(this.buttonBlue);
+            this.tabPage3.Controls.Add(this.label77);
+            this.tabPage3.Controls.Add(this.buttonResplendent);
+            this.tabPage3.Controls.Add(this.buttonStandard);
+            this.tabPage3.Controls.Add(this.label76);
+            this.tabPage3.Controls.Add(this.buttonGrade11);
+            this.tabPage3.Controls.Add(this.buttonGrade10);
+            this.tabPage3.Controls.Add(this.buttonGrade9);
+            this.tabPage3.Controls.Add(this.buttonGrade8);
+            this.tabPage3.Controls.Add(this.buttonGrade7);
+            this.tabPage3.Controls.Add(this.buttonGrade6);
+            this.tabPage3.Controls.Add(this.buttonGrade5);
+            this.tabPage3.Controls.Add(this.buttonGrade4);
+            this.tabPage3.Controls.Add(this.buttonGrade3);
+            this.tabPage3.Controls.Add(this.buttonGrade2);
+            this.tabPage3.Controls.Add(this.buttonGrade1);
+            this.tabPage3.Controls.Add(this.label75);
+            this.tabPage3.Controls.Add(this.buttonGear);
+            this.tabPage3.Controls.Add(this.buttonShip);
+            this.tabPage3.Controls.Add(this.label74);
+            this.tabPage3.Controls.Add(this.pictureBoxItem);
+            this.tabPage3.Controls.Add(this.pictureBoxScroll);
+            this.tabPage3.Controls.Add(this.pictureBoxCharm);
+            this.tabPage3.Controls.Add(this.pictureBoxBaseUI);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(703, 602);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Regrade Emulator";
+            // 
+            // checkBoxKeepItems
+            // 
+            this.checkBoxKeepItems.AutoSize = true;
+            this.checkBoxKeepItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(237)))), ((int)(((byte)(223)))));
+            this.checkBoxKeepItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxKeepItems.Location = new System.Drawing.Point(6, 520);
+            this.checkBoxKeepItems.Name = "checkBoxKeepItems";
+            this.checkBoxKeepItems.Size = new System.Drawing.Size(221, 17);
+            this.checkBoxKeepItems.TabIndex = 47;
+            this.checkBoxKeepItems.Text = "Keep Scroll and Item After Results";
+            this.checkBoxKeepItems.UseVisualStyleBackColor = false;
+            // 
+            // buttonDifficult
+            // 
+            this.buttonDifficult.Location = new System.Drawing.Point(615, 548);
+            this.buttonDifficult.Name = "buttonDifficult";
+            this.buttonDifficult.Size = new System.Drawing.Size(75, 23);
+            this.buttonDifficult.TabIndex = 44;
+            this.buttonDifficult.Text = "Difficult";
+            this.buttonDifficult.UseVisualStyleBackColor = true;
+            this.buttonDifficult.Click += new System.EventHandler(this.buttonDifficult_Click);
+            // 
+            // buttonNormal
+            // 
+            this.buttonNormal.Location = new System.Drawing.Point(535, 548);
+            this.buttonNormal.Name = "buttonNormal";
+            this.buttonNormal.Size = new System.Drawing.Size(75, 23);
+            this.buttonNormal.TabIndex = 43;
+            this.buttonNormal.Text = "Normal";
+            this.buttonNormal.UseVisualStyleBackColor = true;
+            this.buttonNormal.Click += new System.EventHandler(this.buttonNormal_Click);
+            // 
+            // buttonEasy
+            // 
+            this.buttonEasy.Enabled = false;
+            this.buttonEasy.Location = new System.Drawing.Point(454, 548);
+            this.buttonEasy.Name = "buttonEasy";
+            this.buttonEasy.Size = new System.Drawing.Size(75, 23);
+            this.buttonEasy.TabIndex = 42;
+            this.buttonEasy.Text = "Easy";
+            this.buttonEasy.UseVisualStyleBackColor = true;
+            this.buttonEasy.Click += new System.EventHandler(this.buttonEasy_Click);
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label78.Location = new System.Drawing.Point(443, 532);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(86, 13);
+            this.label78.TabIndex = 41;
+            this.label78.Text = "Classification:";
+            // 
+            // labelChancePercent
+            // 
+            this.labelChancePercent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(224)))), ((int)(((byte)(203)))));
+            this.labelChancePercent.Font = new System.Drawing.Font("Stylus BT", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelChancePercent.ForeColor = System.Drawing.Color.Teal;
+            this.labelChancePercent.Location = new System.Drawing.Point(15, 389);
+            this.labelChancePercent.Name = "labelChancePercent";
+            this.labelChancePercent.Size = new System.Drawing.Size(120, 30);
+            this.labelChancePercent.TabIndex = 40;
+            this.labelChancePercent.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // buttonDivineAnchor20
+            // 
+            this.buttonDivineAnchor20.Location = new System.Drawing.Point(464, 454);
+            this.buttonDivineAnchor20.Name = "buttonDivineAnchor20";
+            this.buttonDivineAnchor20.Size = new System.Drawing.Size(94, 23);
+            this.buttonDivineAnchor20.TabIndex = 37;
+            this.buttonDivineAnchor20.Text = "Div. Anchor 2.0x";
+            this.buttonDivineAnchor20.UseVisualStyleBackColor = true;
+            this.buttonDivineAnchor20.Click += new System.EventHandler(this.buttonDivineAnchor20_Click);
+            // 
+            // buttonDivineAnchor15
+            // 
+            this.buttonDivineAnchor15.Location = new System.Drawing.Point(583, 425);
+            this.buttonDivineAnchor15.Name = "buttonDivineAnchor15";
+            this.buttonDivineAnchor15.Size = new System.Drawing.Size(99, 23);
+            this.buttonDivineAnchor15.TabIndex = 36;
+            this.buttonDivineAnchor15.Text = "Div. Anchor 1.5x";
+            this.buttonDivineAnchor15.UseVisualStyleBackColor = true;
+            this.buttonDivineAnchor15.Click += new System.EventHandler(this.buttonDivineAnchor15_Click);
+            // 
+            // buttonDivineAnchor
+            // 
+            this.buttonDivineAnchor.Location = new System.Drawing.Point(464, 425);
+            this.buttonDivineAnchor.Name = "buttonDivineAnchor";
+            this.buttonDivineAnchor.Size = new System.Drawing.Size(94, 23);
+            this.buttonDivineAnchor.TabIndex = 35;
+            this.buttonDivineAnchor.Text = "Div. Anchor";
+            this.buttonDivineAnchor.UseVisualStyleBackColor = true;
+            this.buttonDivineAnchor.Click += new System.EventHandler(this.buttonDivineAnchor_Click);
+            // 
+            // buttonCelestAnchor20
+            // 
+            this.buttonCelestAnchor20.Location = new System.Drawing.Point(464, 396);
+            this.buttonCelestAnchor20.Name = "buttonCelestAnchor20";
+            this.buttonCelestAnchor20.Size = new System.Drawing.Size(94, 23);
+            this.buttonCelestAnchor20.TabIndex = 34;
+            this.buttonCelestAnchor20.Text = "Cel. Anchor 2.0x";
+            this.buttonCelestAnchor20.UseVisualStyleBackColor = true;
+            this.buttonCelestAnchor20.Click += new System.EventHandler(this.buttonCelestAnchor20_Click);
+            // 
+            // buttonSilver
+            // 
+            this.buttonSilver.Location = new System.Drawing.Point(464, 338);
+            this.buttonSilver.Name = "buttonSilver";
+            this.buttonSilver.Size = new System.Drawing.Size(94, 23);
+            this.buttonSilver.TabIndex = 33;
+            this.buttonSilver.Text = "Silver";
+            this.buttonSilver.UseVisualStyleBackColor = true;
+            this.buttonSilver.Click += new System.EventHandler(this.buttonSilver_Click);
+            // 
+            // buttonCelestAnchor15
+            // 
+            this.buttonCelestAnchor15.Location = new System.Drawing.Point(583, 367);
+            this.buttonCelestAnchor15.Name = "buttonCelestAnchor15";
+            this.buttonCelestAnchor15.Size = new System.Drawing.Size(99, 23);
+            this.buttonCelestAnchor15.TabIndex = 32;
+            this.buttonCelestAnchor15.Text = "Cel. Anchor 1.5x";
+            this.buttonCelestAnchor15.UseVisualStyleBackColor = true;
+            this.buttonCelestAnchor15.Click += new System.EventHandler(this.buttonCelestAnchor15_Click);
+            // 
+            // buttonCelestAnchor
+            // 
+            this.buttonCelestAnchor.Location = new System.Drawing.Point(464, 367);
+            this.buttonCelestAnchor.Name = "buttonCelestAnchor";
+            this.buttonCelestAnchor.Size = new System.Drawing.Size(94, 23);
+            this.buttonCelestAnchor.TabIndex = 31;
+            this.buttonCelestAnchor.Text = "Cel. Anchor";
+            this.buttonCelestAnchor.UseVisualStyleBackColor = true;
+            this.buttonCelestAnchor.Click += new System.EventHandler(this.buttonCelestAnchor_Click);
+            // 
+            // buttonSupRed
+            // 
+            this.buttonSupRed.Location = new System.Drawing.Point(583, 309);
+            this.buttonSupRed.Name = "buttonSupRed";
+            this.buttonSupRed.Size = new System.Drawing.Size(99, 23);
+            this.buttonSupRed.TabIndex = 30;
+            this.buttonSupRed.Text = "Superior Red";
+            this.buttonSupRed.UseVisualStyleBackColor = true;
+            this.buttonSupRed.Click += new System.EventHandler(this.buttonSupRed_Click);
+            // 
+            // buttonSupYellow
+            // 
+            this.buttonSupYellow.Location = new System.Drawing.Point(464, 309);
+            this.buttonSupYellow.Name = "buttonSupYellow";
+            this.buttonSupYellow.Size = new System.Drawing.Size(94, 23);
+            this.buttonSupYellow.TabIndex = 29;
+            this.buttonSupYellow.Text = "Superior Yellow";
+            this.buttonSupYellow.UseVisualStyleBackColor = true;
+            this.buttonSupYellow.Click += new System.EventHandler(this.buttonSupYellow_Click);
+            // 
+            // buttonRed
+            // 
+            this.buttonRed.Location = new System.Drawing.Point(583, 280);
+            this.buttonRed.Name = "buttonRed";
+            this.buttonRed.Size = new System.Drawing.Size(99, 23);
+            this.buttonRed.TabIndex = 28;
+            this.buttonRed.Text = "Red";
+            this.buttonRed.UseVisualStyleBackColor = true;
+            this.buttonRed.Click += new System.EventHandler(this.buttonRed_Click);
+            // 
+            // buttonYellow
+            // 
+            this.buttonYellow.Location = new System.Drawing.Point(464, 280);
+            this.buttonYellow.Name = "buttonYellow";
+            this.buttonYellow.Size = new System.Drawing.Size(94, 23);
+            this.buttonYellow.TabIndex = 27;
+            this.buttonYellow.Text = "Yellow";
+            this.buttonYellow.UseVisualStyleBackColor = true;
+            this.buttonYellow.Click += new System.EventHandler(this.buttonYellow_Click);
+            // 
+            // buttonGreen
+            // 
+            this.buttonGreen.Location = new System.Drawing.Point(464, 251);
+            this.buttonGreen.Name = "buttonGreen";
+            this.buttonGreen.Size = new System.Drawing.Size(94, 23);
+            this.buttonGreen.TabIndex = 26;
+            this.buttonGreen.Text = "Green";
+            this.buttonGreen.UseVisualStyleBackColor = true;
+            this.buttonGreen.Click += new System.EventHandler(this.buttonGreen_Click);
+            // 
+            // buttonBlue
+            // 
+            this.buttonBlue.Location = new System.Drawing.Point(583, 251);
+            this.buttonBlue.Name = "buttonBlue";
+            this.buttonBlue.Size = new System.Drawing.Size(99, 23);
+            this.buttonBlue.TabIndex = 25;
+            this.buttonBlue.Text = "Blue";
+            this.buttonBlue.UseVisualStyleBackColor = true;
+            this.buttonBlue.Click += new System.EventHandler(this.buttonBlue_Click);
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label77.Location = new System.Drawing.Point(443, 235);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(52, 13);
+            this.label77.TabIndex = 24;
+            this.label77.Text = "Charms:";
+            // 
+            // buttonResplendent
+            // 
+            this.buttonResplendent.Location = new System.Drawing.Point(583, 496);
+            this.buttonResplendent.Name = "buttonResplendent";
+            this.buttonResplendent.Size = new System.Drawing.Size(99, 23);
+            this.buttonResplendent.TabIndex = 23;
+            this.buttonResplendent.Text = "Resplendent";
+            this.buttonResplendent.UseVisualStyleBackColor = true;
+            this.buttonResplendent.Click += new System.EventHandler(this.buttonResplendent_Click);
+            // 
+            // buttonStandard
+            // 
+            this.buttonStandard.Location = new System.Drawing.Point(464, 496);
+            this.buttonStandard.Name = "buttonStandard";
+            this.buttonStandard.Size = new System.Drawing.Size(94, 23);
+            this.buttonStandard.TabIndex = 22;
+            this.buttonStandard.Text = "Standard";
+            this.buttonStandard.UseVisualStyleBackColor = true;
+            this.buttonStandard.Click += new System.EventHandler(this.buttonStandard_Click);
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label76.Location = new System.Drawing.Point(443, 480);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(43, 13);
+            this.label76.TabIndex = 21;
+            this.label76.Text = "Scroll:";
+            // 
+            // buttonGrade11
+            // 
+            this.buttonGrade11.Location = new System.Drawing.Point(583, 179);
+            this.buttonGrade11.Name = "buttonGrade11";
+            this.buttonGrade11.Size = new System.Drawing.Size(94, 23);
+            this.buttonGrade11.TabIndex = 20;
+            this.buttonGrade11.Text = "Mythic";
+            this.buttonGrade11.UseVisualStyleBackColor = true;
+            this.buttonGrade11.Click += new System.EventHandler(this.buttonGrade11_Click);
+            // 
+            // buttonGrade10
+            // 
+            this.buttonGrade10.Location = new System.Drawing.Point(583, 150);
+            this.buttonGrade10.Name = "buttonGrade10";
+            this.buttonGrade10.Size = new System.Drawing.Size(94, 23);
+            this.buttonGrade10.TabIndex = 19;
+            this.buttonGrade10.Text = "Legendary";
+            this.buttonGrade10.UseVisualStyleBackColor = true;
+            this.buttonGrade10.Click += new System.EventHandler(this.buttonGrade10_Click);
+            // 
+            // buttonGrade9
+            // 
+            this.buttonGrade9.Location = new System.Drawing.Point(583, 121);
+            this.buttonGrade9.Name = "buttonGrade9";
+            this.buttonGrade9.Size = new System.Drawing.Size(94, 23);
+            this.buttonGrade9.TabIndex = 18;
+            this.buttonGrade9.Text = "Epic";
+            this.buttonGrade9.UseVisualStyleBackColor = true;
+            this.buttonGrade9.Click += new System.EventHandler(this.buttonGrade9_Click);
+            // 
+            // buttonGrade8
+            // 
+            this.buttonGrade8.Location = new System.Drawing.Point(583, 92);
+            this.buttonGrade8.Name = "buttonGrade8";
+            this.buttonGrade8.Size = new System.Drawing.Size(94, 23);
+            this.buttonGrade8.TabIndex = 17;
+            this.buttonGrade8.Text = "Divine";
+            this.buttonGrade8.UseVisualStyleBackColor = true;
+            this.buttonGrade8.Click += new System.EventHandler(this.buttonGrade8_Click);
+            // 
+            // buttonGrade7
+            // 
+            this.buttonGrade7.Location = new System.Drawing.Point(583, 63);
+            this.buttonGrade7.Name = "buttonGrade7";
+            this.buttonGrade7.Size = new System.Drawing.Size(94, 23);
+            this.buttonGrade7.TabIndex = 16;
+            this.buttonGrade7.Text = "Celestial";
+            this.buttonGrade7.UseVisualStyleBackColor = true;
+            this.buttonGrade7.Click += new System.EventHandler(this.buttonGrade7_Click);
+            // 
+            // buttonGrade6
+            // 
+            this.buttonGrade6.Location = new System.Drawing.Point(464, 208);
+            this.buttonGrade6.Name = "buttonGrade6";
+            this.buttonGrade6.Size = new System.Drawing.Size(94, 23);
+            this.buttonGrade6.TabIndex = 15;
+            this.buttonGrade6.Text = "Unique";
+            this.buttonGrade6.UseVisualStyleBackColor = true;
+            this.buttonGrade6.Click += new System.EventHandler(this.buttonGrade6_Click);
+            // 
+            // buttonGrade5
+            // 
+            this.buttonGrade5.Location = new System.Drawing.Point(464, 179);
+            this.buttonGrade5.Name = "buttonGrade5";
+            this.buttonGrade5.Size = new System.Drawing.Size(94, 23);
+            this.buttonGrade5.TabIndex = 14;
+            this.buttonGrade5.Text = "Heroic";
+            this.buttonGrade5.UseVisualStyleBackColor = true;
+            this.buttonGrade5.Click += new System.EventHandler(this.buttonGrade5_Click);
+            // 
+            // buttonGrade4
+            // 
+            this.buttonGrade4.Location = new System.Drawing.Point(464, 150);
+            this.buttonGrade4.Name = "buttonGrade4";
+            this.buttonGrade4.Size = new System.Drawing.Size(94, 23);
+            this.buttonGrade4.TabIndex = 13;
+            this.buttonGrade4.Text = "Arcane";
+            this.buttonGrade4.UseVisualStyleBackColor = true;
+            this.buttonGrade4.Click += new System.EventHandler(this.buttonGrade4_Click);
+            // 
+            // buttonGrade3
+            // 
+            this.buttonGrade3.Location = new System.Drawing.Point(464, 121);
+            this.buttonGrade3.Name = "buttonGrade3";
+            this.buttonGrade3.Size = new System.Drawing.Size(94, 23);
+            this.buttonGrade3.TabIndex = 12;
+            this.buttonGrade3.Text = "Rare";
+            this.buttonGrade3.UseVisualStyleBackColor = true;
+            this.buttonGrade3.Click += new System.EventHandler(this.buttonGrade3_Click);
+            // 
+            // buttonGrade2
+            // 
+            this.buttonGrade2.Location = new System.Drawing.Point(464, 92);
+            this.buttonGrade2.Name = "buttonGrade2";
+            this.buttonGrade2.Size = new System.Drawing.Size(94, 23);
+            this.buttonGrade2.TabIndex = 11;
+            this.buttonGrade2.Text = "Grand";
+            this.buttonGrade2.UseVisualStyleBackColor = true;
+            this.buttonGrade2.Click += new System.EventHandler(this.buttonGrade2_Click);
+            // 
+            // buttonGrade1
+            // 
+            this.buttonGrade1.Location = new System.Drawing.Point(464, 63);
+            this.buttonGrade1.Name = "buttonGrade1";
+            this.buttonGrade1.Size = new System.Drawing.Size(94, 23);
+            this.buttonGrade1.TabIndex = 10;
+            this.buttonGrade1.Text = "Basic";
+            this.buttonGrade1.UseVisualStyleBackColor = true;
+            this.buttonGrade1.Click += new System.EventHandler(this.buttonGrade1_Click);
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label75.Location = new System.Drawing.Point(443, 49);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(45, 13);
+            this.label75.TabIndex = 9;
+            this.label75.Text = "Grade:";
+            // 
+            // buttonGear
+            // 
+            this.buttonGear.Location = new System.Drawing.Point(464, 23);
+            this.buttonGear.Name = "buttonGear";
+            this.buttonGear.Size = new System.Drawing.Size(94, 23);
+            this.buttonGear.TabIndex = 8;
+            this.buttonGear.Text = "Gear";
+            this.buttonGear.UseVisualStyleBackColor = true;
+            this.buttonGear.Click += new System.EventHandler(this.buttonGear_Click);
+            // 
+            // buttonShip
+            // 
+            this.buttonShip.Location = new System.Drawing.Point(583, 23);
+            this.buttonShip.Name = "buttonShip";
+            this.buttonShip.Size = new System.Drawing.Size(94, 23);
+            this.buttonShip.TabIndex = 7;
+            this.buttonShip.Text = "Ship Part";
+            this.buttonShip.UseVisualStyleBackColor = true;
+            this.buttonShip.Click += new System.EventHandler(this.buttonShip_Click);
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label74.Location = new System.Drawing.Point(443, 7);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(67, 13);
+            this.label74.TabIndex = 6;
+            this.label74.Text = "Item Type:";
+            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.panel2);
@@ -2123,446 +2550,6 @@
             this.label68.TabIndex = 0;
             this.label68.Text = "Select Crop Family:";
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.checkBoxKeepItems);
-            this.tabPage3.Controls.Add(this.pictureBoxCancel);
-            this.tabPage3.Controls.Add(this.pictureBoxEnchant);
-            this.tabPage3.Controls.Add(this.buttonDifficult);
-            this.tabPage3.Controls.Add(this.buttonNormal);
-            this.tabPage3.Controls.Add(this.buttonEasy);
-            this.tabPage3.Controls.Add(this.label78);
-            this.tabPage3.Controls.Add(this.labelChancePercent);
-            this.tabPage3.Controls.Add(this.pictureBoxDegrade);
-            this.tabPage3.Controls.Add(this.pictureBoxRipChance);
-            this.tabPage3.Controls.Add(this.buttonDivineAnchor20);
-            this.tabPage3.Controls.Add(this.buttonDivineAnchor15);
-            this.tabPage3.Controls.Add(this.buttonDivineAnchor);
-            this.tabPage3.Controls.Add(this.buttonCelestAnchor20);
-            this.tabPage3.Controls.Add(this.buttonSilver);
-            this.tabPage3.Controls.Add(this.buttonCelestAnchor15);
-            this.tabPage3.Controls.Add(this.buttonCelestAnchor);
-            this.tabPage3.Controls.Add(this.buttonSupRed);
-            this.tabPage3.Controls.Add(this.buttonSupYellow);
-            this.tabPage3.Controls.Add(this.buttonRed);
-            this.tabPage3.Controls.Add(this.buttonYellow);
-            this.tabPage3.Controls.Add(this.buttonGreen);
-            this.tabPage3.Controls.Add(this.buttonBlue);
-            this.tabPage3.Controls.Add(this.label77);
-            this.tabPage3.Controls.Add(this.buttonResplendent);
-            this.tabPage3.Controls.Add(this.buttonStandard);
-            this.tabPage3.Controls.Add(this.label76);
-            this.tabPage3.Controls.Add(this.buttonGrade11);
-            this.tabPage3.Controls.Add(this.buttonGrade10);
-            this.tabPage3.Controls.Add(this.buttonGrade9);
-            this.tabPage3.Controls.Add(this.buttonGrade8);
-            this.tabPage3.Controls.Add(this.buttonGrade7);
-            this.tabPage3.Controls.Add(this.buttonGrade6);
-            this.tabPage3.Controls.Add(this.buttonGrade5);
-            this.tabPage3.Controls.Add(this.buttonGrade4);
-            this.tabPage3.Controls.Add(this.buttonGrade3);
-            this.tabPage3.Controls.Add(this.buttonGrade2);
-            this.tabPage3.Controls.Add(this.buttonGrade1);
-            this.tabPage3.Controls.Add(this.label75);
-            this.tabPage3.Controls.Add(this.buttonGear);
-            this.tabPage3.Controls.Add(this.buttonShip);
-            this.tabPage3.Controls.Add(this.label74);
-            this.tabPage3.Controls.Add(this.pictureBoxItem);
-            this.tabPage3.Controls.Add(this.pictureBoxScroll);
-            this.tabPage3.Controls.Add(this.pictureBoxCharm);
-            this.tabPage3.Controls.Add(this.pictureBoxBaseUI);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(703, 602);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Regrade Emulator";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // buttonRed
-            // 
-            this.buttonRed.Location = new System.Drawing.Point(583, 280);
-            this.buttonRed.Name = "buttonRed";
-            this.buttonRed.Size = new System.Drawing.Size(99, 23);
-            this.buttonRed.TabIndex = 28;
-            this.buttonRed.Text = "Red";
-            this.buttonRed.UseVisualStyleBackColor = true;
-            this.buttonRed.Click += new System.EventHandler(this.buttonRed_Click);
-            // 
-            // buttonYellow
-            // 
-            this.buttonYellow.Location = new System.Drawing.Point(464, 280);
-            this.buttonYellow.Name = "buttonYellow";
-            this.buttonYellow.Size = new System.Drawing.Size(94, 23);
-            this.buttonYellow.TabIndex = 27;
-            this.buttonYellow.Text = "Yellow";
-            this.buttonYellow.UseVisualStyleBackColor = true;
-            this.buttonYellow.Click += new System.EventHandler(this.buttonYellow_Click);
-            // 
-            // buttonGreen
-            // 
-            this.buttonGreen.Location = new System.Drawing.Point(464, 251);
-            this.buttonGreen.Name = "buttonGreen";
-            this.buttonGreen.Size = new System.Drawing.Size(94, 23);
-            this.buttonGreen.TabIndex = 26;
-            this.buttonGreen.Text = "Green";
-            this.buttonGreen.UseVisualStyleBackColor = true;
-            this.buttonGreen.Click += new System.EventHandler(this.buttonGreen_Click);
-            // 
-            // buttonBlue
-            // 
-            this.buttonBlue.Location = new System.Drawing.Point(583, 251);
-            this.buttonBlue.Name = "buttonBlue";
-            this.buttonBlue.Size = new System.Drawing.Size(99, 23);
-            this.buttonBlue.TabIndex = 25;
-            this.buttonBlue.Text = "Blue";
-            this.buttonBlue.UseVisualStyleBackColor = true;
-            this.buttonBlue.Click += new System.EventHandler(this.buttonBlue_Click);
-            // 
-            // label77
-            // 
-            this.label77.AutoSize = true;
-            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label77.Location = new System.Drawing.Point(443, 235);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(52, 13);
-            this.label77.TabIndex = 24;
-            this.label77.Text = "Charms:";
-            // 
-            // buttonResplendent
-            // 
-            this.buttonResplendent.Location = new System.Drawing.Point(583, 496);
-            this.buttonResplendent.Name = "buttonResplendent";
-            this.buttonResplendent.Size = new System.Drawing.Size(99, 23);
-            this.buttonResplendent.TabIndex = 23;
-            this.buttonResplendent.Text = "Resplendent";
-            this.buttonResplendent.UseVisualStyleBackColor = true;
-            this.buttonResplendent.Click += new System.EventHandler(this.buttonResplendent_Click);
-            // 
-            // buttonStandard
-            // 
-            this.buttonStandard.Location = new System.Drawing.Point(464, 496);
-            this.buttonStandard.Name = "buttonStandard";
-            this.buttonStandard.Size = new System.Drawing.Size(94, 23);
-            this.buttonStandard.TabIndex = 22;
-            this.buttonStandard.Text = "Standard";
-            this.buttonStandard.UseVisualStyleBackColor = true;
-            this.buttonStandard.Click += new System.EventHandler(this.buttonStandard_Click);
-            // 
-            // label76
-            // 
-            this.label76.AutoSize = true;
-            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label76.Location = new System.Drawing.Point(443, 480);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(43, 13);
-            this.label76.TabIndex = 21;
-            this.label76.Text = "Scroll:";
-            // 
-            // buttonGrade11
-            // 
-            this.buttonGrade11.Location = new System.Drawing.Point(583, 179);
-            this.buttonGrade11.Name = "buttonGrade11";
-            this.buttonGrade11.Size = new System.Drawing.Size(94, 23);
-            this.buttonGrade11.TabIndex = 20;
-            this.buttonGrade11.Text = "Mythic";
-            this.buttonGrade11.UseVisualStyleBackColor = true;
-            this.buttonGrade11.Click += new System.EventHandler(this.buttonGrade11_Click);
-            // 
-            // buttonGrade10
-            // 
-            this.buttonGrade10.Location = new System.Drawing.Point(583, 150);
-            this.buttonGrade10.Name = "buttonGrade10";
-            this.buttonGrade10.Size = new System.Drawing.Size(94, 23);
-            this.buttonGrade10.TabIndex = 19;
-            this.buttonGrade10.Text = "Legendary";
-            this.buttonGrade10.UseVisualStyleBackColor = true;
-            this.buttonGrade10.Click += new System.EventHandler(this.buttonGrade10_Click);
-            // 
-            // buttonGrade9
-            // 
-            this.buttonGrade9.Location = new System.Drawing.Point(583, 121);
-            this.buttonGrade9.Name = "buttonGrade9";
-            this.buttonGrade9.Size = new System.Drawing.Size(94, 23);
-            this.buttonGrade9.TabIndex = 18;
-            this.buttonGrade9.Text = "Epic";
-            this.buttonGrade9.UseVisualStyleBackColor = true;
-            this.buttonGrade9.Click += new System.EventHandler(this.buttonGrade9_Click);
-            // 
-            // buttonGrade8
-            // 
-            this.buttonGrade8.Location = new System.Drawing.Point(583, 92);
-            this.buttonGrade8.Name = "buttonGrade8";
-            this.buttonGrade8.Size = new System.Drawing.Size(94, 23);
-            this.buttonGrade8.TabIndex = 17;
-            this.buttonGrade8.Text = "Divine";
-            this.buttonGrade8.UseVisualStyleBackColor = true;
-            this.buttonGrade8.Click += new System.EventHandler(this.buttonGrade8_Click);
-            // 
-            // buttonGrade7
-            // 
-            this.buttonGrade7.Location = new System.Drawing.Point(583, 63);
-            this.buttonGrade7.Name = "buttonGrade7";
-            this.buttonGrade7.Size = new System.Drawing.Size(94, 23);
-            this.buttonGrade7.TabIndex = 16;
-            this.buttonGrade7.Text = "Celestial";
-            this.buttonGrade7.UseVisualStyleBackColor = true;
-            this.buttonGrade7.Click += new System.EventHandler(this.buttonGrade7_Click);
-            // 
-            // buttonGrade6
-            // 
-            this.buttonGrade6.Location = new System.Drawing.Point(464, 208);
-            this.buttonGrade6.Name = "buttonGrade6";
-            this.buttonGrade6.Size = new System.Drawing.Size(94, 23);
-            this.buttonGrade6.TabIndex = 15;
-            this.buttonGrade6.Text = "Unique";
-            this.buttonGrade6.UseVisualStyleBackColor = true;
-            this.buttonGrade6.Click += new System.EventHandler(this.buttonGrade6_Click);
-            // 
-            // buttonGrade5
-            // 
-            this.buttonGrade5.Location = new System.Drawing.Point(464, 179);
-            this.buttonGrade5.Name = "buttonGrade5";
-            this.buttonGrade5.Size = new System.Drawing.Size(94, 23);
-            this.buttonGrade5.TabIndex = 14;
-            this.buttonGrade5.Text = "Heroic";
-            this.buttonGrade5.UseVisualStyleBackColor = true;
-            this.buttonGrade5.Click += new System.EventHandler(this.buttonGrade5_Click);
-            // 
-            // buttonGrade4
-            // 
-            this.buttonGrade4.Location = new System.Drawing.Point(464, 150);
-            this.buttonGrade4.Name = "buttonGrade4";
-            this.buttonGrade4.Size = new System.Drawing.Size(94, 23);
-            this.buttonGrade4.TabIndex = 13;
-            this.buttonGrade4.Text = "Arcane";
-            this.buttonGrade4.UseVisualStyleBackColor = true;
-            this.buttonGrade4.Click += new System.EventHandler(this.buttonGrade4_Click);
-            // 
-            // buttonGrade3
-            // 
-            this.buttonGrade3.Location = new System.Drawing.Point(464, 121);
-            this.buttonGrade3.Name = "buttonGrade3";
-            this.buttonGrade3.Size = new System.Drawing.Size(94, 23);
-            this.buttonGrade3.TabIndex = 12;
-            this.buttonGrade3.Text = "Rare";
-            this.buttonGrade3.UseVisualStyleBackColor = true;
-            this.buttonGrade3.Click += new System.EventHandler(this.buttonGrade3_Click);
-            // 
-            // buttonGrade2
-            // 
-            this.buttonGrade2.Location = new System.Drawing.Point(464, 92);
-            this.buttonGrade2.Name = "buttonGrade2";
-            this.buttonGrade2.Size = new System.Drawing.Size(94, 23);
-            this.buttonGrade2.TabIndex = 11;
-            this.buttonGrade2.Text = "Grand";
-            this.buttonGrade2.UseVisualStyleBackColor = true;
-            this.buttonGrade2.Click += new System.EventHandler(this.buttonGrade2_Click);
-            // 
-            // buttonGrade1
-            // 
-            this.buttonGrade1.Location = new System.Drawing.Point(464, 63);
-            this.buttonGrade1.Name = "buttonGrade1";
-            this.buttonGrade1.Size = new System.Drawing.Size(94, 23);
-            this.buttonGrade1.TabIndex = 10;
-            this.buttonGrade1.Text = "Basic";
-            this.buttonGrade1.UseVisualStyleBackColor = true;
-            this.buttonGrade1.Click += new System.EventHandler(this.buttonGrade1_Click);
-            // 
-            // label75
-            // 
-            this.label75.AutoSize = true;
-            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label75.Location = new System.Drawing.Point(443, 49);
-            this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(45, 13);
-            this.label75.TabIndex = 9;
-            this.label75.Text = "Grade:";
-            // 
-            // buttonGear
-            // 
-            this.buttonGear.Location = new System.Drawing.Point(464, 23);
-            this.buttonGear.Name = "buttonGear";
-            this.buttonGear.Size = new System.Drawing.Size(94, 23);
-            this.buttonGear.TabIndex = 8;
-            this.buttonGear.Text = "Gear";
-            this.buttonGear.UseVisualStyleBackColor = true;
-            this.buttonGear.Click += new System.EventHandler(this.buttonGear_Click);
-            // 
-            // buttonShip
-            // 
-            this.buttonShip.Location = new System.Drawing.Point(583, 23);
-            this.buttonShip.Name = "buttonShip";
-            this.buttonShip.Size = new System.Drawing.Size(94, 23);
-            this.buttonShip.TabIndex = 7;
-            this.buttonShip.Text = "Ship Part";
-            this.buttonShip.UseVisualStyleBackColor = true;
-            this.buttonShip.Click += new System.EventHandler(this.buttonShip_Click);
-            // 
-            // label74
-            // 
-            this.label74.AutoSize = true;
-            this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label74.Location = new System.Drawing.Point(443, 7);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(67, 13);
-            this.label74.TabIndex = 6;
-            this.label74.Text = "Item Type:";
-            // 
-            // buttonSupYellow
-            // 
-            this.buttonSupYellow.Location = new System.Drawing.Point(464, 309);
-            this.buttonSupYellow.Name = "buttonSupYellow";
-            this.buttonSupYellow.Size = new System.Drawing.Size(94, 23);
-            this.buttonSupYellow.TabIndex = 29;
-            this.buttonSupYellow.Text = "Superior Yellow";
-            this.buttonSupYellow.UseVisualStyleBackColor = true;
-            this.buttonSupYellow.Click += new System.EventHandler(this.buttonSupYellow_Click);
-            // 
-            // buttonSupRed
-            // 
-            this.buttonSupRed.Location = new System.Drawing.Point(583, 309);
-            this.buttonSupRed.Name = "buttonSupRed";
-            this.buttonSupRed.Size = new System.Drawing.Size(99, 23);
-            this.buttonSupRed.TabIndex = 30;
-            this.buttonSupRed.Text = "Superior Red";
-            this.buttonSupRed.UseVisualStyleBackColor = true;
-            this.buttonSupRed.Click += new System.EventHandler(this.buttonSupRed_Click);
-            // 
-            // buttonCelestAnchor
-            // 
-            this.buttonCelestAnchor.Location = new System.Drawing.Point(464, 367);
-            this.buttonCelestAnchor.Name = "buttonCelestAnchor";
-            this.buttonCelestAnchor.Size = new System.Drawing.Size(94, 23);
-            this.buttonCelestAnchor.TabIndex = 31;
-            this.buttonCelestAnchor.Text = "Cel. Anchor";
-            this.buttonCelestAnchor.UseVisualStyleBackColor = true;
-            this.buttonCelestAnchor.Click += new System.EventHandler(this.buttonCelestAnchor_Click);
-            // 
-            // buttonCelestAnchor15
-            // 
-            this.buttonCelestAnchor15.Location = new System.Drawing.Point(583, 367);
-            this.buttonCelestAnchor15.Name = "buttonCelestAnchor15";
-            this.buttonCelestAnchor15.Size = new System.Drawing.Size(99, 23);
-            this.buttonCelestAnchor15.TabIndex = 32;
-            this.buttonCelestAnchor15.Text = "Cel. Anchor 1.5x";
-            this.buttonCelestAnchor15.UseVisualStyleBackColor = true;
-            this.buttonCelestAnchor15.Click += new System.EventHandler(this.buttonCelestAnchor15_Click);
-            // 
-            // buttonSilver
-            // 
-            this.buttonSilver.Location = new System.Drawing.Point(464, 338);
-            this.buttonSilver.Name = "buttonSilver";
-            this.buttonSilver.Size = new System.Drawing.Size(94, 23);
-            this.buttonSilver.TabIndex = 33;
-            this.buttonSilver.Text = "Silver";
-            this.buttonSilver.UseVisualStyleBackColor = true;
-            this.buttonSilver.Click += new System.EventHandler(this.buttonSilver_Click);
-            // 
-            // buttonCelestAnchor20
-            // 
-            this.buttonCelestAnchor20.Location = new System.Drawing.Point(464, 396);
-            this.buttonCelestAnchor20.Name = "buttonCelestAnchor20";
-            this.buttonCelestAnchor20.Size = new System.Drawing.Size(94, 23);
-            this.buttonCelestAnchor20.TabIndex = 34;
-            this.buttonCelestAnchor20.Text = "Cel. Anchor 2.0x";
-            this.buttonCelestAnchor20.UseVisualStyleBackColor = true;
-            this.buttonCelestAnchor20.Click += new System.EventHandler(this.buttonCelestAnchor20_Click);
-            // 
-            // buttonDivineAnchor
-            // 
-            this.buttonDivineAnchor.Location = new System.Drawing.Point(464, 425);
-            this.buttonDivineAnchor.Name = "buttonDivineAnchor";
-            this.buttonDivineAnchor.Size = new System.Drawing.Size(94, 23);
-            this.buttonDivineAnchor.TabIndex = 35;
-            this.buttonDivineAnchor.Text = "Div. Anchor";
-            this.buttonDivineAnchor.UseVisualStyleBackColor = true;
-            this.buttonDivineAnchor.Click += new System.EventHandler(this.buttonDivineAnchor_Click);
-            // 
-            // buttonDivineAnchor15
-            // 
-            this.buttonDivineAnchor15.Location = new System.Drawing.Point(583, 425);
-            this.buttonDivineAnchor15.Name = "buttonDivineAnchor15";
-            this.buttonDivineAnchor15.Size = new System.Drawing.Size(99, 23);
-            this.buttonDivineAnchor15.TabIndex = 36;
-            this.buttonDivineAnchor15.Text = "Div. Anchor 1.5x";
-            this.buttonDivineAnchor15.UseVisualStyleBackColor = true;
-            this.buttonDivineAnchor15.Click += new System.EventHandler(this.buttonDivineAnchor15_Click);
-            // 
-            // buttonDivineAnchor20
-            // 
-            this.buttonDivineAnchor20.Location = new System.Drawing.Point(464, 454);
-            this.buttonDivineAnchor20.Name = "buttonDivineAnchor20";
-            this.buttonDivineAnchor20.Size = new System.Drawing.Size(94, 23);
-            this.buttonDivineAnchor20.TabIndex = 37;
-            this.buttonDivineAnchor20.Text = "Div. Anchor 2.0x";
-            this.buttonDivineAnchor20.UseVisualStyleBackColor = true;
-            this.buttonDivineAnchor20.Click += new System.EventHandler(this.buttonDivineAnchor20_Click);
-            // 
-            // labelChancePercent
-            // 
-            this.labelChancePercent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(224)))), ((int)(((byte)(203)))));
-            this.labelChancePercent.Font = new System.Drawing.Font("Stylus BT", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelChancePercent.ForeColor = System.Drawing.Color.Teal;
-            this.labelChancePercent.Location = new System.Drawing.Point(15, 389);
-            this.labelChancePercent.Name = "labelChancePercent";
-            this.labelChancePercent.Size = new System.Drawing.Size(120, 30);
-            this.labelChancePercent.TabIndex = 40;
-            this.labelChancePercent.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label78
-            // 
-            this.label78.AutoSize = true;
-            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label78.Location = new System.Drawing.Point(443, 532);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(86, 13);
-            this.label78.TabIndex = 41;
-            this.label78.Text = "Classification:";
-            // 
-            // buttonEasy
-            // 
-            this.buttonEasy.Enabled = false;
-            this.buttonEasy.Location = new System.Drawing.Point(454, 548);
-            this.buttonEasy.Name = "buttonEasy";
-            this.buttonEasy.Size = new System.Drawing.Size(75, 23);
-            this.buttonEasy.TabIndex = 42;
-            this.buttonEasy.Text = "Easy";
-            this.buttonEasy.UseVisualStyleBackColor = true;
-            this.buttonEasy.Click += new System.EventHandler(this.buttonEasy_Click);
-            // 
-            // buttonNormal
-            // 
-            this.buttonNormal.Location = new System.Drawing.Point(535, 548);
-            this.buttonNormal.Name = "buttonNormal";
-            this.buttonNormal.Size = new System.Drawing.Size(75, 23);
-            this.buttonNormal.TabIndex = 43;
-            this.buttonNormal.Text = "Normal";
-            this.buttonNormal.UseVisualStyleBackColor = true;
-            this.buttonNormal.Click += new System.EventHandler(this.buttonNormal_Click);
-            // 
-            // buttonDifficult
-            // 
-            this.buttonDifficult.Location = new System.Drawing.Point(615, 548);
-            this.buttonDifficult.Name = "buttonDifficult";
-            this.buttonDifficult.Size = new System.Drawing.Size(75, 23);
-            this.buttonDifficult.TabIndex = 44;
-            this.buttonDifficult.Text = "Difficult";
-            this.buttonDifficult.UseVisualStyleBackColor = true;
-            this.buttonDifficult.Click += new System.EventHandler(this.buttonDifficult_Click);
-            // 
-            // checkBoxKeepItems
-            // 
-            this.checkBoxKeepItems.AutoSize = true;
-            this.checkBoxKeepItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(237)))), ((int)(((byte)(223)))));
-            this.checkBoxKeepItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxKeepItems.Location = new System.Drawing.Point(6, 520);
-            this.checkBoxKeepItems.Name = "checkBoxKeepItems";
-            this.checkBoxKeepItems.Size = new System.Drawing.Size(221, 17);
-            this.checkBoxKeepItems.TabIndex = 47;
-            this.checkBoxKeepItems.Text = "Keep Scroll and Item After Results";
-            this.checkBoxKeepItems.UseVisualStyleBackColor = false;
-            // 
             // pictureBoxCancel
             // 
             this.pictureBoxCancel.Image = global::AA_Regrade.Properties.Resources.button_cancel;
@@ -2650,7 +2637,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
-            this.Text = "Archeage Tools v1.6.0";
+            this.Text = "Archeage Tools v1.6.1";
             this.Load += new System.EventHandler(this.Main_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -2659,12 +2646,12 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCrops)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEnchant)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDegrade)).EndInit();
@@ -2811,7 +2798,6 @@
         private System.Windows.Forms.CheckBox checkBoxShip;
         private System.Windows.Forms.ComboBox comboBoxClassification;
         private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.CheckBox checkBoxTesting;
         private System.Windows.Forms.Label labelPF;
         private System.Windows.Forms.Label labelPC;
         private System.Windows.Forms.Label labelPA;

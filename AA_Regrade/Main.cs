@@ -63,7 +63,6 @@ namespace AA_Regrade
             yield.generateCrops();
             crops = new List<Yield.crop>();
             //Initialize and disable
-            label63.Enabled = false;
             comboBoxClassification.SelectedIndex = 0;
             comboBoxCharmMulitplier.SelectedIndex = 0;
             comboBoxClassification.Items.RemoveAt(3);
@@ -776,6 +775,7 @@ namespace AA_Regrade
             }
         }
 
+        /*
         private void checkBoxTesting_CheckedChanged(object sender, EventArgs e)
         {
             if (!checkBoxTesting.Checked)
@@ -799,6 +799,7 @@ namespace AA_Regrade
                 label63.Enabled = false;
             }
         }
+        */
 
         private void buttonHelp_Click(object sender, EventArgs e)
         {
@@ -894,6 +895,12 @@ namespace AA_Regrade
             {
                 setGrade(1);
             }
+            else
+            {
+                emulatorItemType = 1;
+                setItem(emulatorItemType);
+                setGrade(1);
+            }
         }
 
         private void buttonRemoveSelected_Click(object sender, EventArgs e)
@@ -921,6 +928,12 @@ namespace AA_Regrade
             {
                 setGrade(2);
             }
+            else
+            {
+                emulatorItemType = 1;
+                setItem(emulatorItemType);
+                setGrade(2);
+            }
         }
 
         private void buttonGrade3_Click(object sender, EventArgs e)
@@ -928,6 +941,12 @@ namespace AA_Regrade
             resetCharm();
             if (emulatorItemType != 0)
             {
+                setGrade(3);
+            }
+            else
+            {
+                emulatorItemType = 1;
+                setItem(emulatorItemType);
                 setGrade(3);
             }
         }
@@ -939,6 +958,12 @@ namespace AA_Regrade
             {
                 setGrade(4);
             }
+            else
+            {
+                emulatorItemType = 1;
+                setItem(emulatorItemType);
+                setGrade(4);
+            }
         }
 
         private void buttonGrade5_Click(object sender, EventArgs e)
@@ -946,6 +971,12 @@ namespace AA_Regrade
             resetCharm();
             if (emulatorItemType != 0)
             {
+                setGrade(5);
+            }
+            else
+            {
+                emulatorItemType = 1;
+                setItem(emulatorItemType);
                 setGrade(5);
             }
         }
@@ -957,6 +988,12 @@ namespace AA_Regrade
             {
                 setGrade(6);
             }
+            else
+            {
+                emulatorItemType = 1;
+                setItem(emulatorItemType);
+                setGrade(6);
+            }
         }
 
         private void buttonGrade7_Click(object sender, EventArgs e)
@@ -964,6 +1001,12 @@ namespace AA_Regrade
             resetCharm();
             if (emulatorItemType != 0)
             {
+                setGrade(7);
+            }
+            else
+            {
+                emulatorItemType = 1;
+                setItem(emulatorItemType);
                 setGrade(7);
             }
         }
@@ -975,6 +1018,12 @@ namespace AA_Regrade
             {
                 setGrade(8);
             }
+            else
+            {
+                emulatorItemType = 1;
+                setItem(emulatorItemType);
+                setGrade(8);
+            }
         }
 
         private void buttonGrade9_Click(object sender, EventArgs e)
@@ -982,6 +1031,12 @@ namespace AA_Regrade
             resetCharm();
             if (emulatorItemType != 0)
             {
+                setGrade(9);
+            }
+            else
+            {
+                emulatorItemType = 1;
+                setItem(emulatorItemType);
                 setGrade(9);
             }
         }
@@ -993,6 +1048,12 @@ namespace AA_Regrade
             {
                 setGrade(10);
             }
+            else
+            {
+                emulatorItemType = 1;
+                setItem(emulatorItemType);
+                setGrade(10);
+            }
         }
 
         private void buttonGrade11_Click(object sender, EventArgs e)
@@ -1000,6 +1061,12 @@ namespace AA_Regrade
             resetCharm();
             if (emulatorItemType != 0)
             {
+                setGrade(11);
+            }
+            else
+            {
+                emulatorItemType = 1;
+                setItem(emulatorItemType);
                 setGrade(11);
             }
         }
@@ -1423,7 +1490,7 @@ namespace AA_Regrade
                     successType = 5;
                     if (emulatorItemGrade == 7 && !emulatorIsAnchored)
                     {
-                        if(roll < 5000)
+                        if(roll < 5000 && emulatorItemType == 1)
                         {
                             Console.WriteLine("Degrade: [Arcane] <-<- [Celestial]");
                             didDegrade = true;
@@ -1439,21 +1506,15 @@ namespace AA_Regrade
                         else
                         {
                             Console.WriteLine("Major Failure: The Item Exploded in a Blinding Light");
-                            if (!checkBoxKeepItems.Checked)
-                            {
-                                resetEmulator();
-                            }
+                            didBlowUp = true;
                             successType = 4;
                         }
                     }
                     else if(emulatorItemGrade > 7 && !emulatorIsAnchored)
                     {
                         Console.WriteLine("Major Failure: The Item Exploded in a Blinding Light");
-                        if (!checkBoxKeepItems.Checked)
-                        {
-                            resetEmulator();
-                        }
                         successType = 4;
+                        didBlowUp = true;
                     }
                 }
                 else
@@ -1482,7 +1543,11 @@ namespace AA_Regrade
                 }
                 eval();
                 FormResult result = new FormResult();
-                result.displayResult(successType, previousGrade, emulatorItemGrade, emulatorIsAnchored, emulatorItemType, this.DesktopLocation.X + 100, this.DesktopLocation.Y + 100);
+                result.displayResult(successType, previousGrade, emulatorItemGrade, emulatorIsAnchored, emulatorItemType);
+                if (!checkBoxKeepItems.Checked && didBlowUp)
+                {
+                    resetEmulator();
+                }
             }
         }
 
