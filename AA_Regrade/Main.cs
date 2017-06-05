@@ -1,6 +1,6 @@
 ﻿//Coded by - Aaron Darby
 //Kyrios: Felthas
-// April 29th, 2017
+//June 5th, 2017
 
 using System;
 using System.Linq;
@@ -12,14 +12,17 @@ using System.Drawing;
 
 namespace AA_Regrade
 {
+
     public partial class Main : Form
     {
+        
 
         //Global Variables
-        int currentGrade, charmedGrade, targetGrade, iterations, classification, totalVocation = 0, lastSelection = 0, selectedCharm = 0;
+        int currentGrade, targetGrade, iterations, classification, totalVocation = 0, lastSelection = 0, selectedCharm = 0;
         int emulatorItemType = 0;// 1= Gear 2= Ship
         int emulatorItemGrade = 0;// 1= Basic ... 11=Mythic
         int emulatorScrollType = 0;// 1= Standard 2=Resplendent
+        int[,] gradeOptions = new int[12, 2];
         double emulatorOdds = 0;//getOdds will fill this
         int emulatorClass = 0;//1 = Easy, 2 = Normal, 3 = Difficult
         double emulatorCharmType = 1; //Multiplier (1 *no charm*, 1.5, 1.75, 2, 2.5)
@@ -27,6 +30,7 @@ namespace AA_Regrade
         double[] successes = new double[11];
         double[] cumulativeCost = new double[11];
         double[] majorFails = new double[11];
+        double[] prices = new double[16];
         double patch = 3.5;
         double totalCost = 0;
         double totalFail = 0;
@@ -46,7 +50,7 @@ namespace AA_Regrade
         Help help = new Help();
         Updates updates = new Updates();
         Yield yield = new Yield();
-        
+        Costs costs = new Costs();
         List<Yield.crop> crops;
 
         public Main()
@@ -59,12 +63,32 @@ namespace AA_Regrade
             //Initialize Values and Prepopulate Dropdowns
             comboBoxGrade.SelectedIndex = 0;
             comboBoxTarget.SelectedIndex = 1;
-            comboBoxCharmGrade.SelectedIndex = 0;
+            comboBoxBasicCharm.SelectedIndex = 0;
+            comboBoxBasicScroll.SelectedIndex = 0;
+            comboBoxGrandCharm.SelectedIndex = 0;
+            comboBoxGrandScroll.SelectedIndex = 0;
+            comboBoxArcaneCharm.SelectedIndex = 0;
+            comboBoxArcaneScroll.SelectedIndex = 0;
+            comboBoxRareCharm.SelectedIndex = 0;
+            comboBoxRareScroll.SelectedIndex = 0;
+            comboBoxHeroicCharm.SelectedIndex = 0;
+            comboBoxHeroicScroll.SelectedIndex = 0;
+            comboBoxUniqueCharm.SelectedIndex = 0;
+            comboBoxUniqueScroll.SelectedIndex = 0;
+            comboBoxCelestialCharm.SelectedIndex = 0;
+            comboBoxCelestialScroll.SelectedIndex = 0;
+            comboBoxDivineCharm.SelectedIndex = 0;
+            comboBoxDivineScroll.SelectedIndex = 0;
+            comboBoxEpicCharm.SelectedIndex = 0;
+            comboBoxEpicScroll.SelectedIndex = 0;
+            comboBoxLegendaryCharm.SelectedIndex = 0;
+            comboBoxLegendaryScroll.SelectedIndex = 0;
+            comboBoxMythicCharm.SelectedIndex = 0;
+            comboBoxMythicScroll.SelectedIndex = 0;
             yield.generateCrops();
             crops = new List<Yield.crop>();
             //Initialize and disable
             comboBoxClassification.SelectedIndex = 0;
-            comboBoxCharmMulitplier.SelectedIndex = 0;
             comboBoxClassification.Items.RemoveAt(3);
             comboBoxClassification.Enabled = true;
             checkBoxBundle.Enabled = false;
@@ -78,8 +102,31 @@ namespace AA_Regrade
 
         private void buttonEnchant_Click(object sender, EventArgs e)
         {
+            //Setup Grade Options
+            gradeOptions[0, 0] = comboBoxBasicScroll.SelectedIndex;
+            gradeOptions[0, 1] = comboBoxBasicCharm.SelectedIndex;
+            gradeOptions[1, 0] = comboBoxGrandScroll.SelectedIndex;
+            gradeOptions[1, 1] = comboBoxGrandCharm.SelectedIndex;
+            gradeOptions[2, 0] = comboBoxRareScroll.SelectedIndex;
+            gradeOptions[2, 1] = comboBoxRareCharm.SelectedIndex;
+            gradeOptions[3, 0] = comboBoxArcaneScroll.SelectedIndex;
+            gradeOptions[3, 1] = comboBoxArcaneCharm.SelectedIndex;
+            gradeOptions[4, 0] = comboBoxHeroicScroll.SelectedIndex;
+            gradeOptions[4, 1] = comboBoxHeroicCharm.SelectedIndex;
+            gradeOptions[5, 0] = comboBoxUniqueScroll.SelectedIndex;
+            gradeOptions[5, 1] = comboBoxUniqueCharm.SelectedIndex;
+            gradeOptions[6, 0] = comboBoxCelestialScroll.SelectedIndex;
+            gradeOptions[6, 1] = comboBoxCelestialCharm.SelectedIndex;
+            gradeOptions[7, 0] = comboBoxDivineScroll.SelectedIndex;
+            gradeOptions[7, 1] = comboBoxDivineCharm.SelectedIndex;
+            gradeOptions[8, 0] = comboBoxEpicScroll.SelectedIndex;
+            gradeOptions[8, 1] = comboBoxEpicCharm.SelectedIndex;
+            gradeOptions[9, 0] = comboBoxLegendaryScroll.SelectedIndex;
+            gradeOptions[9, 1] = comboBoxLegendaryCharm.SelectedIndex;
+            gradeOptions[10, 0] = comboBoxMythicScroll.SelectedIndex;
+            gradeOptions[10, 1] = comboBoxMythicCharm.SelectedIndex;
             //Local Variables
-            double scroll, rScroll, charm, enchant;
+            double scroll;
 
             //Step 1: Validate User Input
             bool validated = validate();
@@ -91,13 +138,9 @@ namespace AA_Regrade
             else
             {
                 //Step 2: Parse Values
-                scroll = double.Parse(textBoxStandardScroll.Text);
-                rScroll = double.Parse(textBoxResplenScroll.Text);
-                charm = double.Parse(textBoxCharm.Text);
-                enchant = double.Parse(textBoxEnchant.Text);
+                scroll = costs.regScrollCost;
                 iterations = int.Parse(textBoxIterations.Text);
                 isRegradeEvent = checkBoxEvent.Checked;
-                selectedCharm = comboBoxCharmMulitplier.SelectedIndex;
 
                 //Setup the Progress Bar
                 progressBar.Maximum = iterations;
@@ -106,7 +149,6 @@ namespace AA_Regrade
                 //Step 3: Call Enchanting Process
                 isDoneEnchanting = false;
                 currentGrade = comboBoxGrade.SelectedIndex;
-                charmedGrade = comboBoxCharmGrade.SelectedIndex;
                 targetGrade = comboBoxTarget.SelectedIndex;
                 classification = comboBoxClassification.SelectedIndex;
                 buttonEnchant.Enabled = false;
@@ -138,18 +180,11 @@ namespace AA_Regrade
         public bool validate()
         {
             //Local Variables
-            double test = 0.0;
             int iteration = 0;
             bool isValid = false;
             //Validate Entries in the Textboxes, they should correctly parse as double values
             try
             {
-                test = double.Parse(textBoxStandardScroll.Text);
-                test = double.Parse(textBoxResplenScroll.Text);
-                test = double.Parse(textBoxCharm.Text);
-                test = double.Parse(textBoxEnchant.Text);
-                test = double.Parse(textBoxCelestAnchor.Text);
-                test = double.Parse(textBoxDivineAnchor.Text);
                 iteration = int.Parse(textBoxIterations.Text);
                 isValid = true;
             }
@@ -162,7 +197,7 @@ namespace AA_Regrade
         }
 
         //Peform the Enchantments
-        public void doEnchant(double scroll, double rScroll, double charm, double enchant, int iterations, int currentGrade, int charmedGrade, int targetGrade, bool isRegradeEvent, bool isShip, int selectedCharm)
+        public void doEnchant(int iterations, int currentGrade, int targetGrade, bool isRegradeEvent, bool isShip, int selectedCharm, double[] prices, int[,] gradeOptions)
         {
             /* Grade Values
              * 0 = Basic
@@ -184,7 +219,6 @@ namespace AA_Regrade
 
             //Local Variables
             bool isDone = false;
-            bool getCharmed = false;
             double odds = 0;
             double roll = 0;
             double sessionCost = 0;
@@ -192,6 +226,7 @@ namespace AA_Regrade
             double miscModifier = 0;
             double enchantCost = 0;
             int initialGrade = currentGrade;
+            int charmSelection = 0;
 
             //Initialize Global Variables
             GSUD = 0;
@@ -203,7 +238,7 @@ namespace AA_Regrade
             for (int count = 1; count <= iterations; count++)
             {
                 currentGrade = initialGrade; //We don't want to modify the inital grade
-                enchantCost = enchant;
+                enchantCost = prices[15];
                 trino = 1; //Reset the Trino RNG modifyer
 
                 //Begin enchanting an item until it reaches the target grade
@@ -211,36 +246,115 @@ namespace AA_Regrade
                 while (!isDone)
                 {
                     //Step 1: Get Odds of Success and increment the attempt count
-                    if (currentGrade == 6 && checkBoxIsAnchorCelest.Checked) getCharmed = true;
-                    else if (currentGrade == 7 && checkBoxIsAnchorDivine.Checked) getCharmed = true;
-                    else if (checkBoxCharms.Checked) getCharmed = true;
-                    else getCharmed = false;
-                    odds = getOdds(currentGrade, checkBoxResplend.Checked, getCharmed, charmedGrade, isShip, classification, selectedCharm);
+
+                    //Set the Charm Multiplier
+                    if (currentGrade == 0)
+                    {
+                        if (gradeOptions[0, 1] == 0) charmSelection = -1;
+                        if (gradeOptions[0, 1] == 1) charmSelection = 0;
+                        if (gradeOptions[0, 1] == 2) charmSelection = 2;
+                        selectedCharm = charmSelection;
+                    }
+                    if (currentGrade == 1)
+                    {
+                        if (gradeOptions[1, 1] == 0) charmSelection = -1;
+                        if (gradeOptions[1, 1] == 1) charmSelection = 0;
+                        if (gradeOptions[1, 1] == 2) charmSelection = 2;
+                        selectedCharm = charmSelection;
+                    }
+                    if (currentGrade == 2)
+                    {
+                        if (gradeOptions[2, 1] == 0) charmSelection = -1;
+                        if (gradeOptions[2, 1] == 1) charmSelection = 0;
+                        if (gradeOptions[2, 1] == 2) charmSelection = 2;
+                        selectedCharm = charmSelection;
+                    }
+                    if (currentGrade == 3)
+                    {
+                        if (gradeOptions[3, 1] == 0) charmSelection = -1;
+                        if (gradeOptions[3, 1] == 1) charmSelection = 1;
+                        if (gradeOptions[3, 1] == 2) charmSelection = 0;
+                        if (gradeOptions[3, 1] == 3) charmSelection = 2;
+                        selectedCharm = charmSelection;
+                    }
+                    if (currentGrade == 4)
+                    {
+                        if (gradeOptions[4, 1] == 0) charmSelection = -1;
+                        if (gradeOptions[4, 1] == 1) charmSelection = 0;
+                        if (gradeOptions[4, 1] == 2) charmSelection = 0;
+                        if (gradeOptions[4, 1] == 3) charmSelection = 2;
+                        selectedCharm = charmSelection;
+                    }
+                    if (currentGrade == 5)
+                    {
+                        if (gradeOptions[5, 1] == 0) charmSelection = -1;
+                        if (gradeOptions[5, 1] == 1) charmSelection = 0;
+                        if (gradeOptions[5, 1] == 2) charmSelection = 2;
+                        selectedCharm = charmSelection;
+                    }
+                    if (currentGrade == 6)
+                    {
+                        if (gradeOptions[6, 1] == 0) charmSelection = -1;
+                        if (gradeOptions[6, 1] == 1) charmSelection = 3;
+                        if (gradeOptions[6, 1] == 2) charmSelection = 0;
+                        if (gradeOptions[6, 1] == 3) charmSelection = 2;
+                        if (gradeOptions[6, 1] == 4) charmSelection = -1;
+                        if (gradeOptions[6, 1] == 5) charmSelection = 0;
+                        if (gradeOptions[6, 1] == 6) charmSelection = 2;
+                        selectedCharm = charmSelection;
+                    }
+                    if (currentGrade == 7)
+                    {
+                        if (gradeOptions[7, 1] == 0) charmSelection = -1;
+                        if (gradeOptions[7, 1] == 1) charmSelection = 3;
+                        if (gradeOptions[7, 1] == 2) charmSelection = 0;
+                        if (gradeOptions[7, 1] == 3) charmSelection = 2;
+                        if (gradeOptions[7, 1] == 4) charmSelection = -1;
+                        if (gradeOptions[7, 1] == 5) charmSelection = 0;
+                        if (gradeOptions[7, 1] == 6) charmSelection = 2;
+                        selectedCharm = charmSelection;
+                    }
+                    if (currentGrade == 8)
+                    {
+                        if (gradeOptions[8, 1] == 0) charmSelection = -1;
+                        if (gradeOptions[8, 1] == 1) charmSelection = 3;
+                        if (gradeOptions[8, 1] == 2) charmSelection = 0;
+                        if (gradeOptions[8, 1] == 3) charmSelection = 2;
+                        selectedCharm = charmSelection;
+                    }
+                    if (currentGrade == 9)
+                    {
+                        if (gradeOptions[9, 1] == 0) charmSelection = -1;
+                        if (gradeOptions[9, 1] == 1) charmSelection = 3;
+                        if (gradeOptions[9, 1] == 2) charmSelection = 0;
+                        if (gradeOptions[9, 1] == 3) charmSelection = 2;
+                        selectedCharm = charmSelection;
+                    }
+                    if (currentGrade == 10)
+                    {
+                        if (gradeOptions[10, 1] == 0) charmSelection = -1;
+                        if (gradeOptions[10, 1] == 1) charmSelection = 3;
+                        if (gradeOptions[10, 1] == 2) charmSelection = 0;
+                        if (gradeOptions[10, 1] == 3) charmSelection = 2;
+                        selectedCharm = charmSelection;
+                    }
+                    //---//
+                    odds = getOdds(currentGrade, isShip, classification, selectedCharm);
                     if (odds > 10000) odds = 10000;//Can't have greater than 100% chance
                     attempts[currentGrade]++;
                     //Step 2: Apply Statistics
-                    //Add the cost of a resplendent scroll if applicable
-                    if (currentGrade > 4 && currentGrade != 9)
-                    {
-                        if (checkBoxResplend.Checked) sessionCost += rScroll;
-                        else sessionCost += scroll;
-                    }
-                    //Otherwise add the cost of a regular scroll
-                    else sessionCost += scroll;
+                    //Add the cost of a scrolls
+                    if (gradeOptions[currentGrade, 0] == 1) sessionCost += prices[14];
+                    else sessionCost += prices[13];
                     //Add the enchantment cost
                     sessionCost += enchantCost;
                     //Add the charm cost if applicable
-                    if (currentGrade >= charmedGrade && (checkBoxCharms.Checked || checkBoxIsAnchorCelest.Checked || checkBoxIsAnchorDivine.Checked))
-                    {
-                        if (currentGrade == 6 && checkBoxIsAnchorCelest.Checked) sessionCost += double.Parse(textBoxCelestAnchor.Text);
-                        else if (currentGrade == 7 && checkBoxIsAnchorDivine.Checked) sessionCost += double.Parse(textBoxDivineAnchor.Text);
-                        else if (checkBoxCharms.Checked) sessionCost += charm;
-                    }
+                    sessionCost += getCharmCost(currentGrade);
                     cumulativeCost[currentGrade] += sessionCost;
 
                     //Step 3: Roll the Enchantment
                     roll = rng.Next(1, 10000) * (trino + miscModifier);
-                    //Add modifier for a regrade event (Using modifiers from November 2016 Event)
+                    //Add modifier for a regrade event (Using modifiers from May 2017 Event)
                     if (isRegradeEvent && currentGrade <= 5) odds *= 1.5;
                     //Check for Success
                     if (roll <= odds)
@@ -249,15 +363,14 @@ namespace AA_Regrade
                         successes[currentGrade]++;
                         trino += trinoRNG();
                         currentGrade++;
-                        enchantCost += (enchantCost * .25); //This is a rough estimate to account for increasing enchanting costs
+                        enchantCost += (enchantCost * .35); //This is a rough estimate to account for increasing enchanting costs
                         sessionCost = 0;
                         //Check for Great Success if using a resplendent
-                        if (currentGrade >= 6 && ((patch != 3.5 && currentGrade != 10) || (patch == 3.5 && currentGrade != 11)) && checkBoxResplend.Checked)
+                        if (!isShip && gradeOptions[currentGrade, 0] == 1)
                         {
                             if (roll <= odds * .25)
                             {
                                 //Great Success
-                                //if (currentGrade > 9) Console.WriteLine("Great Success! " + currentGrade + " -> " + (currentGrade + 1) + " " + roll + " " + (odds*.25));
                                 trino += trinoRNG();
                                 //Increment the Great Success count for the appropriate grade
                                 if (currentGrade - 1 == 5) GSUD++;
@@ -266,7 +379,7 @@ namespace AA_Regrade
                                 if (currentGrade - 1 == 8) GSEM++;
                                 if (currentGrade - 1 == 9) GSLP++;
                                 currentGrade++;
-                                enchantCost += (enchantCost * .25);
+                                enchantCost += (enchantCost * .35);
                             }
                         }
                     }
@@ -280,54 +393,47 @@ namespace AA_Regrade
                         {
                             majorFails[currentGrade]++;
                             currentGrade = initialGrade;
-                            enchantCost = enchant;
+                            enchantCost = prices[15];
                             trino = 1;
                         }
 
-                        //
-                        if (!isShip && currentGrade == 6 && majorFail(checkBoxCharms.Checked, checkBoxIsAnchorCelest.Checked, isRegradeEvent, roll))
+                        //Roll for Celestial break or downgrade
+                        if (!isShip && currentGrade == 6 && majorFail(gradeOptions[6,1], isRegradeEvent))
                         {
                             majorFails[currentGrade]++;
                             currentGrade = initialGrade;
-                            enchantCost = enchant;
+                            enchantCost = prices[15];
                             trino = 1;
+                            
                         }
-                        else if(!isShip && currentGrade == 6)
+                        
+                        else if(!isShip && currentGrade == 6 && gradeOptions[6,1] < 4)
                         {
-                            //Check for Mistsong Option
-                            //Counts it as a "blown up" item on degrade for those who would rather just loot another unique T1
-                            if (checkBoxMist.Checked)
-                            {
-                                majorFails[currentGrade]++;
-                                currentGrade = initialGrade;
-                                enchantCost = enchant;
-                                trino = 1;
-                            }
                             //Downgrade Item
-                            enchantCost = enchant;
+                            enchantCost = prices[15];
                             currentGrade = 3; //Downgrade
                             if (currentGrade > initialGrade)
                             {
                                 for (int a = 3; a > initialGrade; a--)
                                 {
-                                    enchantCost *= 1.25;
+                                    enchantCost *= 1.35;
                                 }
                             }
                             else if (currentGrade < initialGrade)
                             {
                                 for (int a = 3; a < initialGrade; a++)
                                 {
-                                    enchantCost /= 1.25;
+                                    enchantCost /= 1.35;
                                 }
                             }
                         }
 
                         //Break Divine if Not Anchored
-                        if(currentGrade == 7 && !checkBoxIsAnchorDivine.Checked && !isShip)
+                        if(currentGrade == 7 && !isShip && gradeOptions[7,1] < 4)
                         {
                             majorFails[currentGrade]++;
                             currentGrade = initialGrade;
-                            enchantCost = enchant;
+                            enchantCost = prices[15];
                             trino = 1;
                         }
                         //Break Epic and Above
@@ -335,7 +441,7 @@ namespace AA_Regrade
                         {
                             majorFails[currentGrade]++;
                             currentGrade = initialGrade;
-                            enchantCost = enchant;
+                            enchantCost = prices[15];
                             trino = 1;
                         }
                     }
@@ -371,23 +477,16 @@ namespace AA_Regrade
         }
 
         //Handles celestial break/degrade event
-        public bool majorFail(bool charmed, bool anchored, bool regradeEvent, double roll)
+        public bool majorFail(int charmSelection, bool regradeEvent)
         {
             //local variables
-            double odds;
+            bool anchored = false;
+            Random rng = new Random();
 
-            switch (charmed)
-            {
-                case true:
-                    odds = 6000;
-                    break;
-                default:
-                    odds = 5500;
-                    break;
-            }
-
-            if (roll > odds && !regradeEvent && !anchored) return true;
-            else return false;
+            if (charmSelection >= 4 && charmSelection <= 6) anchored = true;
+            if (anchored || regradeEvent) return false;
+            else if (rng.Next(1, 10000) < 5000) return false;
+            else return true;
         }
 
         //Returns the trino RNG modifier when called
@@ -473,7 +572,7 @@ namespace AA_Regrade
         }
 
         //Function to get the odds of a specific regrade given the options checked
-        public double getOdds(int grade, bool isResplend, bool isCharmed, int charmedGrade, bool isShip, int classification, int selectedCharm)
+        public double getOdds(int grade, bool isShip, int classification, int selectedCharm)
         {
             double multiplier = 0;
             switch (selectedCharm)
@@ -497,309 +596,284 @@ namespace AA_Regrade
             switch (grade)
             {
                 case 0://Basic -> Grand
-                    if (isShip && patch == 2.9) return 5000;
-                    else if (isShip && patch == 3.5)
+                    if (isShip && patch == 3.5)
                     {
-                        if (isCharmed) return 10000 * multiplier;
-                        else return 10000;
+                        return 10000 * multiplier;
                     }
                     else{
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 10000 * multiplier;
-                                else return 10000;
+                                return 10000 * multiplier;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 10000 * multiplier;
-                                else return 10000;
+                                return 10000 * multiplier;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 10000 * multiplier;
-                                else return 10000;
-                            default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 6000 * multiplier;
-                                else return 6000;
+                                return 10000 * multiplier;
+                            default://Should not happen
+                                return 10000 * multiplier;
                         }
                     }
                 case 1://Grand -> Rare
-                    if (isShip && patch == 2.9) return 5000;
-                    else if (isShip && patch == 3.5)
+                    if (isShip && patch == 3.5)
                     {
-                        if (isCharmed) return 10000 * multiplier;
-                        else return 10000;
+                        return 10000 * multiplier;
                     }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 10000 * multiplier;
-                                else return 10000;
+                                return 10000 * multiplier;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 10000 * multiplier;
-                                else return 10000;
+                                return 10000 * multiplier;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 10000 * multiplier;
-                                else return 10000;
-                            default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 4000 * multiplier;
-                                else return 4000;
+                                return 10000 * multiplier;
+                            default://Should not happen
+                                return 4000 *  multiplier;
                         }
                     }
                 case 2://Rare -> Arcane
-                    if (isShip && patch == 2.9) return 5000;
-                    else if (isShip && patch == 3.5)
+                    if (isShip && patch == 3.5)
                     {
-                        if (isCharmed) return 6000 * multiplier;
-                        else return 10000;
+                        return 6000 * multiplier;
                     }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 10000 * multiplier;
-                                else return 10000;
+                                return 10000 * multiplier;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 10000 * multiplier;
-                                else return 10000;
+                                return 10000 * multiplier;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 5000 * multiplier;
-                                else return 5000;
-                            default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 3000 * multiplier;
-                                else return 3000;
+                                return 5000 * multiplier;
+                            default://Should not happen
+                                return 3000 * multiplier;
                         }
                     }
                 case 3://Arcane -> Heroic
-                    if (isShip && patch == 2.9) return 5000;
-                    else if (isShip && patch == 3.5)
+                    if (isShip && patch == 3.5)
                     {
-                        if (isCharmed) return 6000 * multiplier;
-                        else return 6000;
+                        return 6000 * multiplier;
                     }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 6750 * multiplier;
-                                else return 6750;
+                                return 6750 * multiplier;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 5000 * multiplier;
-                                else return 5000;
+                                return 5000 * multiplier;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 3250 * multiplier;
-                                else return 3250;
-                            default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 3000 * multiplier;
-                                else return 3000;
+                                return 3250 * multiplier;
+                            default://Should not happen
+                            return 3000;
                         }
                     }
                 case 4://Heroic -> Unique
-                    if (isShip && patch == 2.9) return 5000;
-                    else if (isShip && patch == 3.5)
+                    if (isShip && patch == 3.5)
                     {
-                        if (isCharmed) return 6000 * multiplier;
-                        else return 6000;
+                        return 6000 * multiplier;
                     }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 6750 * multiplier;
-                                else return 6750;
+                                return 6750 * multiplier;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 5000 * multiplier;
-                                else return 5000;
+                                return 5000 * multiplier;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 3250 * multiplier;
-                                else return 3250;
-                            default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 2500 * multiplier;
-                                else return 2500;
+                                return 3250 * multiplier;
+                            default://Should not happen
+                                return 2500 * multiplier;
                         }
                     }
                 case 5://Unique -> Celestial
-                    if (isShip && patch == 2.9) return 5000;
-                    else if (isShip && patch == 3.5)
+                    if (isShip && patch == 3.5)
                     {
-                        if (isCharmed) return 5000 * multiplier;
-                        else return 5000;
+                        return 5000 * multiplier;
                     }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 4730 * multiplier;
-                                else return 4730;
+                                return 4730 * multiplier;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 3500 * multiplier;
-                                else return 3500;
+                                return 3500 * multiplier;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 2280 * multiplier;
-                                else return 2280;
-                            default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 2000 * multiplier;
-                                else return 2000;
+                                return 2280 * multiplier;
+                            default://Should not happen
+                                return 2000 * multiplier;
                         }
                     }
                 case 6://Celestial -> Divine
-                    if (isShip && patch == 2.9) return 4000;
-                    else if (isShip && patch == 3.5)
+                    if (isShip && patch == 3.5)
                     {
-                        if (isCharmed) return 5000 * multiplier;
-                        else return 5000;
+                        return 5000 * multiplier;
                     }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 4050 * multiplier;
-                                else return 4050;
+                                return 4050 * multiplier;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 3000 * multiplier;
-                                else return 3000;
+                                return 3000 * multiplier;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 1950 * multiplier;
-                                else return 1950;
-                            default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 1000 * multiplier;
-                                else return 1000;
+                                return 1950 * multiplier;
+                            default://Should not happen
+                                return 1000 * multiplier;
                         }
                     }
                 case 7://Divine -> Epic
-                    if (isShip && patch == 2.9) return 3000;
-                    else if (isShip && patch == 3.5)
+                    if (isShip && patch == 3.5)
                     {
-                        if (isCharmed) return 4000 * multiplier;
-                        else return 4000;
+                        return 4000 * multiplier;
                     }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 1350 * multiplier;
-                                else return 1350;
+                                return 1350 * multiplier;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 1000 * multiplier;
-                                else return 1000;
+                                return 1000 * multiplier;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 650 * multiplier;
-                                else return 650;
-                            default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 750 * multiplier;
-                                else return 750;
+                                return 650 * multiplier;
+                            default://Should not happen
+                                return 750 * multiplier;
                         }
                     }
                 case 8://Epic -> Legendary
-                    if (isShip && patch == 2.9) return 3000;
-                    else if (isShip && patch == 3.5)
+                    if (isShip && patch == 3.5)
                     {
-                        if (isCharmed) return 3500 * multiplier;
-                        else return 3500;
+                        return 3500 * multiplier;
                     }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 1080 * multiplier;
-                                else return 1080;
+                                return 1080 * multiplier;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 800 * multiplier;
-                                else return 800;
+                                return 800 * multiplier;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 520 * multiplier;
-                                else return 520;
-                            default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 500 * multiplier;
-                                else return 500;
+                                return 520 * multiplier;
+                            default://Should not happen
+                                return 500 * multiplier;
                         }
                     }
                 case 9://Legendary -> Mythic
-                    if (isShip && patch == 2.9) return 2000;
-                    else if (isShip && patch == 3.5)
+                    if (isShip && patch == 3.5)
                     {
-                        if (isCharmed) return 1750 * multiplier;
-                        else return 1750;
+                        return 1750 * multiplier;
                     }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 410 * multiplier;
-                                else return 410;
+                                return 410 * multiplier;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 300 * multiplier;
-                                else return 300;
+                                return 300 * multiplier;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 200 * multiplier;
-                                else return 200;
-                            default://Should not happen with 3.5, these are 2.9 Values
-                                if (isCharmed && charmedGrade >= grade) return 250 * multiplier;
-                                else return 250;
+                                return 200 * multiplier;
+                            default://Should not happen
+                                return 250 * multiplier;
                         }
                     }
                 case 10://Mythic -> Eternal
                     if (isShip && patch == 2.9) return 880;
                     else if (isShip && patch == 3.5)
                     {
-                        if (isCharmed) return 880 * multiplier;
-                        else return 880;
+                        return 880 * multiplier;
                     }
                     else
                     {
                         switch (classification)
                         {
                             case 0://Easy
-                                if (isCharmed && charmedGrade >= grade) return 270 * multiplier;
-                                else return 270;
+                                return 270 * multiplier;
                             case 1://Normal
-                                if (isCharmed && charmedGrade >= grade) return 200 * multiplier;
-                                else return 200;
+                                return 200 * multiplier;
                             case 2://Difficult
-                                if (isCharmed && charmedGrade >= grade) return 130 * multiplier;
-                                else return 130;
+                                return 130 * multiplier;
                             default://Should not happen
-                                if (isCharmed && charmedGrade >= grade) return 0;
-                                else return 0;
+                                return 0;
                         }
                     }
                 default:
                     return 0;
             }
         }
-
-        /*
-        private void checkBoxTesting_CheckedChanged(object sender, EventArgs e)
+        
+        public double getCharmCost(int currentGrade)
         {
-            if (!checkBoxTesting.Checked)
+            switch (currentGrade)
             {
-                label63.Enabled = true;
-                comboBoxClassification.Enabled = true;
-                comboBoxTarget.Items.Add("Eternal");
-                comboBoxClassification.SelectedIndex = 0;
-                comboBoxClassification.Items.RemoveAt(3);
-                patch = 3.5;
-            }
-            else
-            {
-                MessageBox.Show("This feature is only enabled while ArcheAge NA is still in 3.0. After 3.5, this feature will be permanently removed.");
-                comboBoxClassification.Enabled = false;
-                comboBoxTarget.Items.Remove("Eternal");
-                comboBoxTarget.SelectedIndex = 0;
-                comboBoxClassification.Items.Add("**3.0**");
-                comboBoxClassification.SelectedIndex = 3;
-                patch = 3.0;
-                label63.Enabled = false;
+                case 0:
+                    if (gradeOptions[currentGrade, 1] == 1) return prices[2];
+                    else if (gradeOptions[currentGrade, 1] == 2) return prices[3];
+                    else return 0;
+                case 1:
+                    if (gradeOptions[currentGrade, 1] == 1) return prices[2];
+                    else if (gradeOptions[currentGrade, 1] == 2) return prices[3];
+                    else return 0;
+                case 2:
+                    if (gradeOptions[currentGrade, 1] == 1) return prices[2];
+                    else if (gradeOptions[currentGrade, 1] == 2) return prices[3];
+                    else return 0;
+                case 3:
+                    if (gradeOptions[currentGrade, 1] == 1) return prices[0];
+                    else if (gradeOptions[currentGrade, 1] == 2) return prices[2];
+                    else if (gradeOptions[currentGrade, 1] == 3) return prices[3];
+                    else return 0;
+                case 4:
+                    if (gradeOptions[currentGrade, 1] == 1) return prices[1];
+                    else if (gradeOptions[currentGrade, 1] == 2) return prices[2];
+                    else if (gradeOptions[currentGrade, 1] == 3) return prices[3];
+                    else return 0;
+                case 5:
+                    if (gradeOptions[currentGrade, 1] == 1) return prices[2];
+                    else if (gradeOptions[currentGrade, 1] == 2) return prices[3];
+                    else return 0;
+                case 6:
+                    if (gradeOptions[currentGrade, 1] == 1) return prices[6];
+                    else if (gradeOptions[currentGrade, 1] == 2) return prices[4];
+                    else if (gradeOptions[currentGrade, 1] == 3) return prices[5];
+                    else if (gradeOptions[currentGrade, 1] == 4) return prices[7];
+                    else if (gradeOptions[currentGrade, 1] == 5) return prices[8];
+                    else if (gradeOptions[currentGrade, 1] == 6) return prices[9];
+                    else return 0;
+                case 7:
+                    if (gradeOptions[currentGrade, 1] == 1) return prices[6];
+                    else if (gradeOptions[currentGrade, 1] == 2) return prices[4];
+                    else if (gradeOptions[currentGrade, 1] == 3) return prices[5];
+                    else if (gradeOptions[currentGrade, 1] == 4) return prices[10];
+                    else if (gradeOptions[currentGrade, 1] == 5) return prices[11];
+                    else if (gradeOptions[currentGrade, 1] == 6) return prices[12];
+                    else return 0;
+                case 8:
+                    if (gradeOptions[currentGrade, 1] == 1) return prices[6];
+                    else if (gradeOptions[currentGrade, 1] == 2) return prices[4];
+                    else if (gradeOptions[currentGrade, 1] == 3) return prices[5];
+                    else return 0;
+                case 9:
+                    if (gradeOptions[currentGrade, 1] == 1) return prices[6];
+                    else if (gradeOptions[currentGrade, 1] == 2) return prices[4];
+                    else if (gradeOptions[currentGrade, 1] == 3) return prices[5];
+                    else return 0;
+                case 10:
+                    if (gradeOptions[currentGrade, 1] == 1) return prices[6];
+                    else if (gradeOptions[currentGrade, 1] == 2) return prices[4];
+                    else if (gradeOptions[currentGrade, 1] == 3) return prices[5];
+                    else return 0;
+                default:
+                    return 0;
             }
         }
-        */
 
         private void buttonHelp_Click(object sender, EventArgs e)
         {
@@ -1410,28 +1484,54 @@ namespace AA_Regrade
             if (checkBoxShip.Checked)
             {
                 checkBoxEvent.Enabled = false;
-                checkBoxMist.Enabled = false;
-                checkBoxResplend.Enabled = false;
-                checkBoxIsAnchorCelest.Checked = false;
-                checkBoxIsAnchorDivine.Checked = false;
-                checkBoxResplend.Checked = false;
                 if(patch == 3.5){
                     label63.Enabled = false;
                     comboBoxClassification.Enabled = false;
+
+                    //Reset scrolls to standard and disable the boxes
+                    comboBoxBasicScroll.SelectedIndex = 0;
+                    comboBoxGrandScroll.SelectedIndex = 0;
+                    comboBoxArcaneScroll.SelectedIndex = 0;
+                    comboBoxRareScroll.SelectedIndex = 0;
+                    comboBoxHeroicScroll.SelectedIndex = 0;
+                    comboBoxUniqueScroll.SelectedIndex = 0;
+                    comboBoxCelestialScroll.SelectedIndex = 0;
+                    comboBoxDivineScroll.SelectedIndex = 0;
+                    comboBoxEpicScroll.SelectedIndex = 0;
+                    comboBoxLegendaryScroll.SelectedIndex = 0;
+                    comboBoxMythicScroll.SelectedIndex = 0;
+
+                    comboBoxBasicScroll.Enabled     = false;
+                    comboBoxGrandScroll.Enabled     = false;
+                    comboBoxArcaneScroll.Enabled    = false;
+                    comboBoxRareScroll.Enabled      = false;
+                    comboBoxHeroicScroll.Enabled    = false;
+                    comboBoxUniqueScroll.Enabled    = false;
+                    comboBoxCelestialScroll.Enabled = false;
+                    comboBoxDivineScroll.Enabled    = false;
+                    comboBoxEpicScroll.Enabled      = false;
+                    comboBoxLegendaryScroll.Enabled = false;
+                    comboBoxMythicScroll.Enabled    = false;
                 }
             }
             else
             {
-                checkBoxCharms.Enabled = true;
                 checkBoxEvent.Enabled = true;
-                checkBoxIsAnchorCelest.Enabled = true;
-                checkBoxIsAnchorDivine.Enabled = true;
-                checkBoxMist.Enabled = true;
-                checkBoxResplend.Enabled = true;
                 if (patch == 3.5)
                 {
                     label63.Enabled = true;
                     comboBoxClassification.Enabled = true;
+                    comboBoxBasicScroll.Enabled     = true;
+                    comboBoxGrandScroll.Enabled     = true;
+                    comboBoxArcaneScroll.Enabled    = true;
+                    comboBoxRareScroll.Enabled      = true;
+                    comboBoxHeroicScroll.Enabled    = true;
+                    comboBoxUniqueScroll.Enabled    = true;
+                    comboBoxCelestialScroll.Enabled = true;
+                    comboBoxDivineScroll.Enabled    = true;
+                    comboBoxEpicScroll.Enabled      = true;
+                    comboBoxLegendaryScroll.Enabled = true;
+                    comboBoxMythicScroll.Enabled    = true;
                 }
             }
 
@@ -1557,23 +1657,43 @@ namespace AA_Regrade
             progressBar.Value = e.ProgressPercentage;
         }
 
+        private void buttonSetCosts_Click(object sender, EventArgs e)
+        {
+            costs.ShowDialog();
+        }
+
         //Sets up the thread and starts the enchanting sequence
-        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        public void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             //local variables
-            double scroll, rScroll, charm, enchant;
+            
+            
             int iterations;
             bool isShip = checkBoxShip.Checked;
             //Initialize global variables from UI elements
-            scroll = double.Parse(textBoxStandardScroll.Text);
-            rScroll = double.Parse(textBoxResplenScroll.Text);
-            charm = double.Parse(textBoxCharm.Text);
-            enchant = double.Parse(textBoxEnchant.Text);
+            prices[0] = costs.greenCharmCost;
+            prices[1] = costs.blueCharmCost;
+            prices[2] = costs.yellowCharmCost;
+            prices[3] = costs.redCharmCost;
+            prices[4] = costs.supYellowCharmCost;
+            prices[5] = costs.supRedCharmCost;
+            prices[6] = costs.silverCharmCost;
+            prices[7] = costs.celestCharm10Cost;
+            prices[8] = costs.celestCharm15Cost;
+            prices[9] = costs.celestCharm20Cost;
+            prices[10] = costs.divineCharm10Cost;
+            prices[11] = costs.divineCharm15Cost;
+            prices[12] = costs.divineCharm20Cost;
+            prices[13] = costs.regScrollCost;
+            prices[14] = costs.resplendScrollCost;
+            prices[15] = costs.enchantCost;
+            
             iterations = int.Parse(textBoxIterations.Text);
             //Start the enchanting function
-            doEnchant(scroll, rScroll, charm, enchant, iterations, currentGrade, charmedGrade, targetGrade, isRegradeEvent, isShip, selectedCharm);
+            doEnchant(iterations, currentGrade, targetGrade, isRegradeEvent, isShip, selectedCharm, prices, gradeOptions);
             isDoneEnchanting = true;
         }
+
 
         //Sets the item icon in the regrade emulator
         public void setItem(int type)
@@ -1715,7 +1835,7 @@ namespace AA_Regrade
                     selectedCharm = 3;
                     break;
             }
-            emulatorOdds = getOdds((emulatorItemGrade - 1), false, true, 15, isShip, emulatorClass, selectedCharm);
+            emulatorOdds = getOdds((emulatorItemGrade - 1), isShip, emulatorClass, selectedCharm);
             if (emulatorOdds > 10000) emulatorOdds = 10000;
             labelChancePercent.Text = Math.Round(emulatorOdds / 100, 2).ToString() + "%";
 

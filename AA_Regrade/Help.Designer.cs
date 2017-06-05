@@ -37,8 +37,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -83,7 +81,8 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(551, 44);
             this.label4.TabIndex = 3;
-            this.label4.Text = resources.GetString("label4.Text");
+            this.label4.Text = "Patch 3.5 numbers currently come from what is officially published by Trion on Ma" +
+    "y 25th 2017.";
             // 
             // label5
             // 
@@ -119,33 +118,13 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(551, 34);
             this.label8.TabIndex = 7;
-            this.label8.Text = "As of update 1.5.1, you can make a selection of what multiplier to use for your c" +
-    "harms. The same multiplier will be used for all grades you selected to begin usi" +
-    "ng them at.\r\n";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(3, 270);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(248, 13);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "What\'s with the Mistsong weapon feature?";
-            // 
-            // label10
-            // 
-            this.label10.Location = new System.Drawing.Point(12, 283);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(551, 38);
-            this.label10.TabIndex = 9;
-            this.label10.Text = resources.GetString("label10.Text");
+            this.label8.Text = "You can now select any charm that is normally possible at any grade!\r\n";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(3, 321);
+            this.label11.Location = new System.Drawing.Point(3, 267);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(121, 13);
             this.label11.TabIndex = 10;
@@ -153,7 +132,7 @@
             // 
             // label12
             // 
-            this.label12.Location = new System.Drawing.Point(12, 334);
+            this.label12.Location = new System.Drawing.Point(12, 280);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(551, 104);
             this.label12.TabIndex = 11;
@@ -163,7 +142,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(3, 438);
+            this.label13.Location = new System.Drawing.Point(3, 384);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(99, 13);
             this.label13.TabIndex = 12;
@@ -171,7 +150,7 @@
             // 
             // label14
             // 
-            this.label14.Location = new System.Drawing.Point(12, 451);
+            this.label14.Location = new System.Drawing.Point(12, 397);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(551, 58);
             this.label14.TabIndex = 13;
@@ -181,7 +160,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(3, 509);
+            this.label15.Location = new System.Drawing.Point(3, 455);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(200, 13);
             this.label15.TabIndex = 14;
@@ -189,7 +168,7 @@
             // 
             // label16
             // 
-            this.label16.Location = new System.Drawing.Point(10, 522);
+            this.label16.Location = new System.Drawing.Point(10, 468);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(551, 19);
             this.label16.TabIndex = 15;
@@ -232,8 +211,6 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -261,8 +238,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;

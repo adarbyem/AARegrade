@@ -120,15 +120,8 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Unlike other simulators out there, this simulator will regrade up to the target grade a number of times specified by the "Iterations" field and generate a report. This report will give average values per item successfully regraded to the target grade.</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>I searched through various internet fansites and official forums and used what numbers were generally considered "close" for 3.0. I could not find any official number from Trion. Patch 3.5 numbers currently come from what is officially published by Trion on May 25th 2017.</value>
-  </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Absolutely not, the more iterations you enter the more average the results will be. In the end, RNG is RNG, you can see how widely individual results will vary by using only one iteration. I suggest using the average values as a basis for determining if it is worth buying an item at grade, or regrading it yourself. Good luck!</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>I have had some mixed feedback on this one. Some people claim it is better to loot another unique grade T1 rather than regrade back up after a failure at celestial to divine. It wasn't too difficult to add an option for that, so I did.
-</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
     <value>Some people claim that the RNG ArcheAge uses tends to result in more failures than it should. This option adds a bit higher failure rate to regrades, if you are one of those who believe this is the case, by increasing the odds of failure for every success, resetting when a failure occurs. It typically affects the results by a factor of 5-10% more failures.

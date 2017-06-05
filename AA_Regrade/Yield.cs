@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,112 +50,112 @@ namespace AA_Regrade
         public void generateCrops()
         {
             //Aquafarm Crops Declarations
-            crop redCoral       = new crop();
-            crop greenCoral     = new crop();
-            crop orangeCoral    = new crop();
-            crop yellowCoral    = new crop();
-            crop antlerCoral    = new crop();
-            crop whiteCoral     = new crop();
-            crop blueCoral      = new crop();
-            crop pearlOyster    = new crop();
+            crop redCoral = new crop();
+            crop greenCoral = new crop();
+            crop orangeCoral = new crop();
+            crop yellowCoral = new crop();
+            crop antlerCoral = new crop();
+            crop whiteCoral = new crop();
+            crop blueCoral = new crop();
+            crop pearlOyster = new crop();
 
             //Trees Declarations
-            crop appleTree      = new crop();
-            crop ashTree        = new crop();
-            crop willowTree     = new crop();
-            crop hornbeamTree   = new crop();
-            crop oliveTree      = new crop();
-            crop corkTree       = new crop();
-            crop aspenTree      = new crop();
-            crop grapeTree      = new crop();
-            crop lemonTree      = new crop();
-            crop figTree        = new crop();
-            crop rubberTree     = new crop();
-            crop bambooTree     = new crop();
-            crop pineTree       = new crop();
-            crop juniperTree    = new crop();
-            crop firTree        = new crop();
-            crop cedarTree      = new crop();
-            crop yewTree        = new crop();
-            crop pomTree        = new crop();
-            crop cherryTree     = new crop();
-            crop orangeTree     = new crop();
-            crop moringaTree    = new crop();
-            crop ginkgoTree     = new crop();
-            crop mapleTree      = new crop();
-            crop avacadoTree    = new crop();
-            crop bayTree        = new crop();
-            crop cypressTree    = new crop();
-            crop oakTree        = new crop();
-            crop ebonyTree      = new crop();
-            crop chestnutTree   = new crop();
-            crop camphorTree    = new crop();
-            crop apricotTree    = new crop();
-            crop bananaTree     = new crop();
-            crop poplarTree     = new crop();
-            crop jujubeTree     = new crop();
-            crop beechTree      = new crop();
-            crop spruceTree     = new crop();
+            crop appleTree = new crop();
+            crop ashTree = new crop();
+            crop willowTree = new crop();
+            crop hornbeamTree = new crop();
+            crop oliveTree = new crop();
+            crop corkTree = new crop();
+            crop aspenTree = new crop();
+            crop grapeTree = new crop();
+            crop lemonTree = new crop();
+            crop figTree = new crop();
+            crop rubberTree = new crop();
+            crop bambooTree = new crop();
+            crop pineTree = new crop();
+            crop juniperTree = new crop();
+            crop firTree = new crop();
+            crop cedarTree = new crop();
+            crop yewTree = new crop();
+            crop pomTree = new crop();
+            crop cherryTree = new crop();
+            crop orangeTree = new crop();
+            crop moringaTree = new crop();
+            crop ginkgoTree = new crop();
+            crop mapleTree = new crop();
+            crop avacadoTree = new crop();
+            crop bayTree = new crop();
+            crop cypressTree = new crop();
+            crop oakTree = new crop();
+            crop ebonyTree = new crop();
+            crop chestnutTree = new crop();
+            crop camphorTree = new crop();
+            crop apricotTree = new crop();
+            crop bananaTree = new crop();
+            crop poplarTree = new crop();
+            crop jujubeTree = new crop();
+            crop beechTree = new crop();
+            crop spruceTree = new crop();
 
             //Seeds Declarations
-            crop barleySeed     = new crop();
-            crop beanSeed       = new crop();
-            crop carrotSeed     = new crop();
-            crop chiliSeed      = new crop();
-            crop cornSeed       = new crop();
-            crop cucumberSeed   = new crop();
-            crop garlicSeed     = new crop();
-            crop milletSeed     = new crop();
-            crop oatSeed        = new crop();
-            crop onionSeed      = new crop();
-            crop peanutSeed     = new crop();
-            crop potatoSeed     = new crop();
-            crop pumpkinSeed    = new crop();
-            crop quinoaSeed     = new crop();
-            crop riceSeed       = new crop();
-            crop ryeSeed        = new crop();
+            crop barleySeed = new crop();
+            crop beanSeed = new crop();
+            crop carrotSeed = new crop();
+            crop chiliSeed = new crop();
+            crop cornSeed = new crop();
+            crop cucumberSeed = new crop();
+            crop garlicSeed = new crop();
+            crop milletSeed = new crop();
+            crop oatSeed = new crop();
+            crop onionSeed = new crop();
+            crop peanutSeed = new crop();
+            crop potatoSeed = new crop();
+            crop pumpkinSeed = new crop();
+            crop quinoaSeed = new crop();
+            crop riceSeed = new crop();
+            crop ryeSeed = new crop();
             crop strawberrySeed = new crop();
-            crop tomatoSeed     = new crop();
-            crop wheatSeed      = new crop();
-            crop yamSeed        = new crop();
+            crop tomatoSeed = new crop();
+            crop wheatSeed = new crop();
+            crop yamSeed = new crop();
 
             //Flowers Declarations
-            crop azalea          = new crop();
-            crop cactus          = new crop();
-            crop clover          = new crop();
-            crop cornflower      = new crop();
-            crop cotton          = new crop();
-            crop lotus           = new crop();
-            crop narcissus       = new crop();
-            crop rose            = new crop();
+            crop azalea = new crop();
+            crop cactus = new crop();
+            crop clover = new crop();
+            crop cornflower = new crop();
+            crop cotton = new crop();
+            crop lotus = new crop();
+            crop narcissus = new crop();
+            crop rose = new crop();
 
             //Medicinal Herbs Declarations
-            crop aloe           = new crop();
-            crop ginseng        = new crop();
-            crop thistle        = new crop();
-            crop mushroom       = new crop();
+            crop aloe = new crop();
+            crop ginseng = new crop();
+            crop thistle = new crop();
+            crop mushroom = new crop();
 
             //Spices Declarations
-            crop iris           = new crop();
-            crop lavender       = new crop();
-            crop mint           = new crop();
-            crop poppy          = new crop();
-            crop saffron        = new crop();
-            crop sunflower      = new crop();
-            crop turmeric       = new crop();
+            crop iris = new crop();
+            crop lavender = new crop();
+            crop mint = new crop();
+            crop poppy = new crop();
+            crop saffron = new crop();
+            crop sunflower = new crop();
+            crop turmeric = new crop();
 
             //Livestock Declarations
-            crop chicken        = new crop();
-            crop duck           = new crop();
-            crop goose          = new crop();
-            crop turkey         = new crop();
-            crop pig            = new crop();
-            crop sheep          = new crop();
-            crop goat           = new crop();
-            crop cow            = new crop();
-            crop buffalo        = new crop();
-            crop yata           = new crop();
-            crop bear           = new crop();
+            crop chicken = new crop();
+            crop duck = new crop();
+            crop goose = new crop();
+            crop turkey = new crop();
+            crop pig = new crop();
+            crop sheep = new crop();
+            crop goat = new crop();
+            crop cow = new crop();
+            crop buffalo = new crop();
+            crop yata = new crop();
+            crop bear = new crop();
 
             //Livestock Initialization
             chicken.setValues("Chicken", 10, 0, 2, 4, 5, 4, false, true);
@@ -276,7 +277,7 @@ namespace AA_Regrade
             aquafarm.Add(whiteCoral);
             aquafarm.Add(blueCoral);
             aquafarm.Add(pearlOyster);
-            
+
             flowers = new List<crop>();
             flowers.Add(azalea);
             flowers.Add(cactus);
@@ -420,6 +421,6 @@ namespace AA_Regrade
                     return spices;
             }
             return null;
-        } 
+        }
     }
 }
