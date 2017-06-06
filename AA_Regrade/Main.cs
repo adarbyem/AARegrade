@@ -155,7 +155,11 @@ namespace AA_Regrade
                 buttonEnchant.Text = "Enchanting...";
 
                 //Initialize Global Variables
-                //Initialize global variables
+                GSUD = 0;
+                GSCE = 0;
+                GSDL = 0;
+                GSEM = 0;
+                GSLP = 0;
                 attempts = new double[11];
                 cumulativeCost = new double[11];
                 majorFails = new double[11];
@@ -229,11 +233,7 @@ namespace AA_Regrade
             int charmSelection = 0;
 
             //Initialize Global Variables
-            GSUD = 0;
-            GSCE = 0;
-            GSDL = 0;
-            GSEM = 0;
-
+            
             //Begin Loop
             for (int count = 1; count <= iterations; count++)
             {
@@ -280,7 +280,7 @@ namespace AA_Regrade
                     if (currentGrade == 4)
                     {
                         if (gradeOptions[4, 1] == 0) charmSelection = -1;
-                        if (gradeOptions[4, 1] == 1) charmSelection = 0;
+                        if (gradeOptions[4, 1] == 1) charmSelection = 1;
                         if (gradeOptions[4, 1] == 2) charmSelection = 0;
                         if (gradeOptions[4, 1] == 3) charmSelection = 2;
                         selectedCharm = charmSelection;
@@ -373,11 +373,11 @@ namespace AA_Regrade
                                 //Great Success
                                 trino += trinoRNG();
                                 //Increment the Great Success count for the appropriate grade
-                                if (currentGrade - 1 == 5) GSUD++;
-                                if (currentGrade - 1 == 6) GSCE++;
-                                if (currentGrade - 1 == 7) GSDL++;
-                                if (currentGrade - 1 == 8) GSEM++;
-                                if (currentGrade - 1 == 9) GSLP++;
+                                if (currentGrade == 5) GSUD++;
+                                if (currentGrade == 6) GSCE++;
+                                if (currentGrade == 7) GSDL++;
+                                if (currentGrade == 8) GSEM++;
+                                if (currentGrade == 9) GSLP++;
                                 currentGrade++;
                                 enchantCost += (enchantCost * .35);
                             }
@@ -505,47 +505,47 @@ namespace AA_Regrade
         {
             if (attempts[0] > 0) labelGA.Text = attempts[0].ToString() + " (" + Math.Round(successes[0] / attempts[0], 3) * 100 + "%)";
             else labelGA.Text = "0 (0)";
-            labelGC.Text = Math.Round(cumulativeCost[0]).ToString();
+            labelGC.Text = Math.Round(cumulativeCost[0], 1).ToString();
             labelGF.Text = majorFails[0].ToString();
             if (attempts[1] > 0) labelRA.Text = attempts[1].ToString() + " (" + Math.Round(successes[1] / attempts[1], 3) * 100 + "%)";
             else labelRA.Text = "0 (0)";
-            labelRC.Text = Math.Round(cumulativeCost[1]).ToString();
+            labelRC.Text = Math.Round(cumulativeCost[1], 1).ToString();
             labelRF.Text = majorFails[1].ToString();
             if (attempts[2] > 0) labelAA.Text = attempts[2].ToString() + " (" + Math.Round(successes[2] / attempts[2], 3) * 100 + "%)";
             else labelAA.Text = "0 (0)";
-            labelAC.Text = Math.Round(cumulativeCost[2]).ToString();
+            labelAC.Text = Math.Round(cumulativeCost[2], 1).ToString();
             labelAF.Text = majorFails[2].ToString();
             if (attempts[3] > 0) labelHA.Text = attempts[3].ToString() + " (" + Math.Round(successes[3] / attempts[3], 3) * 100 + "%)";
             else labelHA.Text = "0 (0)";
-            labelHC.Text = Math.Round(cumulativeCost[3]).ToString();
+            labelHC.Text = Math.Round(cumulativeCost[3], 1).ToString();
             labelHF.Text = majorFails[3].ToString();
             if (attempts[4] > 0) labelUA.Text = attempts[4].ToString() + " (" + Math.Round(successes[4] / attempts[4], 3) * 100 + "%)";
             else labelUA.Text = "0 (0)";
-            labelUC.Text = Math.Round(cumulativeCost[4]).ToString();
+            labelUC.Text = Math.Round(cumulativeCost[4], 1).ToString();
             labelUF.Text = majorFails[4].ToString();
             if (attempts[5] > 0) labelCA.Text = attempts[5].ToString() + " (" + Math.Round(successes[5] / attempts[5], 3) * 100 + "%)";
             else labelCA.Text = "0 (0)";
-            labelCC.Text = Math.Round(cumulativeCost[5]).ToString();
+            labelCC.Text = Math.Round(cumulativeCost[5], 1).ToString();
             labelCF.Text = majorFails[5].ToString();
             if (attempts[6] > 0) labelDA.Text = attempts[6].ToString() + " (" + Math.Round(successes[6] / attempts[6] , 3) * 100 + "%)";
             else labelDA.Text = "0 (0)";
-            labelDC.Text = Math.Round(cumulativeCost[6]).ToString();
+            labelDC.Text = Math.Round(cumulativeCost[6], 1).ToString();
             labelDF.Text = majorFails[6].ToString();
             if (attempts[7] > 0) labelEA.Text = attempts[7].ToString() + " (" + Math.Round(successes[7] / attempts[7], 3) * 100 + "%)";
             else labelEA.Text = "0 (0)";
-            labelEC.Text = Math.Round(cumulativeCost[7]).ToString();
+            labelEC.Text = Math.Round(cumulativeCost[7], 1).ToString();
             labelEF.Text = majorFails[7].ToString();
             if (attempts[8] > 0) labelLA.Text = attempts[8].ToString() + " (" + Math.Round(successes[8] / attempts[8], 3) * 100 + "%)";
             else labelLA.Text = "0 (0)";
-            labelLC.Text = Math.Round(cumulativeCost[8]).ToString();
+            labelLC.Text = Math.Round(cumulativeCost[8], 1).ToString();
             labelLF.Text = majorFails[8].ToString();
             if (attempts[9] > 0) labelMA.Text = attempts[9].ToString() + " (" + Math.Round(successes[9] / attempts[9], 3) * 100 + "%)";
             else labelMA.Text = "0 (0)";
-            labelMC.Text = Math.Round(cumulativeCost[9]).ToString();
+            labelMC.Text = Math.Round(cumulativeCost[9], 1).ToString();
             labelMF.Text = majorFails[9].ToString();
             if (attempts[10] > 0) labelPA.Text = attempts[10].ToString() + " (" + Math.Round(successes[10] / attempts[10], 3) * 100 + "%)";
             else labelPA.Text = "0 (0)";
-            labelPC.Text = Math.Round(cumulativeCost[10]).ToString();
+            labelPC.Text = Math.Round(cumulativeCost[10], 1).ToString();
             labelPF.Text = majorFails[10].ToString();
             if (attempts[5] > 0)labelGSUD.Text = (Math.Round((GSUD / iterations) / attempts[5], 3) * 100).ToString() + "%";
             if(attempts[6] > 0)labelGSCE.Text = (Math.Round((GSCE / iterations) / attempts[6], 3) * 100).ToString() + "%";
@@ -811,6 +811,7 @@ namespace AA_Regrade
         
         public double getCharmCost(int currentGrade)
         {
+            //Returns the cost of the item based on the selection made in the main window
             switch (currentGrade)
             {
                 case 0:
@@ -1584,7 +1585,6 @@ namespace AA_Regrade
                 int roll = rng.Next(0, 10000);
                 if(roll > emulatorOdds)
                 {
-                    Console.WriteLine("Fail" + " Roll: " + roll + " RNG: " + emulatorOdds);
                     //Do Fail Stuff
                     roll = rng.Next(0, 10000);
                     successType = 5;
@@ -1592,7 +1592,6 @@ namespace AA_Regrade
                     {
                         if(roll < 5000 && emulatorItemType == 1)
                         {
-                            Console.WriteLine("Degrade: [Arcane] <-<- [Celestial]");
                             didDegrade = true;
                             if (!checkBoxKeepItems.Checked)
                             {
@@ -1605,14 +1604,12 @@ namespace AA_Regrade
                         }
                         else
                         {
-                            Console.WriteLine("Major Failure: The Item Exploded in a Blinding Light");
                             didBlowUp = true;
                             successType = 4;
                         }
                     }
                     else if(emulatorItemGrade > 7 && !emulatorIsAnchored)
                     {
-                        Console.WriteLine("Major Failure: The Item Exploded in a Blinding Light");
                         successType = 4;
                         didBlowUp = true;
                     }
@@ -1622,14 +1619,12 @@ namespace AA_Regrade
                     didFail = false;
                     if(roll < emulatorOdds * 0.2 && emulatorItemGrade != 11 && emulatorScrollType == 2)
                     {
-                        Console.WriteLine("Great Success!" + " Roll: " + roll + " RNG: " + emulatorOdds);
                         emulatorItemGrade += 2;
                         setGrade(emulatorItemGrade);
                         successType = 2;
                     }
                     else
                     {
-                        Console.WriteLine("Succeed" + " Roll: " + roll + " RNG: " + emulatorOdds);
                         emulatorItemGrade++;
                         setGrade(emulatorItemGrade);
                         successType = 1;

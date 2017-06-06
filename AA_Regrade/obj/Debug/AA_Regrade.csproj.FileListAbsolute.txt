@@ -30,3 +30,4 @@ C:\Users\adarby\Documents\Visual Studio 2015\Projects\AA_Regrade\AA_Regrade\dev\
 C:\Users\adarby\Documents\Visual Studio 2015\Projects\AA_Regrade\AA_Regrade\dev\AA_Regrade\obj\Debug\Archeage Regrade Simulator.application
 C:\Users\adarby\Documents\Visual Studio 2015\Projects\AA_Regrade\AA_Regrade\dev\AA_Regrade\obj\Debug\Archeage Regrade Simulator.exe
 C:\Users\adarby\Documents\Visual Studio 2015\Projects\AA_Regrade\AA_Regrade\dev\AA_Regrade\obj\Debug\Archeage Regrade Simulator.pdb
+C:\Users\adarby\Documents\Visual Studio 2015\Projects\AA_Regrade\AA_Regrade\dev\AA_Regrade\obj\Debug\AA_Regrade.csprojResolveAssemblyReference.cache

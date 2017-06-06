@@ -13,22 +13,22 @@ namespace AA_Regrade
     public partial class Costs : Form
     {
         //Global Variables
-        public int greenCharmCost = 0;
-        public int blueCharmCost = 0;
-        public int yellowCharmCost = 0;
-        public int redCharmCost = 0;
-        public int supYellowCharmCost = 0;
-        public int supRedCharmCost = 0;
-        public int silverCharmCost = 0;
-        public int celestCharm10Cost = 0;
-        public int celestCharm15Cost = 0;
-        public int celestCharm20Cost = 0;
-        public int divineCharm10Cost = 0;
-        public int divineCharm15Cost = 0;
-        public int divineCharm20Cost = 0;
-        public int regScrollCost = 0;
-        public int resplendScrollCost = 0;
-        public int enchantCost = 0;
+        public double greenCharmCost = 0;
+        public double blueCharmCost = 0;
+        public double yellowCharmCost = 0;
+        public double redCharmCost = 0;
+        public double supYellowCharmCost = 0;
+        public double supRedCharmCost = 0;
+        public double silverCharmCost = 0;
+        public double celestCharm10Cost = 0;
+        public double celestCharm15Cost = 0;
+        public double celestCharm20Cost = 0;
+        public double divineCharm10Cost = 0;
+        public double divineCharm15Cost = 0;
+        public double divineCharm20Cost = 0;
+        public double regScrollCost = 0;
+        public double resplendScrollCost = 0;
+        public double enchantCost = 0;
 
         public Costs()
         {
@@ -40,22 +40,22 @@ namespace AA_Regrade
             //Validate Input
             try
             {
-                greenCharmCost      = int.Parse(textBoxGreenCharm.Text);
-                blueCharmCost       = int.Parse(textBoxBlueCharm.Text);
-                yellowCharmCost     = int.Parse(textBoxYellowCharm.Text);
-                redCharmCost        = int.Parse(textBoxRedCharm.Text);
-                supYellowCharmCost  = int.Parse(textBoxSupYellowCharm.Text);
-                supRedCharmCost     = int.Parse(textBoxSupRedCharm.Text);
-                silverCharmCost     = int.Parse(textBoxSilverCharm.Text);
-                celestCharm10Cost   = int.Parse(textBoxCelestialAnchor10.Text);
-                celestCharm15Cost   = int.Parse(textBoxCelestialAnchor15.Text);
-                celestCharm20Cost   = int.Parse(textBoxCelestialAnchor20.Text);
-                divineCharm10Cost   = int.Parse(textBoxDivineAnchor10.Text);
-                divineCharm15Cost   = int.Parse(textBoxDivineAnchor15.Text);
-                divineCharm20Cost   = int.Parse(textBoxDivineAnchor20.Text);
-                regScrollCost       = int.Parse(textBoxStandardScroll.Text);
-                resplendScrollCost  = int.Parse(textBoxResplendScroll.Text);
-                enchantCost         = int.Parse(textBoxEnchantCost.Text);
+                greenCharmCost      = double.Parse(textBoxGreenCharm.Text);
+                blueCharmCost       = double.Parse(textBoxBlueCharm.Text);
+                yellowCharmCost     = double.Parse(textBoxYellowCharm.Text);
+                redCharmCost        = double.Parse(textBoxRedCharm.Text);
+                supYellowCharmCost  = double.Parse(textBoxSupYellowCharm.Text);
+                supRedCharmCost     = double.Parse(textBoxSupRedCharm.Text);
+                silverCharmCost     = double.Parse(textBoxSilverCharm.Text);
+                celestCharm10Cost   = double.Parse(textBoxCelestialAnchor10.Text);
+                celestCharm15Cost   = double.Parse(textBoxCelestialAnchor15.Text);
+                celestCharm20Cost   = double.Parse(textBoxCelestialAnchor20.Text);
+                divineCharm10Cost   = double.Parse(textBoxDivineAnchor10.Text);
+                divineCharm15Cost   = double.Parse(textBoxDivineAnchor15.Text);
+                divineCharm20Cost   = double.Parse(textBoxDivineAnchor20.Text);
+                regScrollCost       = double.Parse(textBoxStandardScroll.Text);
+                resplendScrollCost  = double.Parse(textBoxResplendScroll.Text);
+                enchantCost         = double.Parse(textBoxEnchantCost.Text);
                 if (greenCharmCost     < 0) throw new Exception();
                 if (blueCharmCost      < 0) throw new Exception();
                 if (yellowCharmCost    < 0) throw new Exception();

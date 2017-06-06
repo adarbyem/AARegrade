@@ -161,7 +161,6 @@ namespace AA_Regrade
         {
             if (itemType == 2) pictureBox2.BackgroundImage = Properties.Resources.ship;
             else pictureBox2.BackgroundImage = Properties.Resources.gear;
-            Console.WriteLine(itemType);
             if (successType != 4)
             {
                 switch (grade)
