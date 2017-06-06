@@ -2753,7 +2753,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
-            this.Text = "Archeage Tools v1.7.0";
+            this.Text = "Archeage Tools v1.7.1";
             this.Load += new System.EventHandler(this.Main_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

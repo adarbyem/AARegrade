@@ -137,6 +137,11 @@
 - Redesigned to UI to allow for the new features
 - Some code cleanup</value>
   </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>- Fixed a bug that would cause blue regrade gems to only apply a 1.5 multiplier.
+- Fixed a display bug with the great success results statistics.
+- Fixed an issue where only whole numbers could be used in costs, you can now use decimal values.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
