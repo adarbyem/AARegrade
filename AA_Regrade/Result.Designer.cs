@@ -41,10 +41,13 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = global::AA_Regrade.Properties.Resources.result_confirm;
-            this.pictureBox1.Location = new System.Drawing.Point(122, 201);
+            this.pictureBox1.Location = new System.Drawing.Point(163, 247);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(70, 25);
+            this.pictureBox1.Size = new System.Drawing.Size(93, 31);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -54,9 +57,10 @@
             this.labelResult.BackColor = System.Drawing.Color.Transparent;
             this.labelResult.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelResult.ForeColor = System.Drawing.Color.LightCoral;
-            this.labelResult.Location = new System.Drawing.Point(58, 26);
+            this.labelResult.Location = new System.Drawing.Point(77, 32);
+            this.labelResult.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelResult.Name = "labelResult";
-            this.labelResult.Size = new System.Drawing.Size(205, 30);
+            this.labelResult.Size = new System.Drawing.Size(273, 37);
             this.labelResult.TabIndex = 1;
             this.labelResult.Text = "Failure";
             this.labelResult.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -65,9 +69,10 @@
             // 
             this.labelPreviousGrade.BackColor = System.Drawing.Color.Transparent;
             this.labelPreviousGrade.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPreviousGrade.Location = new System.Drawing.Point(52, 61);
+            this.labelPreviousGrade.Location = new System.Drawing.Point(69, 75);
+            this.labelPreviousGrade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPreviousGrade.Name = "labelPreviousGrade";
-            this.labelPreviousGrade.Size = new System.Drawing.Size(75, 16);
+            this.labelPreviousGrade.Size = new System.Drawing.Size(100, 20);
             this.labelPreviousGrade.TabIndex = 2;
             this.labelPreviousGrade.Text = "[Arcane]";
             this.labelPreviousGrade.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -76,9 +81,10 @@
             // 
             this.labelNextGrade.BackColor = System.Drawing.Color.Transparent;
             this.labelNextGrade.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNextGrade.Location = new System.Drawing.Point(185, 61);
+            this.labelNextGrade.Location = new System.Drawing.Point(247, 75);
+            this.labelNextGrade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNextGrade.Name = "labelNextGrade";
-            this.labelNextGrade.Size = new System.Drawing.Size(86, 16);
+            this.labelNextGrade.Size = new System.Drawing.Size(115, 20);
             this.labelNextGrade.TabIndex = 4;
             this.labelNextGrade.Text = "[Celestial]";
             // 
@@ -86,9 +92,10 @@
             // 
             this.labelSteps.BackColor = System.Drawing.Color.Transparent;
             this.labelSteps.Font = new System.Drawing.Font("GothicG", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSteps.Location = new System.Drawing.Point(125, 61);
+            this.labelSteps.Location = new System.Drawing.Point(167, 75);
+            this.labelSteps.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSteps.Name = "labelSteps";
-            this.labelSteps.Size = new System.Drawing.Size(64, 16);
+            this.labelSteps.Size = new System.Drawing.Size(85, 20);
             this.labelSteps.TabIndex = 5;
             this.labelSteps.Text = "←←←";
             this.labelSteps.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -98,29 +105,34 @@
             this.labelFailNarrative.BackColor = System.Drawing.Color.Transparent;
             this.labelFailNarrative.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFailNarrative.ForeColor = System.Drawing.Color.LightCoral;
-            this.labelFailNarrative.Location = new System.Drawing.Point(39, 87);
+            this.labelFailNarrative.Location = new System.Drawing.Point(52, 107);
+            this.labelFailNarrative.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelFailNarrative.Name = "labelFailNarrative";
-            this.labelFailNarrative.Size = new System.Drawing.Size(235, 16);
+            this.labelFailNarrative.Size = new System.Drawing.Size(313, 20);
             this.labelFailNarrative.TabIndex = 6;
             this.labelFailNarrative.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = global::AA_Regrade.Properties.Resources.gear;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox2.Image = global::AA_Regrade.Properties.Resources.arcane;
-            this.pictureBox2.Location = new System.Drawing.Point(131, 120);
+            this.pictureBox2.Location = new System.Drawing.Point(175, 148);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(52, 52);
+            this.pictureBox2.Size = new System.Drawing.Size(69, 64);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
             // 
             // FormResult
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
             this.BackgroundImage = global::AA_Regrade.Properties.Resources.result;
-            this.ClientSize = new System.Drawing.Size(314, 245);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(419, 302);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.labelFailNarrative);
@@ -129,7 +141,9 @@
             this.Controls.Add(this.labelPreviousGrade);
             this.Controls.Add(this.labelResult);
             this.Controls.Add(this.pictureBox1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormResult";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form1";

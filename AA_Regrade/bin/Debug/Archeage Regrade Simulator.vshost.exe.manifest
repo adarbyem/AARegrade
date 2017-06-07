@@ -4,7 +4,7 @@
   <description asmv2:iconFile="favicon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Archeage Regrade Simulator" version="1.7.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Archeage Regrade Simulator" version="1.7.1.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="Archeage Regrade Simulator.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Archeage Regrade Simulator.exe" size="1080320">
-      <assemblyIdentity name="Archeage Regrade Simulator" version="1.7.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Archeage Regrade Simulator.exe" size="1085440">
+      <assemblyIdentity name="Archeage Regrade Simulator" version="1.7.1.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>b0+XYNVP7LDHDJFFejGoTaIcW+MUwFU/eVeR7+4dm+w=</dsig:DigestValue>
+        <dsig:DigestValue>a5Gk3eqM95Tb3GUNRi/MGiUOp+erfaZ7ZqmyLs6q1Og=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
