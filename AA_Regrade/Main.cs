@@ -15,8 +15,6 @@ namespace AA_Regrade
 
     public partial class Main : Form
     {
-        
-
         //Global Variables
         int currentGrade, targetGrade, iterations, classification, totalVocation = 0, lastSelection = 0, selectedCharm = 0;
         int emulatorItemType = 0;// 1= Gear 2= Ship
@@ -34,17 +32,20 @@ namespace AA_Regrade
         double patch = 3.5;
         double totalCost = 0;
         double totalFail = 0;
+        double currentEnchantCost = 0;
         double GSUD = 0;
         double GSCE = 0;
         double GSDL = 0;
         double GSEM = 0;
         double GSLP = 0;
         double totalGold = 0;
+        double charmCost = 0;
+        double scrollCost = 0;
         bool isRegradeEvent = false;
         bool isDoneEnchanting = true;
         bool emulatorIsAnchored = false;
         bool emulatorIsReady = false;
-        
+        bool checkGold = false;
         
         //Global Object
         Help help = new Help();
@@ -976,6 +977,7 @@ namespace AA_Regrade
                 setItem(emulatorItemType);
                 setGrade(1);
             }
+            if (checkBox1.Checked) setEnchCost(costs.enchantCost, false);
         }
 
         private void buttonRemoveSelected_Click(object sender, EventArgs e)
@@ -1009,6 +1011,7 @@ namespace AA_Regrade
                 setItem(emulatorItemType);
                 setGrade(2);
             }
+            if (checkBox1.Checked) setEnchCost(costs.enchantCost, false);
         }
 
         private void buttonGrade3_Click(object sender, EventArgs e)
@@ -1024,6 +1027,7 @@ namespace AA_Regrade
                 setItem(emulatorItemType);
                 setGrade(3);
             }
+            if (checkBox1.Checked) setEnchCost(costs.enchantCost, false);
         }
 
         private void buttonGrade4_Click(object sender, EventArgs e)
@@ -1039,6 +1043,7 @@ namespace AA_Regrade
                 setItem(emulatorItemType);
                 setGrade(4);
             }
+            if (checkBox1.Checked) setEnchCost(costs.enchantCost, false);
         }
 
         private void buttonGrade5_Click(object sender, EventArgs e)
@@ -1054,6 +1059,7 @@ namespace AA_Regrade
                 setItem(emulatorItemType);
                 setGrade(5);
             }
+            if (checkBox1.Checked) setEnchCost(costs.enchantCost, false);
         }
 
         private void buttonGrade6_Click(object sender, EventArgs e)
@@ -1069,6 +1075,7 @@ namespace AA_Regrade
                 setItem(emulatorItemType);
                 setGrade(6);
             }
+            if (checkBox1.Checked) setEnchCost(costs.enchantCost, false);
         }
 
         private void buttonGrade7_Click(object sender, EventArgs e)
@@ -1084,6 +1091,7 @@ namespace AA_Regrade
                 setItem(emulatorItemType);
                 setGrade(7);
             }
+            if (checkBox1.Checked) setEnchCost(costs.enchantCost, false);
         }
 
         private void buttonGrade8_Click(object sender, EventArgs e)
@@ -1099,6 +1107,7 @@ namespace AA_Regrade
                 setItem(emulatorItemType);
                 setGrade(8);
             }
+            if (checkBox1.Checked) setEnchCost(costs.enchantCost, false);
         }
 
         private void buttonGrade9_Click(object sender, EventArgs e)
@@ -1114,6 +1123,7 @@ namespace AA_Regrade
                 setItem(emulatorItemType);
                 setGrade(9);
             }
+            if (checkBox1.Checked) setEnchCost(costs.enchantCost, false);
         }
 
         private void buttonGrade10_Click(object sender, EventArgs e)
@@ -1129,6 +1139,7 @@ namespace AA_Regrade
                 setItem(emulatorItemType);
                 setGrade(10);
             }
+            if (checkBox1.Checked) setEnchCost(costs.enchantCost, false);
         }
 
         private void buttonGrade11_Click(object sender, EventArgs e)
@@ -1144,15 +1155,18 @@ namespace AA_Regrade
                 setItem(emulatorItemType);
                 setGrade(11);
             }
+            if (checkBox1.Checked) setEnchCost(costs.enchantCost, false);
         }
 
         private void buttonStandard_Click(object sender, EventArgs e)
         {
             if(emulatorItemType != 0)
             {
+                updateScrollCost(costs.regScrollCost);
                 pictureBoxScroll.BackgroundImage = Properties.Resources.scroll_standard;
                 pictureBoxScroll.Image = Properties.Resources.rare;
                 emulatorScrollType = 1;
+                
             }
             eval();
         }
@@ -1161,6 +1175,7 @@ namespace AA_Regrade
         {
             if(emulatorItemType != 2 && emulatorItemType != 0)
             {
+                updateScrollCost(costs.resplendScrollCost);
                 pictureBoxScroll.BackgroundImage = Properties.Resources.scroll_resplend;
                 pictureBoxScroll.Image = Properties.Resources.heroic;
                 emulatorScrollType = 2;
@@ -1321,6 +1336,7 @@ namespace AA_Regrade
         {
             if(emulatorItemGrade == 5 && emulatorItemType != 0)
             {
+                updateCharmCost(costs.blueCharmCost);
                 emulatorCharmType = 1.75;
                 pictureBoxCharm.BackgroundImage = Properties.Resources.blue;
                 pictureBoxCharm.Image = Properties.Resources.grand;
@@ -1339,6 +1355,7 @@ namespace AA_Regrade
         {
             if (emulatorItemGrade == 4 && emulatorItemType != 0)
             {
+                updateCharmCost(costs.greenCharmCost);
                 emulatorCharmType = 1.75;
                 pictureBoxCharm.BackgroundImage = Properties.Resources.green;
                 pictureBoxCharm.Image = Properties.Resources.basic;
@@ -1351,6 +1368,7 @@ namespace AA_Regrade
         {
             if (emulatorItemGrade == 6 && emulatorItemType != 0)
             {
+                updateCharmCost(costs.yellowCharmCost);
                 emulatorCharmType = 1.5;
                 pictureBoxCharm.BackgroundImage = Properties.Resources.yellow;
                 pictureBoxCharm.Image = Properties.Resources.rare;
@@ -1363,6 +1381,7 @@ namespace AA_Regrade
         {
             if (emulatorItemGrade <= 6 && emulatorItemType != 0)
             {
+                updateCharmCost(costs.redCharmCost);
                 emulatorCharmType = 2;
                 pictureBoxCharm.BackgroundImage = Properties.Resources.red;
                 pictureBoxCharm.Image = Properties.Resources.arcane;
@@ -1375,6 +1394,7 @@ namespace AA_Regrade
         {
             if (emulatorItemType != 0 && emulatorItemGrade != 12)
             {
+                updateCharmCost(costs.supYellowCharmCost);
                 emulatorCharmType = 1.5;
                 pictureBoxCharm.BackgroundImage = Properties.Resources.sup_yellow;
                 pictureBoxCharm.Image = Properties.Resources.rare;
@@ -1387,6 +1407,7 @@ namespace AA_Regrade
         {
             if (emulatorItemType != 0 && emulatorItemGrade != 12)
             {
+                updateCharmCost(costs.supRedCharmCost);
                 emulatorCharmType = 2;
                 pictureBoxCharm.BackgroundImage = Properties.Resources.sup_red;
                 pictureBoxCharm.Image = Properties.Resources.arcane;
@@ -1399,6 +1420,7 @@ namespace AA_Regrade
         {
             if (emulatorItemGrade == 7 && emulatorItemType != 0)
             {
+                updateCharmCost(costs.celestCharm10Cost);
                 emulatorCharmType = 1;
                 pictureBoxCharm.BackgroundImage = Properties.Resources.anchor;
                 pictureBoxCharm.Image = Properties.Resources.rare;
@@ -1411,6 +1433,7 @@ namespace AA_Regrade
         {
             if (emulatorItemGrade >= 7 && emulatorItemType != 0 && emulatorItemGrade != 12)
             {
+                updateCharmCost(costs.silverCharmCost);
                 emulatorCharmType = 2.5;
                 pictureBoxCharm.BackgroundImage = Properties.Resources.silver;
                 pictureBoxCharm.Image = Properties.Resources.heroic;
@@ -1423,6 +1446,7 @@ namespace AA_Regrade
         {
             if (emulatorItemGrade == 7 && emulatorItemType != 0)
             {
+                updateCharmCost(costs.celestCharm15Cost);
                 emulatorCharmType = 1.5;
                 pictureBoxCharm.BackgroundImage = Properties.Resources.anchor;
                 pictureBoxCharm.Image = Properties.Resources.rare;
@@ -1435,6 +1459,7 @@ namespace AA_Regrade
         {
             if (emulatorItemGrade == 7 && emulatorItemType != 0)
             {
+                updateCharmCost(costs.celestCharm20Cost);
                 emulatorCharmType = 2.0;
                 pictureBoxCharm.BackgroundImage = Properties.Resources.anchor;
                 pictureBoxCharm.Image = Properties.Resources.arcane;
@@ -1447,6 +1472,7 @@ namespace AA_Regrade
         {
             if (emulatorItemGrade == 8 && emulatorItemType != 0)
             {
+                updateCharmCost(costs.divineCharm10Cost);
                 emulatorCharmType = 1;
                 pictureBoxCharm.BackgroundImage = Properties.Resources.anchor;
                 pictureBoxCharm.Image = Properties.Resources.arcane;
@@ -1459,6 +1485,7 @@ namespace AA_Regrade
         {
             if (emulatorItemGrade == 8 && emulatorItemType != 0)
             {
+                updateCharmCost(costs.divineCharm15Cost);
                 emulatorCharmType = 1.5;
                 pictureBoxCharm.BackgroundImage = Properties.Resources.anchor;
                 pictureBoxCharm.Image = Properties.Resources.arcane;
@@ -1471,6 +1498,7 @@ namespace AA_Regrade
         {
             if (emulatorItemGrade == 8 && emulatorItemType != 0)
             {
+                updateCharmCost(costs.divineCharm20Cost);
                 emulatorCharmType = 2.0;
                 pictureBoxCharm.BackgroundImage = Properties.Resources.anchor;
                 pictureBoxCharm.Image = Properties.Resources.arcane;
@@ -1581,6 +1609,8 @@ namespace AA_Regrade
 
             if (emulatorIsReady)
             {
+                costs.budget = totalGold -= currentEnchantCost;
+                refreshGold();
                 Random rng = new Random();
                 int roll = rng.Next(0, 10000);
                 if(roll > emulatorOdds)
@@ -1599,6 +1629,10 @@ namespace AA_Regrade
                                 setGrade(4);
                                 resetCharm();
                                 resetScroll();
+                                currentEnchantCost /= 1.55;
+                                currentEnchantCost /= 1.55;
+                                currentEnchantCost /= 1.55;
+
                             }
                             successType = 3;
                         }
@@ -1630,7 +1664,14 @@ namespace AA_Regrade
                         successType = 1;
                     }
                 }
-                if(!didFail)resetCharm();
+                if (!didFail)
+                {
+                    resetCharm();
+                    currentEnchantCost -= scrollCost;
+                    scrollCost = 0;
+                    setEnchCost(costs.enchantCost, true);
+                    if (successType == 2) setEnchCost(costs.enchantCost, true);
+                }
                 if (emulatorItemGrade == 12 || !checkBoxKeepItems.Checked)
                 {
                     resetScroll();
@@ -1642,6 +1683,7 @@ namespace AA_Regrade
                 if (!checkBoxKeepItems.Checked && didBlowUp)
                 {
                     resetEmulator();
+                    setEnchCost(0, false);
                 }
             }
         }
@@ -1689,6 +1731,30 @@ namespace AA_Regrade
             isDoneEnchanting = true;
         }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                panelCurrentGold.Visible = true;
+                checkGold = true;
+                buttonRefresh.Visible = true;
+                buttonSetCost2.Visible = true;
+                panelEnchCost.Visible = true;
+                checkBoxKeepItems.Checked = false;
+                checkBoxKeepItems.Enabled = false;
+                MessageBox.Show("The Keep Items/Scrolls feature will be disabled for this mode. Set your budget and item costs by pressing the \"Set Costs\" button.");
+            }
+            else
+            {
+                panelCurrentGold.Visible = false;
+                checkGold = false;
+                buttonRefresh.Visible = false;
+                buttonSetCost2.Visible = false;
+                panelEnchCost.Visible = false;
+                checkBoxKeepItems.Enabled = true;
+            }
+        }
+
 
         //Sets the item icon in the regrade emulator
         public void setItem(int type)
@@ -1704,6 +1770,12 @@ namespace AA_Regrade
             }
             pictureBoxItem.Image = Properties.Resources.basic;
         }
+
+        private void buttonSetCost2_Click(object sender, EventArgs e)
+        {
+            costs.ShowDialog();
+        }
+
         //Sets the item grade in the regrade emulator
         public void setGrade(int grade)
         {
@@ -1749,6 +1821,41 @@ namespace AA_Regrade
             emulatorItemGrade = grade;
             eval();
         }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            totalGold = costs.budget;
+            refreshGold();
+            eval();
+        }
+
+        private void pictureBoxCharm_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                resetCharm();
+                eval();
+            };
+        }
+
+        private void pictureBoxScroll_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                resetScroll();
+                eval();
+            }
+        }
+
+        private void pictureBoxItem_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                resetEmulator();
+                setEnchCost(0, false);
+            }
+        }
+
         //Resets the emulator
         public void resetEmulator()
         {
@@ -1756,6 +1863,9 @@ namespace AA_Regrade
             emulatorItemGrade = 0;
             emulatorScrollType = 0;
             emulatorCharmType = 1;
+            currentEnchantCost = 0;
+            scrollCost = 0;
+            charmCost = 0;
             pictureBoxCharm.BackgroundImage = Properties.Resources.charm_initial;
             pictureBoxCharm.Image = null;
             pictureBoxScroll.BackgroundImage = Properties.Resources.scroll_initial;
@@ -1767,13 +1877,18 @@ namespace AA_Regrade
             labelChancePercent.Text = "";
             pictureBoxEnchant.Image = Properties.Resources.button_enchant_disable;
             emulatorIsReady = false;
+            setEnchCost(0, false);
         }
+
         //resets the scroll
         public void resetScroll()
         {
             pictureBoxScroll.BackgroundImage = Properties.Resources.scroll_initial;
             pictureBoxScroll.Image = null;
             emulatorScrollType = 0;
+            currentEnchantCost -= scrollCost;
+            setEnchCost(currentEnchantCost, false);
+            scrollCost = 0;
         }
         //resets the emulator charm
         public void resetCharm()
@@ -1782,6 +1897,9 @@ namespace AA_Regrade
             pictureBoxCharm.BackgroundImage = Properties.Resources.charm_initial;
             pictureBoxCharm.Image = null;
             emulatorIsAnchored = false;
+            currentEnchantCost -= charmCost;
+            setEnchCost(currentEnchantCost, false);
+            charmCost = 0;
         }
         //evaluates the chances
         public void eval()
@@ -1835,7 +1953,12 @@ namespace AA_Regrade
             labelChancePercent.Text = Math.Round(emulatorOdds / 100, 2).ToString() + "%";
 
             //Evaluate if enchantment is ready
-            if(emulatorItemType != 0 && emulatorScrollType != 0 && emulatorItemGrade != 12)
+            if(checkGold && currentEnchantCost > totalGold)
+            {
+                pictureBoxEnchant.Image = Properties.Resources.button_enchant_disable;
+                emulatorIsReady = false;
+            }
+            else if(emulatorItemType != 0 && emulatorScrollType != 0 && emulatorItemGrade != 12)
             {
                 pictureBoxEnchant.Image = Properties.Resources.button_enchant_enable;
                 emulatorIsReady = true;
@@ -1845,6 +1968,81 @@ namespace AA_Regrade
                 pictureBoxEnchant.Image = Properties.Resources.button_enchant_disable;
                 emulatorIsReady = false;
             }
+            refreshGold();
+        }
+
+        public void setEnchCost(double cost, bool upgrade)
+        {
+            if (upgrade)
+            {
+                if(emulatorItemType == 1)currentEnchantCost = currentEnchantCost * 1.55;
+            }
+            else
+            {
+                currentEnchantCost = cost;
+            }
+            double remainder = Math.Round(currentEnchantCost, 4);
+            Console.WriteLine(remainder);
+            double gold = (int)Math.Floor(currentEnchantCost);
+            remainder -= gold;
+            double silver = (int)Math.Floor(remainder * 100);
+            remainder -= (silver / 100);
+            double copper = (int)Math.Ceiling(remainder * 10000);
+            remainder -= copper / 10000;
+            if(silver == 100)
+            {
+                silver = 0;
+                gold++;
+            }
+            if(copper == 100)
+            {
+                copper = 0;
+                silver++;
+            }
+            labelEnchGold.Text = gold.ToString();
+            labelEnchSilver.Text = silver.ToString();
+            labelEnchCopper.Text = copper.ToString();
+        }
+
+        public void refreshGold()
+        {
+            totalGold = costs.budget;
+            double remainder = totalGold;
+            double gold = (int)Math.Floor(totalGold);
+            remainder -= gold;
+            double silver = (int)Math.Floor(remainder * 100);
+            remainder -= (silver / 100);
+            double copper = (int)Math.Floor(remainder * 10000);
+            remainder -= copper / 10000;
+            if (silver == 100)
+            {
+                silver = 0;
+                gold++;
+            }
+            if (copper == 100)
+            {
+                copper = 0;
+                silver++;
+            }
+            labelGold.Text = gold.ToString();
+            labelSilver.Text = silver.ToString();
+            labelCopper.Text = copper.ToString();
+        }
+
+        public void updateScrollCost(double cost)
+        {
+            currentEnchantCost -= scrollCost;
+            scrollCost = cost;
+            currentEnchantCost += scrollCost;
+            setEnchCost(currentEnchantCost, false);
+        }
+        
+        public void updateCharmCost(double cost)
+        {
+            currentEnchantCost -= charmCost;
+            charmCost = cost;
+            currentEnchantCost += charmCost;
+            setEnchCost(currentEnchantCost, false);
         }
     }
 }

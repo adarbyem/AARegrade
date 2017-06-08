@@ -29,6 +29,7 @@ namespace AA_Regrade
         public double regScrollCost = 0;
         public double resplendScrollCost = 0;
         public double enchantCost = 0;
+        public double budget = 0;
 
         public Costs()
         {
@@ -56,6 +57,7 @@ namespace AA_Regrade
                 regScrollCost       = double.Parse(textBoxStandardScroll.Text);
                 resplendScrollCost  = double.Parse(textBoxResplendScroll.Text);
                 enchantCost         = double.Parse(textBoxEnchantCost.Text);
+                budget              = double.Parse(textBoxBudget.Text);
                 if (greenCharmCost     < 0) throw new Exception();
                 if (blueCharmCost      < 0) throw new Exception();
                 if (yellowCharmCost    < 0) throw new Exception();
@@ -72,6 +74,7 @@ namespace AA_Regrade
                 if (regScrollCost      < 0) throw new Exception();
                 if (resplendScrollCost < 0) throw new Exception();
                 if (enchantCost        < 0) throw new Exception();
+                if (budget             < 0) throw new Exception();
                 this.Hide();
             }
             catch

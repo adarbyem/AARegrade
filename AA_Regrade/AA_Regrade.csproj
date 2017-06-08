@@ -164,6 +164,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\silver_coin.png" />
+    <None Include="Resources\gold.png" />
+    <None Include="Resources\copper.png" />
+    <None Include="Resources\coins.png" />
     <None Include="Resources\rip_mythic.png" />
     <None Include="Resources\rip_legendary.png" />
     <None Include="Resources\rip_epic.png" />

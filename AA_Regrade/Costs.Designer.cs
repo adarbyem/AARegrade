@@ -66,9 +66,11 @@
             this.buttonAccept = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.textBoxEnchantCost = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.textBoxBudget = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -431,6 +433,8 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.label21);
+            this.panel4.Controls.Add(this.textBoxBudget);
             this.panel4.Controls.Add(this.label20);
             this.panel4.Controls.Add(this.textBoxEnchantCost);
             this.panel4.Controls.Add(this.label19);
@@ -438,16 +442,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(266, 248);
             this.panel4.TabIndex = 30;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(33, 4);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(37, 13);
-            this.label19.TabIndex = 1;
-            this.label19.Text = "Misc.";
             // 
             // label20
             // 
@@ -465,6 +459,33 @@
             this.textBoxEnchantCost.Size = new System.Drawing.Size(78, 20);
             this.textBoxEnchantCost.TabIndex = 16;
             this.textBoxEnchantCost.Text = "0";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(33, 4);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(37, 13);
+            this.label19.TabIndex = 1;
+            this.label19.Text = "Misc.";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(3, 223);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(117, 13);
+            this.label21.TabIndex = 18;
+            this.label21.Text = "Budget (Budget Mode):";
+            // 
+            // textBoxBudget
+            // 
+            this.textBoxBudget.Location = new System.Drawing.Point(180, 220);
+            this.textBoxBudget.Name = "textBoxBudget";
+            this.textBoxBudget.Size = new System.Drawing.Size(78, 20);
+            this.textBoxBudget.TabIndex = 17;
+            this.textBoxBudget.Text = "0";
             // 
             // Costs
             // 
@@ -531,5 +552,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox textBoxEnchantCost;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox textBoxBudget;
     }
 }
